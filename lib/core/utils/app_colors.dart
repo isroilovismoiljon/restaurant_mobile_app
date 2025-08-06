@@ -8,4 +8,5 @@ class AppColors{
   static Color redPinkFD5D69 = Color(0xFFFD5D69);
   static Color pinkFFC6C9 = Color(0xFFFFC6C9);
   static Color backgroundBeigeGradient1C0F0D = Color(0xFF1C0F0D);
+  static Color whiteFFFFFF = Color(0xFFFFFFFF);
 }

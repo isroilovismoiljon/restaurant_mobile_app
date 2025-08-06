@@ -22,6 +22,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         },
         icon: SvgPicture.asset(AppIcons.backArrow),
       ),
+      leadingWidth: 100.w,
       title: Text(categoryTitle, style: Styles.s20w600redPink),
       centerTitle: true,
       actions: [
