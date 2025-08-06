@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/app_bar_action.dart';
+import 'package:restourant_mobile_app/features/common/app_bar/app_bar_leading_back_arrow.dart';
 
 import '../../../core/utils/icons.dart';
 
@@ -16,12 +16,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        icon: SvgPicture.asset(AppIcons.backArrow),
-      ),
+      leading: AppBarLeadingBackArrow(),
       leadingWidth: 100.w,
       title: Text(categoryTitle, style: Styles.s20w600redPink),
       centerTitle: true,

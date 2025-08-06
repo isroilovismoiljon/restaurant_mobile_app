@@ -1,4 +1,10 @@
+import 'package:restourant_mobile_app/features/categories/pages/recipes_page.dart';
+
 class Routers{
-  static const categoriesPage = '/categories_page';
-  static const categoryDetails = '/category_details';
+  static const error404Page = '/error404';
+  static const categoriesPage = '/categoriesPage';
+  static const categoryDetails = '/categoryDetails';
+  static const recipesPage = '/recipesPage';
+  static const cuisinesPage = '/cuisinesPage';
+  static const cookingLevelPage = '/cookingLevelPage';
 }
