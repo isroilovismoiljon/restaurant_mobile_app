@@ -11,6 +11,7 @@ class Styles{
   static TextStyle s15w500pinkEC888D = TextStyle(color: AppColors.pinkColorEC888D, fontSize: 15, fontWeight: FontWeight.w500);
   static TextStyle s16w400redPink = TextStyle(color: AppColors.redPinkFD5D69, fontSize: 16, fontWeight: FontWeight.w400);
   static TextStyle s16w400white = TextStyle(color: AppColors.whiteFFFFFF, fontSize: 16, fontWeight: FontWeight.w400);
+  static TextStyle s16w500whiteFFFDF9 = TextStyle(color: AppColors.whiteBeigeFFFDF9, fontSize: 16, fontWeight: FontWeight.w500);
   static TextStyle s20w600redPink = TextStyle(color: AppColors.redPinkFD5D69, fontSize: 20, fontWeight: FontWeight.w600);
   static TextStyle s20w600whiteFFFDF9 = TextStyle(color: AppColors.whiteBeigeFFFDF9, fontSize: 20, fontWeight: FontWeight.w600);
   static TextStyle s20w500whiteFFFDF9 = TextStyle(color: AppColors.whiteBeigeFFFDF9, fontSize: 20, fontWeight: FontWeight.w500);

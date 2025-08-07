@@ -1,20 +1,21 @@
 import 'package:flutter/foundation.dart';
 import '../../../core/client.dart';
+import '../../../data/models/onboarding/allergic_model.dart';
 import '../../../data/models/onboarding/cuisine_model.dart';
 
-class CuisineViewModel extends ChangeNotifier{
-  List<CuisineModel> cuisines = [];
+class AllergicViewModel extends ChangeNotifier{
+  List<AllergicModel> allergicFoods = [];
   bool loading = false;
-  CuisineViewModel(){
+  AllergicViewModel(){
     getCuisines();
 }
   
   void getCuisines()async{
-    var response = await dio.get("/cuisines/list");
+    var response = await dio.get("/allergic/list");
     if(response.statusCode != 200){
       throw Exception("Something wrong!");
     }
-    cuisines = (response.data as List).map((e) => CuisineModel.fromJson(e)).toList();
+    allergicFoods = (response.data as List).map((e) => AllergicModel.fromJson(e)).toList();
     loading = false;
     notifyListeners();
   }

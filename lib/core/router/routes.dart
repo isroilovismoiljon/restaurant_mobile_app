@@ -4,7 +4,8 @@ class Routers{
   static const error404Page = '/error404';
   static const categoriesPage = '/categoriesPage';
   static const categoryDetails = '/categoryDetails';
-  static const recipesPage = '/recipesPage';
-  static const cuisinesPage = '/cuisinesPage';
+  static const recipesPage = '/recipes';
+  static const cuisinesPage = '/cuisines';
+  static const allergicPage = '/allergic';
   static const cookingLevelPage = '/cookingLevelPage';
 }

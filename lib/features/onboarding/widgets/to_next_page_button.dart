@@ -9,16 +9,18 @@ class ToNextPageButton extends StatelessWidget {
     required this.title,
     this.buttonBackgroundColor,
     this.buttonTextStyle,
+    required this.onPressed,
   });
 
   final String title;
   final Color? buttonBackgroundColor;
   final TextStyle? buttonTextStyle;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: TextButton.styleFrom(
         backgroundColor: buttonBackgroundColor ?? AppColors.redPinkFD5D69,
         fixedSize: Size(162.w, 45.h),
