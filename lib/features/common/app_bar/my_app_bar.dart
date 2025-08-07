@@ -8,9 +8,14 @@ import 'package:restourant_mobile_app/features/common/app_bar/app_bar_leading_ba
 import '../../../core/utils/icons.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const MyAppBar({super.key, required this.categoryTitle});
+  const MyAppBar({
+    super.key,
+    required this.categoryTitle,
+    this.actions = const [],
+  });
 
   final String categoryTitle;
+  final List<String> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +27,23 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         Row(
-          spacing: 5,
           children: [
-            AppBarAction(icon: AppIcons.notification),
-            AppBarAction(icon: AppIcons.search),
+            AppBarAction(
+              icon: actions.isNotEmpty
+                  ? actions[0]
+                  : AppIcons.notification,
+            ),
+            SizedBox(width: 5.w),
+            AppBarAction(
+              icon: actions.length > 1
+                  ? actions[1]
+                  : AppIcons.search,
+            ),
           ],
         ),
         SizedBox(width: 37.w),
       ],
+
     );
   }
 

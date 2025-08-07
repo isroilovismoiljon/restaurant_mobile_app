@@ -9,7 +9,7 @@ import '../../features/onboarding/pages/cuisines_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: '/recipesPage',
+    initialLocation: Routers.categoriesPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.categoriesPage,
@@ -21,7 +21,7 @@ class MyRouter {
       ),
       GoRoute(
         path: Routers.recipesPage,
-        builder: (context, state) => RecipesPage(),
+        builder: (context, state) => RecipesPage(categoryDetail: state.extra as Map,),
       ),
       GoRoute(
         path: Routers.cuisinesPage,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/router/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/features/categories/managers/categories_page_view_model.dart';
 import 'package:restourant_mobile_app/features/categories/pages/category_details.dart';
@@ -25,7 +26,7 @@ class CategoryItems extends StatelessWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              context.push('/category_details', extra: {
+              context.push(Routers.categoryDetails, extra: {
                 'categoryId': vm.categories[index].id,
                 'categoryTitle': vm.categories[index].title
               });

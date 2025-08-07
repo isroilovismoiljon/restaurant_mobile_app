@@ -5,7 +5,6 @@ import 'package:restourant_mobile_app/features/categories/managers/category_deta
 import 'package:restourant_mobile_app/features/common/app_bar/app_bar_bottom.dart';
 import 'package:restourant_mobile_app/features/categories/widget/category_details_page_item.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-
 import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class CategoryDetails extends StatelessWidget {

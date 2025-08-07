@@ -19,7 +19,7 @@ class AppBarAction extends StatelessWidget {
         color: AppColors.pinkFFC6C9,
         borderRadius: BorderRadius.circular(14),
       ),
-      child: SvgPicture.asset(icon),
+      child: SvgPicture.asset(icon, color: AppColors.pinkColorEC888D,),
     );
   }
 }

@@ -13,9 +13,8 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) {
-        return CategoriesPageViewModel();
-      },
+      create: (context) => CategoriesPageViewModel(),
+
       builder: (context, child) {
         return Scaffold(
           extendBody: true,
