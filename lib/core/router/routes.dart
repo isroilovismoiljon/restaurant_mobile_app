@@ -8,4 +8,6 @@ class Routers{
   static const cuisinesPage = '/cuisines';
   static const allergicPage = '/allergic';
   static const cookingLevelPage = '/cookingLevelPage';
+  static const onboarding = '/onboarding';
+  static const welcomePage = '/welcomePage';
 }

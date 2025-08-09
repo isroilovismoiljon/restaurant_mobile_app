@@ -43,7 +43,7 @@ class _CookingLevelPageState extends State<CookingLevelPage> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        leading: AppBarLeadingBackArrow(),
+        leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
         backgroundColor: AppColors.backgroundColor,
       ),
       body: Padding(

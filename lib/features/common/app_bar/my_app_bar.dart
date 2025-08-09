@@ -21,7 +21,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
-      leading: AppBarLeadingBackArrow(),
+      leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
       leadingWidth: 100.w,
       title: Text(categoryTitle, style: Styles.s20w600redPink),
       centerTitle: true,

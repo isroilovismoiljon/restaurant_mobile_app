@@ -18,9 +18,10 @@ class AllergicPage extends StatelessWidget {
       create: (context) => AllergicViewModel(),
       builder: (context, child) {
         return Scaffold(
+          extendBody: true,
           backgroundColor: AppColors.backgroundColor,
           appBar: AppBar(
-            leading: AppBarLeadingBackArrow(),
+            leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
             backgroundColor: AppColors.backgroundColor,
           ),
           body: Padding(
@@ -76,12 +77,12 @@ class AllergicPage extends StatelessWidget {
                     },
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 60.h),
-                  child: ToNextPageButton(title: 'Continue', onPressed: () { },),
-                ),
               ],
             ),
+          ),
+          bottomNavigationBar: Container(
+            padding: EdgeInsets.only(bottom: 60.h),
+            child: ToNextPageButton(title: 'Continue', onPressed: () { },),
           ),
         );
       },

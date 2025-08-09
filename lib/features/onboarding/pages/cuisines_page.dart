@@ -20,9 +20,10 @@ class CuisinesPage extends StatelessWidget {
       create: (context) => CuisineViewModel(),
       builder: (context, child) {
         return Scaffold(
+          extendBody: true,
           backgroundColor: AppColors.backgroundColor,
           appBar: AppBar(
-            leading: AppBarLeadingBackArrow(),
+            leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
             backgroundColor: AppColors.backgroundColor,
           ),
           body: Padding(
@@ -78,21 +79,22 @@ class CuisinesPage extends StatelessWidget {
                     },
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 60.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 32.w,
-                    children: [
-                      ToNextPageButton(
-                        title: 'Skip',
-                        buttonBackgroundColor: AppColors.pinkFFC6C9,
-                        buttonTextStyle: Styles.s20w600pinkEC888D, onPressed: () {  },
-                      ),
-                      ToNextPageButton(title: 'Continue', onPressed: () {context.push(Routers.allergicPage); },),
-                    ],
-                  ),
+              ],
+            ),
+          ),
+
+          bottomNavigationBar: Container(
+            padding: EdgeInsets.only(bottom: 60.h),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 32.w,
+              children: [
+                ToNextPageButton(
+                  title: 'Skip',
+                  buttonBackgroundColor: AppColors.pinkFFC6C9,
+                  buttonTextStyle: Styles.s20w600pinkEC888D, onPressed: () {  },
                 ),
+                ToNextPageButton(title: 'Continue', onPressed: () {context.push(Routers.allergicPage); },),
               ],
             ),
           ),

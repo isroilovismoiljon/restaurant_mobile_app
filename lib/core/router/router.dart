@@ -5,12 +5,14 @@ import 'package:restourant_mobile_app/features/categories/pages/category_details
 import 'package:restourant_mobile_app/features/categories/pages/recipes_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/allergic_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/cooking_level_page.dart';
+import 'package:restourant_mobile_app/features/onboarding/pages/welcome_page.dart';
 import '../../features/error/error404.dart';
 import '../../features/onboarding/pages/cuisines_page.dart';
+import '../../features/onboarding/pages/onboarding_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.cookingLevelPage,
+    initialLocation: Routers.welcomePage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.categoriesPage,
@@ -37,6 +39,12 @@ class MyRouter {
       ),
       GoRoute(path: Routers.cookingLevelPage,
       builder: (context, state) => CookingLevelPage(),
+      ),
+      GoRoute(path: Routers.onboarding,
+      builder: (context, state) => OnboardingPage(),
+      ),
+      GoRoute(path: Routers.welcomePage,
+      builder: (context, state) => WelcomePage(),
       ),
     ],
   );
