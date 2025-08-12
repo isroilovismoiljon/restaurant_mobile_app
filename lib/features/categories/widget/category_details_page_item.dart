@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/router/routes.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
-import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/categories/managers/category_details_view_model.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-
 import '../../../core/utils/icons.dart';
-import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class CategoryDetailsPageItem extends StatelessWidget {
   const CategoryDetailsPageItem({super.key, required this.vm});

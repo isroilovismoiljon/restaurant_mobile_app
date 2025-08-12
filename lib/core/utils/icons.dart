@@ -14,4 +14,5 @@ class AppIcons{
   static String threeDots = "assets/Icons/three_dots.svg";
   static String heart = "assets/Icons/heart.svg";
   static String share = "assets/Icons/share.svg";
+  static String like = "assets/Icons/like.svg";
 }

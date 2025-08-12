@@ -36,9 +36,13 @@ class CategoryDetails extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(37, 19, 37, 5),
                     child: Column(
                       children: [
-                        AppBarBottom(vm: vm,),
+                        vm.categoriesLoading
+                        ? Center(child: CircularProgressIndicator(),)
+                        : AppBarBottom(vm: vm,),
                         SizedBox(height: 19),
-                        CategoryDetailsPageItem(vm: vm),
+                        vm.categoryDetailsLoading
+                        ? Center(child: CircularProgressIndicator(),)
+                        : CategoryDetailsPageItem(vm: vm),
                       ],
                     ),
                   );

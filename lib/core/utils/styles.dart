@@ -12,8 +12,28 @@ class Styles {
     fontSize: 12,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle s12w400brown3E2823 = TextStyle(
+    color: AppColors.brown3E2823,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle s13w300brown3E2823 = TextStyle(
+    color: AppColors.brown3E2823,
+    fontSize: 13,
+    fontWeight: FontWeight.w300,
+  );
+  static TextStyle s13w300whiteBeigeFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 13,
+    fontWeight: FontWeight.w300,
+  );
   static TextStyle s12w400redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle s12w400pinkColorEC888D = TextStyle(
+    color: AppColors.pinkColorEC888D,
     fontSize: 12,
     fontWeight: FontWeight.w400,
   );
@@ -37,6 +57,16 @@ class Styles {
     fontSize: 15,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle s15w500whiteBeigeFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle s15w500redPinkFD5D69 = TextStyle(
+    color: AppColors.redPinkFD5D69,
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle s16w400redPink = TextStyle(
     color: AppColors.redPinkFD5D69,
     fontSize: 16,
@@ -49,6 +79,16 @@ class Styles {
   );
   static TextStyle s16w500whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle s17w600whiteFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle s16w500gray727c9c = TextStyle(
+    color: AppColors.gray727c9c.withValues(alpha: 0.45),
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
@@ -81,5 +121,11 @@ class Styles {
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 25,
     fontWeight: FontWeight.w600,
+  );
+  static TextStyle s64w600whiteFFFDF9 = TextStyle(
+    fontSize: 64,
+    fontWeight: FontWeight.w600,
+    color: AppColors.whiteBeigeFFFDF9,
+    fontFamily: 'PoppinsSemiBold',
   );
 }

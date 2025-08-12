@@ -4,7 +4,7 @@ import '../../../data/models/onboarding/cuisine_model.dart';
 
 class CuisineViewModel extends ChangeNotifier{
   List<CuisineModel> cuisines = [];
-  bool loading = false;
+  bool isLoading = true;
   CuisineViewModel(){
     getCuisines();
 }
@@ -15,7 +15,7 @@ class CuisineViewModel extends ChangeNotifier{
       throw Exception("Something wrong!");
     }
     cuisines = (response.data as List).map((e) => CuisineModel.fromJson(e)).toList();
-    loading = false;
+    isLoading = false;
     notifyListeners();
   }
 }

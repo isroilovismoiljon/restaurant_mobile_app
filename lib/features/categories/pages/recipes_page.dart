@@ -22,7 +22,6 @@ class RecipesPage extends StatelessWidget {
       builder: (context, child) {
         return Consumer<RecipeViewModel>(
           builder: (context, vm, child) {
-            final recipe = vm.recipe!;
             return vm.isLoading
                 ? Scaffold(
                     body: Center(child: CircularProgressIndicator()),
@@ -60,7 +59,7 @@ class RecipesPage extends StatelessWidget {
                                         width: 356.w,
                                         height: 281.h,
                                         fit: BoxFit.cover,
-                                        recipe.photo,
+                                        vm.recipe!.photo,
                                       ),
                                     ),
                                     Row(
@@ -70,7 +69,7 @@ class RecipesPage extends StatelessWidget {
                                         SizedBox(
                                           width: 220.w,
                                           child: Text(
-                                            recipe.title,
+                                            vm.recipe!.title,
                                             style: Styles.s20w500whiteFFFDF9,
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
@@ -86,7 +85,7 @@ class RecipesPage extends StatelessWidget {
                                                   AppIcons.starFilled,
                                                 ),
                                                 Text(
-                                                  "${recipe.rating}",
+                                                  "${vm.recipe!.rating}",
                                                   style:
                                                       Styles.s12w400whiteFFFDF9,
                                                 ),
@@ -99,7 +98,7 @@ class RecipesPage extends StatelessWidget {
                                                   AppIcons.reviews,
                                                 ),
                                                 Text(
-                                                  "${recipe.reviewsCount}",
+                                                  "${vm.recipe!.reviewsCount}",
                                                   style:
                                                       Styles.s12w400whiteFFFDF9,
                                                 ),
@@ -121,7 +120,7 @@ class RecipesPage extends StatelessWidget {
                                     32,
                                   ),
                                   child: Image.network(
-                                    recipe.chef.profilePhoto,
+                                    vm.recipe!.chef.profilePhoto,
                                     width: 64.w,
                                     height: 64.h,
                                     fit: BoxFit.cover,
@@ -134,11 +133,11 @@ class RecipesPage extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "@${recipe.chef.username}",
+                                        "@${vm.recipe!.chef.username}",
                                         style: Styles.s12w400redPinkFD5D69,
                                       ),
                                       Text(
-                                        "${recipe.chef.firstName} ${recipe.chef.lastName}",
+                                        "${vm.recipe!.chef.firstName} ${vm.recipe!.chef.lastName}",
                                         style: Styles.s14w300whiteFFFDF9,
                                       ),
                                     ],
@@ -176,13 +175,13 @@ class RecipesPage extends StatelessWidget {
                                       color: AppColors.whiteBeigeFFFDF9,
                                     ),
                                     Text(
-                                      "${recipe.timeRequired}min",
+                                      "${vm.recipe!.timeRequired}min",
                                       style: Styles.s12w400whiteFFFDF9,
                                     ),
                                   ],
                                 ),
                                 Text(
-                                  recipe.description,
+                                  vm.recipe!.description,
                                   style: Styles.s12w400whiteFFFDF9,
                                 ),
                               ],
@@ -200,10 +199,10 @@ class RecipesPage extends StatelessWidget {
                                     height: 10.h,
                                   ),
                                   ...List.generate(
-                                    recipe.ingredients.length,
+                                    vm.recipe!.ingredients.length,
                                     (index) {
                                       return Text(
-                                        "${recipe.ingredients[index].amount} ${recipe.ingredients[index].name}",
+                                        "${vm.recipe!.ingredients[index].amount} ${vm.recipe!.ingredients[index].name}",
                                         style: Styles.s12w400whiteFFFDF9,
                                       );
                                     },
@@ -216,14 +215,14 @@ class RecipesPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "${recipe.instructions.length} easy Steps",
+                                  "${vm.recipe!.instructions.length} easy Steps",
                                   style: Styles.s20w600redPinkFD5D69,
                                 ),
 
                                 Column(
                                   spacing: 11.h,
                                   children: [
-                                    ...List.generate(recipe.instructions.length, (
+                                    ...List.generate(vm.recipe!.instructions.length, (
                                       index,
                                     ) {
                                       return Container(
@@ -245,7 +244,7 @@ class RecipesPage extends StatelessWidget {
                                           ),
                                         ),
                                         child: Text(
-                                          "${index + 1}. ${recipe.instructions[index].text}",
+                                          "${index + 1}. ${vm.recipe!.instructions[index].text}",
                                           style: Styles.s12w400black1C0F0D,
                                         ),
                                       );

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
+import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/bottom_navigation_bar_gradient.dart';
 import 'package:restourant_mobile_app/features/onboarding/magagers/allergic_view_model.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/indicator_on_boarding.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
@@ -21,7 +24,11 @@ class AllergicPage extends StatelessWidget {
           extendBody: true,
           backgroundColor: AppColors.backgroundColor,
           appBar: AppBar(
-            leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
+            leading: AppBarLeadingBackArrow(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
             backgroundColor: AppColors.backgroundColor,
           ),
           body: Padding(
@@ -29,7 +36,9 @@ class AllergicPage extends StatelessWidget {
             child: Column(
               spacing: 20.h,
               children: [
-                IndicatorOnBoarding(alignment: Alignment.center,),
+                IndicatorOnBoarding(
+                  alignment: Alignment.topRight,
+                ),
                 SizedBox(height: 5),
                 Text(
                   "¿You have any allergic?",
@@ -43,46 +52,64 @@ class AllergicPage extends StatelessWidget {
                 Expanded(
                   child: Consumer<AllergicViewModel>(
                     builder: (context, vm, child) {
-                      return GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 10.16,
-                          crossAxisSpacing: 9.72,
-                          mainAxisExtent: 127,
-                        ),
-                        itemCount: vm.allergicFoods.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            spacing: 6,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  11.74,
-                                ),
-                                child: Image.network(
-                                  vm.allergicFoods[index].image,
-                                  width: 98.w,
-                                  height: 99.h,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Text(
-                                vm.allergicFoods[index].title,
-                                style: Styles.s13w500whiteFFFDF9,
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      return vm.isLoading
+                          ? Center(child: CircularProgressIndicator())
+                          : GridView.builder(
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    mainAxisSpacing: 10.16,
+                                    crossAxisSpacing: 9.72,
+                                    mainAxisExtent: 127,
+                                  ),
+                              itemCount: vm.allergicFoods.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  spacing: 6,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius:
+                                          BorderRadiusGeometry.circular(
+                                            11.74,
+                                          ),
+                                      child: Image.network(
+                                        vm.allergicFoods[index].image,
+                                        width: 98.w,
+                                        height: 99.h,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Text(
+                                      vm.allergicFoods[index].title,
+                                      style: Styles.s13w500whiteFFFDF9,
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                     },
                   ),
                 ),
               ],
             ),
           ),
-          bottomNavigationBar: Container(
-            padding: EdgeInsets.only(bottom: 60.h),
-            child: ToNextPageButton(title: 'Continue', onPressed: () { },),
+          bottomNavigationBar: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              BottomNavigationBarGradient(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 110),
+                child: Container(
+                  padding: EdgeInsets.only(bottom: 60.h),
+                  child: ToNextPageButton(
+                    title: 'Continue',
+                    onPressed: () {
+                      context.push(Routers.categoriesPage);
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },

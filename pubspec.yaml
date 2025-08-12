@@ -59,6 +59,24 @@ flutter:
   assets:
     - assets/Icons/
     - assets/Fonts/
+    - assets/Images/
+    - assets/Images/Launch/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/Fonts/Poppins/Poppins-Regular.ttf
+
+    - family: PoppinsMedium
+      fonts:
+        - asset: assets/Fonts/Poppins/Poppins-Medium.ttf
+
+    - family: PoppinsSemiBold
+      fonts:
+        - asset: assets/Fonts/Poppins/Poppins-SemiBold.ttf
+
+    - family: LeagueSpartan
+      fonts:
+        - asset: assets/Fonts/LeagueSpartan/LeagueSpartan-Light.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

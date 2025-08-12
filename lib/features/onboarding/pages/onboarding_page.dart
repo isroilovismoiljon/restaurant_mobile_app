@@ -4,8 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/features/onboarding/magagers/onboarding_view_model.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
-import '../../../core/router/routes.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/utils/icons.dart';
 import '../../../core/utils/styles.dart';
 import '../../common/bottom_navigation_bar/bottom_navigation_bar_gradient.dart';
@@ -25,7 +26,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CuisineViewModel(),
+      create: (context) => OnboardingViewModel(),
       builder: (context, child) {
         return Scaffold(
           backgroundColor: AppColors.backgroundColor,
@@ -44,149 +45,155 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   )
                 : null,
           ),
+          body: Consumer<OnboardingViewModel>(
+            builder: (context, vm, child) {
+              return
+                vm.isLoading
+                ? Center(child: SingleChildScrollView(),)
+                : PageView(
+                controller: pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    leadingBackArrow = index == 1;
+                  });
+                },
+                children: [
+                  Column(
+                    spacing: 23.h,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            vm.onboarding[0].title,
+                            style: Styles.s20w600whiteFFFDF9,
+                          ),
+                          Text(
+                            vm.onboarding[0].subtitle,
+                            style: Styles.s13w400whiteFFFDF9,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 722.h,
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Image.network(
+                                vm.onboarding[0].image,
+                                width: double.infinity,
+                                height: 720.h,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 284.h,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.backgroundBeigeGradient1C0F0D,
+                                    Colors.transparent,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: BottomNavigationBarGradient(),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: ToNextPageButton(
+                                buttonBackgroundColor: AppColors.pinkFFC6C9,
+                                buttonTextStyle: Styles.s20w600pinkEC888D,
+                                title: 'Continue',
+                                onPressed: () {
+                                  pageController.animateToPage(
+                                    1,
+                                    duration: Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
 
-          body: PageView(
-            controller: pageController,
-            onPageChanged: (index) {
-              setState(() {
-                leadingBackArrow = index == 1;
-              });
+                    ],
+                  ),
+                  Column(
+                    spacing: 23.h,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            vm.onboarding[1].title,
+                            style: Styles.s20w600whiteFFFDF9,
+                          ),
+                          Text(
+                            vm.onboarding[1].subtitle,
+                            style: Styles.s13w400whiteFFFDF9,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 722.h,
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Image.network(
+                                vm.onboarding[1].image,
+                                width: double.infinity,
+                                height: 720.h,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 280.h,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.backgroundBeigeGradient1C0F0D,
+                                    Colors.transparent,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: BottomNavigationBarGradient(),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: ToNextPageButton(
+                                buttonBackgroundColor: AppColors.pinkFFC6C9,
+                                buttonTextStyle: Styles.s20w600pinkEC888D,
+                                title: 'Continue',
+                                onPressed: () {
+                                  context.push(Routers.welcomePage);
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
             },
-            children: [
-              Column(
-                spacing: 23.h,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Get inspired',
-                        style: Styles.s20w600whiteFFFDF9,
-                      ),
-                      Text(
-                        'Get inspired with our daily recipe recommendations.',
-                        style: Styles.s13w400whiteFFFDF9,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 722.h,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Image.network(
-                            "https://i.pinimg.com/736x/e1/50/ee/e150ee2685fbb8dcfd1b9143e4dc8f8b.jpg",
-                            width: double.infinity,
-                            height: 720.h,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 280.h,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                AppColors.backgroundBeigeGradient1C0F0D,
-                                Colors.transparent,
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: BottomNavigationBarGradient(),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: ToNextPageButton(
-                            buttonBackgroundColor: AppColors.pinkFFC6C9,
-                            buttonTextStyle: Styles.s20w600pinkEC888D,
-                            title: 'Continue',
-                            onPressed: () {
-                              pageController.animateToPage(
-                                1,
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                ],
-              ),
-              Column(
-                spacing: 23.h,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Get an increase your skills',
-                        style: Styles.s20w600whiteFFFDF9,
-                      ),
-                      Text(
-                        '"Learn essential cooking techniques at your own pace.',
-                        style: Styles.s13w400whiteFFFDF9,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 722.h,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Image.network(
-                            "https://i.pinimg.com/736x/92/07/53/92075334654bb91ca1ed50bfca3f546a.jpg",
-                            width: double.infinity,
-                            height: 720.h,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 280.h,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                AppColors.backgroundBeigeGradient1C0F0D,
-                                Colors.transparent,
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: BottomNavigationBarGradient(),
-                        ),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: ToNextPageButton(
-                            buttonBackgroundColor: AppColors.pinkFFC6C9,
-                            buttonTextStyle: Styles.s20w600pinkEC888D,
-                            title: 'Continue',
-                            onPressed: () {
-                              context.push(Routers.welcomePage);
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
           ),
         );
       },

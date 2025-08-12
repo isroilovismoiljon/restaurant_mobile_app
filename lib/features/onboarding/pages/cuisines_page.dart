@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/router/routes.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/indicator_on_boarding.dart';
@@ -23,7 +23,11 @@ class CuisinesPage extends StatelessWidget {
           extendBody: true,
           backgroundColor: AppColors.backgroundColor,
           appBar: AppBar(
-            leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
+            leading: AppBarLeadingBackArrow(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
             backgroundColor: AppColors.backgroundColor,
           ),
           body: Padding(
@@ -31,7 +35,9 @@ class CuisinesPage extends StatelessWidget {
             child: Column(
               spacing: 20.h,
               children: [
-                IndicatorOnBoarding(alignment: Alignment.center,),
+                IndicatorOnBoarding(
+                  alignment: Alignment.center,
+                ),
                 SizedBox(height: 5),
                 Text(
                   "Select your cuisines preferences",
@@ -45,37 +51,41 @@ class CuisinesPage extends StatelessWidget {
                 Expanded(
                   child: Consumer<CuisineViewModel>(
                     builder: (context, vm, child) {
-                      return GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 10.16,
-                          crossAxisSpacing: 9.72,
-                          mainAxisExtent: 127,
-                        ),
-                        itemCount: vm.cuisines.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            spacing: 6,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  11.74,
-                                ),
-                                child: Image.network(
-                                  vm.cuisines[index].image,
-                                  width: 98.w,
-                                  height: 99.h,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Text(
-                                vm.cuisines[index].title,
-                                style: Styles.s13w500whiteFFFDF9,
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      return vm.isLoading
+                          ? Center(child: CircularProgressIndicator())
+                          : GridView.builder(
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 3,
+                                    mainAxisSpacing: 10.16,
+                                    crossAxisSpacing: 9.72,
+                                    mainAxisExtent: 127,
+                                  ),
+                              itemCount: vm.cuisines.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  spacing: 6,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius:
+                                          BorderRadiusGeometry.circular(
+                                            11.74,
+                                          ),
+                                      child: Image.network(
+                                        vm.cuisines[index].image,
+                                        width: 98.w,
+                                        height: 99.h,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Text(
+                                      vm.cuisines[index].title,
+                                      style: Styles.s13w500whiteFFFDF9,
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                     },
                   ),
                 ),
@@ -92,9 +102,15 @@ class CuisinesPage extends StatelessWidget {
                 ToNextPageButton(
                   title: 'Skip',
                   buttonBackgroundColor: AppColors.pinkFFC6C9,
-                  buttonTextStyle: Styles.s20w600pinkEC888D, onPressed: () {  },
+                  buttonTextStyle: Styles.s20w600pinkEC888D,
+                  onPressed: () {},
                 ),
-                ToNextPageButton(title: 'Continue', onPressed: () {context.push(Routers.allergicPage); },),
+                ToNextPageButton(
+                  title: 'Continue',
+                  onPressed: () {
+                    context.push(Routers.allergicPage);
+                  },
+                ),
               ],
             ),
           ),

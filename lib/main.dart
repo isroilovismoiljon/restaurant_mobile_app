@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restourant_mobile_app/core/router/router.dart';
-import 'package:restourant_mobile_app/features/categories/pages/category_details.dart';
+import 'package:restourant_mobile_app/core/routing/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'features/categories/pages/categories_page.dart';
 
 void main() {
   runApp(const MyApp());

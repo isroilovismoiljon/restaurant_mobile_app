@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:restourant_mobile_app/core/client.dart';
-import 'package:restourant_mobile_app/data/models/categories/recipe_model.dart';
+import '../../../data/models/recipes/recipe_model.dart';
 
 class RecipeViewModel extends ChangeNotifier {
   RecipeModel? recipe;

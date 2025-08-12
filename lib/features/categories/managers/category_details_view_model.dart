@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:restourant_mobile_app/data/models/categories/category_model.dart';
 import '../../../core/client.dart';
-import '../../../data/models/categories/category_details_model.dart';
+import '../../../data/models/recipes/category_details_model.dart';
+import '../../../data/models/recipes/category_model.dart';
 
 class CategoryDetailsViewModel extends ChangeNotifier {
   List<CategoryDetailsModel> categoryDetails = [];
@@ -36,7 +36,7 @@ class CategoryDetailsViewModel extends ChangeNotifier {
   }
 
   void getCategories() async {
-    var response = await dio.get("/categories/list");
+    var response = await dio.get("/recipes/list");
     if (response.statusCode != 200) {
       throw Exception("Something went wrong!\n${response.data}");
     }

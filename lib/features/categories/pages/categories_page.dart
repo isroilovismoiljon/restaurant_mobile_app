@@ -22,7 +22,9 @@ class CategoriesPage extends StatelessWidget {
           appBar: MyAppBar(categoryTitle: "Categories"),
           body: Consumer<CategoriesPageViewModel>(
             builder: (context, vm, child) {
-              return Padding(
+              return vm.isLoading
+                ? Center(child: CircularProgressIndicator(),)
+                : Padding(
                 padding: const EdgeInsets.fromLTRB(37, 5, 37, 5),
                 child: Column(children: [CategoryItems(vm: vm,)]),
               );
