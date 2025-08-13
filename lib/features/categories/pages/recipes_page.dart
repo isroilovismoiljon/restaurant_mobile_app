@@ -18,7 +18,7 @@ class RecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => RecipeViewModel(categoryDetail['recipeId']),
+      create: (context) => RecipeViewModel(recipeRepository: context.read(), id: categoryDetail['recipeId']),
       builder: (context, child) {
         return Consumer<RecipeViewModel>(
           builder: (context, vm, child) {

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import '../../../core/client.dart';
+import 'package:restourant_mobile_app/core/utils/result.dart';
+import 'package:restourant_mobile_app/data/repositories/recipes/category_details_repo.dart';
 import '../../../data/models/recipes/category_details_model.dart';
 import '../../../data/models/recipes/category_model.dart';
+import '../../../data/repositories/recipes/category_repository.dart';
 
 class CategoryDetailsViewModel extends ChangeNotifier {
   List<CategoryDetailsModel> categoryDetails = [];
@@ -10,39 +12,46 @@ class CategoryDetailsViewModel extends ChangeNotifier {
   String selectedCategoryTitle = '';
   bool categoryDetailsLoading = true;
   bool categoriesLoading = true;
+  String? categoriesError;
+  String? categoryDetailsError;
 
-  CategoryDetailsViewModel(this.selectedCategoryId) {
-    getCategoryDetails(selectedCategoryId, selectedCategoryTitle);
-    getCategories();
-  }
+  final CategoryRepository _categoryRepo;
+  final CategoryDetailsRepository _categoryDetailsRepo;
 
-  void getCategoryDetails(int categoryId, String? title) async {
+  CategoryDetailsViewModel(
+    this.selectedCategoryId, {
+    required CategoryRepository categoryRepo,
+    required CategoryDetailsRepository categoryDetailsRepo,
+  }) : _categoryRepo = categoryRepo,
+       _categoryDetailsRepo = categoryDetailsRepo;
+
+  Future<void> getCategoryDetails(int categoryId, String? title) async {
     categoryDetailsLoading = true;
     notifyListeners();
-    var response = await dio.get("/recipes/list?Category=$categoryId");
-    if (response.statusCode != 200) {
-      throw Exception("Something went wrong!\n${response.data}");
-    }
-    categoryDetails = (response.data as List)
-        .map((x) => CategoryDetailsModel.fromJson(x))
-        .toList();
+    final result = await _categoryDetailsRepo.getAll(selectedCategoryId);
 
-    selectedCategoryId = categoryId;
-    if (title != null) {
-      selectedCategoryTitle = title;
+    if (result is Ok) {
+      categoryDetails = (result as Ok).value;
+      selectedCategoryId = categoryId;
+      if (title != null) {
+        selectedCategoryTitle = title;
+      }
+    } else {
+      categoryDetailsError = (result as Error).error.toString();
     }
     categoryDetailsLoading = false;
     notifyListeners();
   }
 
-  void getCategories() async {
-    var response = await dio.get("/recipes/list");
-    if (response.statusCode != 200) {
-      throw Exception("Something went wrong!\n${response.data}");
+  Future<void> getCategories() async {
+    categoriesLoading = true;
+    notifyListeners();
+    final result = await _categoryRepo.getAll();
+    if (result is Ok) {
+      categories = (result as Ok).value;
+    } else{
+      categoriesError = (result as Error).error.toString();
     }
-    categories = (response.data as List)
-        .map((x) => CategoryModel.fromJson(x))
-        .toList();
     categoriesLoading = false;
     notifyListeners();
   }

@@ -4,7 +4,6 @@ import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/features/categories/managers/categories_page_view_model.dart';
 import 'package:restourant_mobile_app/features/categories/widget/category_page_items.dart';
 import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
-
 import '../../common/app_bar/my_app_bar.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -13,8 +12,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CategoriesPageViewModel(),
-
+      create: (context) => CategoriesPageViewModel(categoryRepo: context.read())..getCategories(),
       builder: (context, child) {
         return Scaffold(
           extendBody: true,

@@ -1,25 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:restourant_mobile_app/core/client.dart';
+import 'package:restourant_mobile_app/core/utils/result.dart';
 import '../../../data/models/recipes/recipe_model.dart';
+import '../../../data/repositories/recipes/recipe_repository.dart';
 
 class RecipeViewModel extends ChangeNotifier {
+  final RecipeRepository recipeRepository;
+
   RecipeModel? recipe;
   bool isLoading = true;
-  RecipeViewModel(int id){
+  String? error;
+
+  RecipeViewModel({required this.recipeRepository, required int id}) {
     getRecipes(id);
   }
 
-  void getRecipes(int id)async{
+  Future<void> getRecipes(int id) async {
     isLoading = true;
+    error = null;
     notifyListeners();
-    var response = await dio.get("/recipes/detail/$id");
-    recipe = RecipeModel.fromJson(response.data);
-    if (response.statusCode != 200) {
-      throw Exception("Something went wrong!\n${response.data}");
+
+    final result = await recipeRepository.getById(id);
+    if (result is Ok) {
+      recipe = (result as Ok).value;
+    } else {
+      error = (result as Error).error.toString();
     }
     isLoading = false;
     notifyListeners();
   }
 }
-
-
