@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/features/auth/pages/enter_send_code_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/forgot_your_password_enter_email_page.dart';
+import 'package:restourant_mobile_app/features/auth/pages/login_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/register.dart';
 import 'package:restourant_mobile_app/features/categories/pages/categories_page.dart';
 import 'package:restourant_mobile_app/features/categories/pages/category_details.dart';
@@ -18,7 +19,7 @@ import '../../features/onboarding/pages/onboarding_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.categoriesPage,
+    initialLocation: Routers.loginPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -66,6 +67,9 @@ class MyRouter {
       ),
       GoRoute(path: Routers.registerPage,
       builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(path: Routers.loginPage,
+      builder: (context, state) => LoginPage(),
       ),
       GoRoute(path: Routers.forgotYourPasswordEnterEmailPage,
       builder: (context, state) => ForgotYourPasswordEnterEmailPage(),

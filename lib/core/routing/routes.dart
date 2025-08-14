@@ -13,6 +13,7 @@ class Routers{
   static const onboarding = '/onboarding';
   static const welcomePage = '/welcomePage';
   static const registerPage = '/registerPage';
+  static const loginPage = '/loginPage';
   static const forgotYourPasswordEnterEmailPage = '/forgotYourPasswordEnterEmail';
   static const enterSendCodePage = '/enterSendCodePage';
 

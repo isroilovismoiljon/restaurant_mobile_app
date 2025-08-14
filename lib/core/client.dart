@@ -21,14 +21,20 @@ class ApiClient {
     required data,
     Map<String, dynamic>? queryParams,
   }) async {
-    final response = await dio.post(path, data: data?.toJson());
+    final response = await dio.post(path, data: data.toJson());
     if (response.statusCode == 200 || response.statusCode == 201) {
-      return response.data as Result<T>;
+      return Result.ok(response.data as T);
     } else {
-      throw Exception(response.data);
+      return Result.error(response.data);
     }
   }
 }
+
+
+
+
+
+
 
 var dio = Dio(
   BaseOptions(

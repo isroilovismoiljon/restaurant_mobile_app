@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/client.dart';
 import 'package:restourant_mobile_app/core/routing/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restourant_mobile_app/data/repositories/auth/register_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/recipes/category_details_repo.dart';
 import 'package:restourant_mobile_app/data/repositories/recipes/category_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/recipes/recipe_repository.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
           ),
           Provider(
             create: (context) => RecipeRepository(client: context.read()),
+          ),
+          Provider(
+            create: (context) => RegisterRepository(client: context.read()),
           ),
         ],
         builder: (context, child) => MaterialApp.router(

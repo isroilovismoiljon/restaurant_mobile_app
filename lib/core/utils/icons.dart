@@ -15,4 +15,8 @@ class AppIcons{
   static String heart = "assets/Icons/heart.svg";
   static String share = "assets/Icons/share.svg";
   static String like = "assets/Icons/like.svg";
+  static String whatsapp = 'assets/Icons/whatsapp.svg';
+  static String instagram = 'assets/Icons/instagram.svg';
+  static String google = 'assets/Icons/google.svg';
+  static String facebook = 'assets/Icons/facebook.svg';
 }

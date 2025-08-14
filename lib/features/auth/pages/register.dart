@@ -2,127 +2,146 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
-
 import '../../../core/utils/styles.dart';
-import '../../../core/utils/app_colors.dart';
+import '../../../data/models/model/register_model.dart';
 import '../managers/register_vm.dart';
-
-// ViewModel
+import '../widgets/custom_text_field.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterPage({super.key});
+
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController mobileNumberController = TextEditingController();
+  final TextEditingController dateOfBirthController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final nameParts = fullNameController.text.trim().split(' ');
     return ChangeNotifierProvider(
-      create: (context) => RegisterViewModel(),
+      create: (context) => RegisterViewModel(repository: context.read()),
       child: Scaffold(
-        backgroundColor: const Color(0xFF1C0F0D),
+        backgroundColor: Color(0xFF1C0F0D),
         body: SafeArea(
           child: Consumer<RegisterViewModel>(
             builder: (context, vm, child) {
               return SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 5,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       "Sign Up",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.redPinkFD5D69,
-                      ),
+                      style: Styles.s20w600redPinkFD5D69
                     ),
-                    const SizedBox(height: 100),
-
-                    // Full Name
-                    myTextField(
-                      label: "Full Name",
-                      hint: "John Doe",
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Email
-                    myTextField(
-                      label: "Email",
-                      hint: "example@example.com",
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Mobile Number
-                    myTextField(
-                      label: "Mobile Number",
-                      hint: "+ 123 456 789",
-                      keyboardType: TextInputType.phone,
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Date of Birth
-                    myTextField(
-                      label: "Date Of Birth",
-                      hint: "DD / MM / YYY",
-                      keyboardType: TextInputType.datetime,
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Password
-                    myTextField(
-                      label: "Password",
-                      hint: "••••••••",
-                      obscure: true,
-                      suffixIcon: Icons.visibility_off,
-                    ),
-
-                    const SizedBox(height: 16),
-
-                    // Confirm Password
-                    myTextField(
-                      label: "Confirm Password",
-                      hint: "••••••••",
-                      obscure: true,
-                      suffixIcon: Icons.visibility_off,
+                    SizedBox(height: 30),
+                    Column(
+                      spacing: 15.h,
+                      children: [
+                        CustomTextField(
+                          label: "Full Name",
+                          hint: "John Doe",
+                          controller: fullNameController,
+                        ),
+                        CustomTextField(
+                          label: "Username",
+                          hint: "john_doe",
+                          controller: usernameController,
+                        ),
+                        CustomTextField(
+                          label: "Email",
+                          hint: "example@example.com",
+                          keyboardType: TextInputType.emailAddress,
+                          controller: emailController,
+                        ),
+                        CustomTextField(
+                          label: "Mobile Number",
+                          hint: "+ 123 456 789",
+                          keyboardType: TextInputType.phone,
+                          controller: mobileNumberController,
+                        ),
+                        CustomTextField(
+                          label: "Date Of Birth",
+                          hint: "DD / MM / YYY",
+                          keyboardType: TextInputType.datetime,
+                          controller: dateOfBirthController,
+                        ),
+                        CustomTextField(
+                          label: "Password",
+                          hint: "••••••••",
+                          obscure: true,
+                          suffixIcon: Icons.visibility_off,
+                          controller: passwordController,
+                        ),
+                        CustomTextField(
+                          label: "Confirm Password",
+                          hint: "••••••••",
+                          obscure: true,
+                          suffixIcon: Icons.visibility_off,
+                          controller: confirmPasswordController,
+                        ),
+                      ],
                     ),
 
-                    const SizedBox(height: 16),
-
-                    // Terms text
+                    SizedBox(height: 16),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text.rich(
                         TextSpan(
-                          text: "By continuing, you agree to ",
-                          style: TextStyle(color: Colors.white70, fontSize: 12),
+                          text: "By continuing, you agree to\n",
+                          style: Styles.s14w400whiteFFFDF9,
                           children: [
                             TextSpan(
                               text: "Terms of Use",
-                              style: TextStyle(color: AppColors.pinkFFC6C9),
+                              style: Styles.s14w600whiteFFFDF9,
                             ),
-                            TextSpan(text: " and "),
                             TextSpan(
-                              text: "Privacy Policy",
-                              style: TextStyle(color: AppColors.pinkFFC6C9),
+                              text: " and ",
+                              style: Styles.s14w400whiteFFFDF9,
                             ),
-                            TextSpan(text: "."),
+                            TextSpan(
+                              text: "Privacy Policy.",
+                              style: Styles.s14w600whiteFFFDF9,
+                            ),
                           ],
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-
-                    const SizedBox(height: 24),
-
-                    // Sign Up button
+                    SizedBox(height: 15),
                     SizedBox(
                       width: 194.w,
-                      height: 48.h,
+                      height: 45.h,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final nameParts = fullNameController.text
+                              .trim()
+                              .split(' ');
+                          final response = vm.register(
+                            RegisterModel(
+                              username: usernameController.text,
+                              firstName: nameParts.isNotEmpty
+                                  ? nameParts[0]
+                                  : '',
+                              lastName: nameParts.length > 1
+                                  ? nameParts[1]
+                                  : '',
+                              email: emailController.text,
+                              phoneNumber: mobileNumberController.text,
+                              birthDate: dateOfBirthController.text,
+                              password: passwordController.text,
+                            ),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(response.toString())),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.redPinkFD5D69,
                           shape: RoundedRectangleBorder(
@@ -135,31 +154,24 @@ class RegisterPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
-                    const SizedBox(height: 16),
-
-                    // Already have an account?
+                    SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           "Already have an account? ",
-                          style: TextStyle(color: Colors.white70),
+                          style: Styles.s13w300whiteBeigeFFFDF9,
                         ),
                         GestureDetector(
                           onTap: () {},
                           child: Text(
                             "Log In",
-                            style: TextStyle(
-                              color: AppColors.pinkFFC6C9,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Styles.s13w300redPinkFD5D69,
                           ),
                         ),
                       ],
                     ),
-
-                    const SizedBox(height: 24),
+                    SizedBox(height: 24),
                   ],
                 ),
               );
@@ -167,45 +179,6 @@ class RegisterPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget myTextField({
-    required String label,
-    required String hint,
-    TextInputType? keyboardType,
-    bool obscure = false,
-    IconData? suffixIcon,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(color: Colors.white, fontSize: 14),
-        ),
-        const SizedBox(height: 6),
-        TextField(
-          keyboardType: keyboardType,
-          obscureText: obscure,
-          decoration: InputDecoration(
-            hintText: hint,
-            filled: true,
-            fillColor: AppColors.pinkFFC6C9,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide.none,
-            ),
-            suffixIcon: suffixIcon != null
-                ? IconButton(
-              icon: Icon(suffixIcon, color: Colors.grey.shade800),
-              onPressed: () {},
-            )
-                : null,
-          ),
-        ),
-      ],
     );
   }
 }

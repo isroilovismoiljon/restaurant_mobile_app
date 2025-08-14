@@ -22,6 +22,11 @@ class Styles {
     fontSize: 13,
     fontWeight: FontWeight.w300,
   );
+  static TextStyle s13w300redPinkFD5D69 = TextStyle(
+    color: AppColors.redPinkFD5D69,
+    fontSize: 13,
+    fontWeight: FontWeight.w300,
+  );
   static TextStyle s13w300whiteBeigeFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 13,
@@ -51,6 +56,16 @@ class Styles {
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 14,
     fontWeight: FontWeight.w300,
+  );
+  static TextStyle s14w400whiteFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle s14w600whiteFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
   );
   static TextStyle s15w500pinkEC888D = TextStyle(
     color: AppColors.pinkColorEC888D,
