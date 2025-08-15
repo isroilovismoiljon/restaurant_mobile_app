@@ -3,11 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/categories/managers/category_details_view_model.dart';
-import 'package:restourant_mobile_app/features/categories/widget/category_details_page_item.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-
-import '../bottom_navigation_bar/my_bottom_navigation_bar.dart';
+import 'package:restourant_mobile_app/features/recipes/managers/category_details_view_model.dart';
 
 class AppBarBottom extends StatelessWidget {
   AppBarBottom({super.key, required this.vm});

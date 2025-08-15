@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/categories/managers/categories_page_view_model.dart';
+import 'package:restourant_mobile_app/features/recipes/managers/categories_page_view_model.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/app_bar_leading_back_arrow.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
 

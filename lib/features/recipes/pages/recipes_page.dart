@@ -5,9 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/categories/managers/recipes_view_model.dart';
+import 'package:restourant_mobile_app/features/recipes/managers/recipes_view_model.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-
 import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class RecipesPage extends StatelessWidget {

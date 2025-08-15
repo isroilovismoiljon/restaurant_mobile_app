@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
-import 'package:restourant_mobile_app/features/categories/managers/category_details_view_model.dart';
+import 'package:restourant_mobile_app/features/recipes/managers/category_details_view_model.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/app_bar_bottom.dart';
-import 'package:restourant_mobile_app/features/categories/widget/category_details_page_item.dart';
+import 'package:restourant_mobile_app/features/recipes/widget/category_details_page_item.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
@@ -18,11 +18,11 @@ class CategoryDetails extends StatelessWidget {
       key: ValueKey(items['categoryId']),
       create: (context) {
         return CategoryDetailsViewModel(
-          categoryRepo: context.read(),
-          items['categoryId'],
-          categoryDetailsRepo: context.read(),
-        )..getCategoryDetails(items['categoryId'], items['categoryTitle'])
-        ..getCategories();
+            items['categoryId'],
+            recipeRepo: context.read(),
+          )
+          ..getCategoryDetails(items['categoryId'], items['categoryTitle'])
+          ..getCategories();
       },
       builder: (context, child) {
         return Consumer<CategoryDetailsViewModel>(

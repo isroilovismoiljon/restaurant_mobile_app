@@ -8,7 +8,7 @@ class AppIcons{
   static String search = "assets/Icons/search.svg";
   static String home = "assets/Icons/home.svg";
   static String community = "assets/Icons/community.svg";
-  static String categories = "assets/Icons/categories.svg";
+  static String categories = "assets/Icons/recipes.svg";
   static String profile = "assets/Icons/profile.svg";
   static String reviews = "assets/Icons/reviews.svg";
   static String threeDots = "assets/Icons/three_dots.svg";

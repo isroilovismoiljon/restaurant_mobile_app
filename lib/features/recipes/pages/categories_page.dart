@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
-import 'package:restourant_mobile_app/features/categories/managers/categories_page_view_model.dart';
-import 'package:restourant_mobile_app/features/categories/widget/category_page_items.dart';
+import 'package:restourant_mobile_app/features/recipes/managers/categories_page_view_model.dart';
+import 'package:restourant_mobile_app/features/recipes/widget/category_page_items.dart';
 import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import '../../common/app_bar/my_app_bar.dart';
 

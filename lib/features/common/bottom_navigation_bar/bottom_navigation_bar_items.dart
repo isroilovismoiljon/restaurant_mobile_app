@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 
@@ -26,7 +28,9 @@ class BottomNavigationBarItems extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push(Routers.home);
+                },
                 icon: SvgPicture.asset(AppIcons.home),
               ),
               IconButton(
@@ -34,7 +38,9 @@ class BottomNavigationBarItems extends StatelessWidget {
                 icon: SvgPicture.asset(AppIcons.community),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push(Routers.categoriesPage);
+                },
                 icon: SvgPicture.asset(AppIcons.categories),
               ),
               IconButton(

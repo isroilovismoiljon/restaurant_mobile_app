@@ -15,6 +15,9 @@ class TradingRecipe extends StatefulWidget {
     required this.photo,
     required this.timeRequired,
     required this.rating,
+    this.colorContainer = Colors.transparent,
+    this.colorTitle = AppColors.whiteBeigeFFFDF9,
+    this.colorDescription = AppColors.whiteBeigeFFFDF9,
   });
 
   final String title;
@@ -22,6 +25,9 @@ class TradingRecipe extends StatefulWidget {
   final String photo;
   final int timeRequired;
   final int rating;
+  final Color colorContainer;
+  final Color colorTitle;
+  final Color colorDescription;
 
   @override
   State<TradingRecipe> createState() => _TradingRecipeState();
@@ -42,12 +48,13 @@ class _TradingRecipeState extends State<TradingRecipe> {
             width: 348.w,
             height: 49.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(14),
-              ),
-              border: Border.all(
-                color: AppColors.pinkColorEC888D,
-              ),
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(14),
+                ),
+                border: Border.all(
+                  color: AppColors.pinkColorEC888D,
+                ),
+                color: widget.colorContainer
             ),
             child: Row(
               children: [
@@ -58,11 +65,19 @@ class _TradingRecipeState extends State<TradingRecipe> {
                     children: [
                       Text(
                         widget.title,
-                        style: Styles.s13w400whiteFFFDF9,
+                        style: TextStyle(
+                    color: widget.colorTitle,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                  ),
                       ),
                       Text(
                         widget.description,
-                        style: Styles.s13w300whiteBeigeFFFDF9,
+                        style: TextStyle(
+                          color: widget.colorDescription,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w300,
+                        ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

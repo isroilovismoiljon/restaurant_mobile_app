@@ -4,12 +4,13 @@ import 'package:restourant_mobile_app/features/auth/pages/enter_send_code_page.d
 import 'package:restourant_mobile_app/features/auth/pages/forgot_your_password_enter_email_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/login_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/register.dart';
-import 'package:restourant_mobile_app/features/categories/pages/categories_page.dart';
-import 'package:restourant_mobile_app/features/categories/pages/category_details.dart';
-import 'package:restourant_mobile_app/features/categories/pages/recipes_page.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/categories_page.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/category_details.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/recipes_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/allergic_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/cooking_level_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/welcome_page.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/trending_recipes_page.dart';
 import '../../features/common/custom_transition_page.dart';
 import '../../features/error/error404.dart';
 import '../../features/home/pages/home.dart';
@@ -19,7 +20,7 @@ import '../../features/onboarding/pages/onboarding_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.loginPage,
+    initialLocation: Routers.trendingRecipesPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -44,6 +45,10 @@ class MyRouter {
       GoRoute(
         path: Routers.recipesPage,
         builder: (context, state) => RecipesPage(categoryDetail: state.extra as Map,),
+      ),
+      GoRoute(
+        path: Routers.trendingRecipesPage,
+        builder: (context, state) => TrendingRecipesPage(),
       ),
       GoRoute(
         path: Routers.cuisinesPage,

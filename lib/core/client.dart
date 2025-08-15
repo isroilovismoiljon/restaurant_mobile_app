@@ -7,8 +7,8 @@ class ApiClient {
 
   final Dio dio;
 
-  Future<Result<T>> get<T>(String path) async {
-    final response = await dio.get(path);
+  Future<Result<T>> get<T>(String path, {Map<String, dynamic>? queryParams}) async {
+    final response = await dio.get(path, queryParameters: queryParams);
     if (response.statusCode == 200) {
       return Result.ok(response.data as T);
     } else {
@@ -21,9 +21,9 @@ class ApiClient {
     required data,
     Map<String, dynamic>? queryParams,
   }) async {
-    final response = await dio.post(path, data: data.toJson());
+    final response = await dio.post(path, data: data);
     if (response.statusCode == 200 || response.statusCode == 201) {
-      return Result.ok(response.data as T);
+      return Result.ok(response.data);
     } else {
       return Result.error(response.data);
     }

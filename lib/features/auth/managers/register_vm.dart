@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
-
-import '../../../data/models/model/register_model.dart';
-import '../../../data/repositories/auth/register_repository.dart';
+import '../../../data/models/auth/register_model.dart';
+import '../../../data/repositories/authentication_repository.dart';
 
 class RegisterViewModel extends ChangeNotifier {
-  final RegisterRepository repository;
+  final AuthenticationRepository repository;
 
   bool isLoading = false;
   String? errorMessage;
@@ -17,10 +16,7 @@ class RegisterViewModel extends ChangeNotifier {
     errorMessage = null;
     notifyListeners();
 
-    // 2. Repository orqali API chaqirish
     final result = await repository.register(model);
-
-    // 3. Natijani qayta ishlash
     result.fold(
           (error) {
         errorMessage = error.toString();
@@ -31,8 +27,6 @@ class RegisterViewModel extends ChangeNotifier {
         errorMessage = null;
       },
     );
-
-    // 4. Loading stop
     isLoading = false;
     notifyListeners();
   }

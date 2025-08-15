@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
-import 'package:restourant_mobile_app/features/categories/managers/category_details_view_model.dart';
+import 'package:restourant_mobile_app/features/recipes/managers/category_details_view_model.dart';
 import '../../../core/utils/icons.dart';
 
 class CategoryDetailsPageItem extends StatelessWidget {

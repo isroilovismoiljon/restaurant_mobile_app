@@ -16,23 +16,6 @@ class RegisterModel {
     this.cuisines,
   });
 
-  factory RegisterModel.fromJson(Map<String, dynamic> json) {
-    return RegisterModel(
-      username: json["username"],
-      firstName: json["firstName"],
-      lastName: json["lastName"],
-      email: json["email"],
-      phoneNumber: json["phoneNumber"],
-      birthDate: json["birthDate"],
-      password: json["password"],
-      cookingLevelId: json["cookingLevelId"],
-      allergicIngredients: List<int>.from(
-        json["allergicIngredients"].map((x) => x),
-      ),
-      cuisines: List<int>.from(json["cuisines"].map((x) => x)),
-    );
-  }
-
   Map<String, dynamic> toJson() => {
     "username": username,
     "firstName": firstName,

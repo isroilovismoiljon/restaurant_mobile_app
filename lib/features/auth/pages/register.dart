@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import '../../../core/utils/styles.dart';
-import '../../../data/models/model/register_model.dart';
+import '../../../data/models/auth/register_model.dart';
 import '../managers/register_vm.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -20,7 +20,6 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nameParts = fullNameController.text.trim().split(' ');
     return ChangeNotifierProvider(
       create: (context) => RegisterViewModel(repository: context.read()),
       child: Scaffold(
@@ -119,11 +118,11 @@ class RegisterPage extends StatelessWidget {
                       width: 194.w,
                       height: 45.h,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           final nameParts = fullNameController.text
                               .trim()
                               .split(' ');
-                          final response = vm.register(
+                          await vm.register(
                             RegisterModel(
                               username: usernameController.text,
                               firstName: nameParts.isNotEmpty
@@ -139,7 +138,7 @@ class RegisterPage extends StatelessWidget {
                             ),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(response.toString())),
+                            SnackBar(content: Text(vm.accessToken.toString())),
                           );
                         },
                         style: ElevatedButton.styleFrom(

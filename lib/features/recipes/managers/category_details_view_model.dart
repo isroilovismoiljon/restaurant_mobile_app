@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
-import 'package:restourant_mobile_app/data/repositories/recipes/category_details_repo.dart';
+import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 import '../../../data/models/recipes/category_details_model.dart';
 import '../../../data/models/recipes/category_model.dart';
-import '../../../data/repositories/recipes/category_repository.dart';
 
 class CategoryDetailsViewModel extends ChangeNotifier {
   List<CategoryDetailsModel> categoryDetails = [];
@@ -15,20 +14,17 @@ class CategoryDetailsViewModel extends ChangeNotifier {
   String? categoriesError;
   String? categoryDetailsError;
 
-  final CategoryRepository _categoryRepo;
-  final CategoryDetailsRepository _categoryDetailsRepo;
+  final RecipeRepository _repository;
 
   CategoryDetailsViewModel(
     this.selectedCategoryId, {
-    required CategoryRepository categoryRepo,
-    required CategoryDetailsRepository categoryDetailsRepo,
-  }) : _categoryRepo = categoryRepo,
-       _categoryDetailsRepo = categoryDetailsRepo;
+    required RecipeRepository recipeRepo,
+  }) : _repository = recipeRepo;
 
   Future<void> getCategoryDetails(int categoryId, String? title) async {
     categoryDetailsLoading = true;
     notifyListeners();
-    final result = await _categoryDetailsRepo.getAll(selectedCategoryId);
+    final result = await _repository.getCategoryDetails(selectedCategoryId);
 
     if (result is Ok) {
       categoryDetails = (result as Ok).value;
@@ -46,7 +42,7 @@ class CategoryDetailsViewModel extends ChangeNotifier {
   Future<void> getCategories() async {
     categoriesLoading = true;
     notifyListeners();
-    final result = await _categoryRepo.getAll();
+    final result = await _repository.getCategories();
     if (result is Ok) {
       categories = (result as Ok).value;
     } else{
