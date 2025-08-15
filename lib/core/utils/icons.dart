@@ -19,4 +19,5 @@ class AppIcons{
   static String instagram = 'assets/Icons/instagram.svg';
   static String google = 'assets/Icons/google.svg';
   static String facebook = 'assets/Icons/facebook.svg';
+  static String vector = 'assets/Icons/vector.svg';
 }

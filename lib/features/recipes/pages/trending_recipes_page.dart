@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 
@@ -78,10 +80,9 @@ class TrendingRecipesPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(14.r),
                         child: Image.network(
                           "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                        width: 150.w,
+                          width: 150.w,
                           height: 150.h,
                           fit: BoxFit.cover,
-                          
                         ),
                       ),
                       Container(
@@ -89,18 +90,65 @@ class TrendingRecipesPage extends StatelessWidget {
                         height: 122.h,
                         decoration: BoxDecoration(
                           color: AppColors.whiteBeigeFFFDF9,
-                          borderRadius: BorderRadius.horizontal(right: Radius.circular(14.r))
+                          borderRadius: BorderRadius.horizontal(
+                            right: Radius.circular(14.r),
+                          ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            right: 10,
+                            top: 10,
+                          ),
                           child: Column(
+                            spacing: 6.h,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Chicken Curry', style: Styles.s12w400brown3E2823,)
+                              Text(
+                                'Chicken Curry',
+                                style: Styles.s12w400brown3E2823,
+                              ),
+                              Text(
+                                'Savor the aromatic Chicken Curry—a rich blend of spices sadasfsf',
+                                style: Styles.s13w300brown3E2823,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                
+                              ),
+                              Text('By Chef Andrew', style: Styles.s12w300redPinkFD5D69,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    spacing: 4.w,
+                                    children: [
+                                      SvgPicture.asset(AppIcons.clock),
+                                      Text('45min', style: Styles.s12w400redPinkFD5D69,),
+                                    ],
+                                  ),
+                                  Row(
+                                    spacing: 4.w,
+                                    children: [
+                                      Text('Easy', style: Styles.s12w400redPinkFD5D69,),
+                                      SvgPicture.asset(AppIcons.vector),
+                                    ],
+                                  ),
+                                  Row(
+                                    spacing: 4.w,
+                                    children: [
+                                      Text('4', style: Styles.s12w400redPinkFD5D69,),
+                                      SvgPicture.asset(AppIcons.star),
+                                    ],
+                                  ),
+                                ],
+                              )
+
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
