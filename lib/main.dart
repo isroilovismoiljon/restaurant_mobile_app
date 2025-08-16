@@ -19,12 +19,16 @@ class MyApp extends StatelessWidget {
       designSize: Size(430, 932),
       child: MultiProvider(
         providers: [
-          Provider(create: (context) => ApiClient(baseUrl: "http://192.168.11.205:8888/api/v1")),
+          Provider(
+            create: (context) =>
+                ApiClient(baseUrl: "http://192.168.0.106:8888/api/v1"),
+          ),
           Provider(
             create: (context) => RecipeRepository(client: context.read()),
           ),
           Provider(
-            create: (context) => AuthenticationRepository(client: context.read()),
+            create: (context) =>
+                AuthenticationRepository(client: context.read()),
           ),
         ],
         builder: (context, child) => MaterialApp.router(

@@ -20,7 +20,7 @@ import '../../features/onboarding/pages/onboarding_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.loginPage,
+    initialLocation: Routers.trendingRecipesPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,

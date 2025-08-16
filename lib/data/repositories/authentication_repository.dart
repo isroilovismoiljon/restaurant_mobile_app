@@ -10,25 +10,25 @@ class AuthenticationRepository {
   AuthenticationRepository({required this.client});
 
   Future<Result<String>> register(RegisterModel model) async {
-    final result = await client.post<String>(
+    final result = await client.post<Map<String, dynamic>>(
       '/auth/register',
       data: model.toJson(),
     );
 
     return result.fold(
       (error) => Result.error(error),
-      (value) => Result.ok(value),
+      (value) => Result.ok(value['accessToken']),
     );
   }
 
   Future<Result<String>> login(LoginModel model) async {
-    final result = await client.post<String>(
+    final result = await client.post<Map<String, dynamic>>(
       '/auth/login',
       data: model.toJson(),
     );
     return result.fold(
           (error) => Result.error(error),
-          (value) => Result.ok(value),
+          (value) => Result.ok(value['accessToken']),
     );
   }
 }

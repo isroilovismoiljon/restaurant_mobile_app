@@ -6,7 +6,7 @@ class TrendingRecipeModel {
   final String difficulty;
   final String photo;
   final int timeRequired;
-  final int rating;
+  final num rating;
 
   TrendingRecipeModel({
     required this.id,

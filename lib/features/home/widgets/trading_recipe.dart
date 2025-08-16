@@ -24,7 +24,7 @@ class TradingRecipe extends StatefulWidget {
   final String description;
   final String photo;
   final int timeRequired;
-  final int rating;
+  final num rating;
   final Color colorContainer;
   final Color colorTitle;
   final Color colorDescription;

@@ -19,7 +19,7 @@ class RecipeViewModel extends ChangeNotifier {
     error = null;
     notifyListeners();
 
-    final result = await recipeRepository.getRecipes(id);
+    final result = await recipeRepository.getRecipe(id);
     if (result is Ok) {
       recipe = (result as Ok).value;
     } else {
