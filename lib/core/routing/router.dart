@@ -17,10 +17,11 @@ import '../../features/home/pages/home.dart';
 import '../../features/onboarding/pages/cuisines_page.dart';
 import '../../features/onboarding/pages/launch.dart';
 import '../../features/onboarding/pages/onboarding_page.dart';
+import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.trendingRecipesPage,
+    initialLocation: Routers.topChefs,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -81,6 +82,10 @@ class MyRouter {
       ),
       GoRoute(path: Routers.enterSendCodePage,
       builder: (context, state) => EnterSendCodePage(),
+      ),
+      GoRoute(
+        path: Routers.topChefs,
+        builder: (context, state) => TopChefsPage(),
       ),
     ],
   );

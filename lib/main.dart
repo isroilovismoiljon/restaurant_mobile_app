@@ -5,6 +5,7 @@ import 'package:restourant_mobile_app/core/routing/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/data/repositories/authentication_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
+import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +30,10 @@ class MyApp extends StatelessWidget {
           Provider(
             create: (context) =>
                 AuthenticationRepository(client: context.read()),
+          ),
+          Provider(
+            create: (context) =>
+                UsersRepository(client: context.read()),
           ),
         ],
         builder: (context, child) => MaterialApp.router(

@@ -1,8 +1,8 @@
 
 class Routers{
   static const error404Page = '/error404';
-  static const String home = '/home';
   static const String launchPage = '/launch';
+  static const String home = '/home';
   static const categoriesPage = '/categoriesPage';
   static const categoryDetails = '/categoryDetails';
   static const recipesPage = '/recipes';
@@ -16,5 +16,6 @@ class Routers{
   static const loginPage = '/loginPage';
   static const forgotYourPasswordEnterEmailPage = '/forgotYourPasswordEnterEmail';
   static const enterSendCodePage = '/enterSendCodePage';
+  static const topChefs = '/topChefs';
 
 }

@@ -18,7 +18,10 @@ class TrendingRecipesViewModel extends ChangeNotifier {
 
   TrendingRecipesViewModel({
     required RecipeRepository recipeRepo,
-  }) : _recipeRepository = recipeRepo;
+  }) : _recipeRepository = recipeRepo{
+    getTrendingRecipe();
+    getRecipes();
+  }
 
   Future<void> getTrendingRecipe() async {
     trendingRecipeIsLoading = true;
@@ -36,8 +39,6 @@ class TrendingRecipesViewModel extends ChangeNotifier {
         notifyListeners();
       },
     );
-    trendingRecipeIsLoading = false;
-    notifyListeners();
   }
   
   Future<void> getRecipes() async {

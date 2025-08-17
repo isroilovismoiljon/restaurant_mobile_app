@@ -16,7 +16,7 @@ class TrendingRecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TrendingRecipesViewModel(recipeRepo: context.read())..getTrendingRecipe()..getRecipes(),
+      create: (context) => TrendingRecipesViewModel(recipeRepo: context.read()),
       child: Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
@@ -86,7 +86,7 @@ class TrendingRecipesPage extends StatelessWidget {
                               spacing: 15,
                               children: [
                                 ...List.generate(
-                                  5,
+                                  vm.recipes.length,
                                       (index) {
                                     return
                                       vm.recipesIsLoading

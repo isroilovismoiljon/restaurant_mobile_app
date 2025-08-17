@@ -12,6 +12,11 @@ class Styles {
     fontSize: 12,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle s8w500whiteFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 8,
+    fontWeight: FontWeight.w500,
+  );
   static TextStyle s12w500redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
     fontSize: 12,
