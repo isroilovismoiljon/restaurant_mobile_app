@@ -11,7 +11,9 @@ class AppBarLeadingBackArrow extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
-      icon: SvgPicture.asset(AppIcons.backArrow),
+      icon: Align(
+          alignment: Alignment.centerRight,
+          child: SvgPicture.asset(AppIcons.backArrow)),
     );
   }
 }

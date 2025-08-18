@@ -24,9 +24,9 @@ class RecipeRepository {
     );
   }
 
-  Future<Result<List<CategoryDetailsModel>>> getCategoryDetails(int id) async {
+  Future<Result<List<CategoryDetailsModel>>> getCategoryDetails(Map<String, dynamic> queryParams) async {
     if (categoryDetails.isNotEmpty) return Result.ok(categoryDetails);
-    final result = await client.get<List>('/recipes/list?Category=$id');
+    final result = await client.get<List>('/recipes/list', queryParams: queryParams);
     return result.fold(
       (error) => Result.error(error),
       (value) => Result.ok(

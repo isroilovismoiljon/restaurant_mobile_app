@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         'Hi! Dianne',
-                        style: Styles.s12w400pinkColorEC888D,
+                        style: Styles.s25w400redPinkFD5D69,
                       ),
                       Text(
                         'What are you cooking today',

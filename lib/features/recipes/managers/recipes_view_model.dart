@@ -16,11 +16,11 @@ class RecipeViewModel extends ChangeNotifier {
 
   Future<void> getRecipes(int id) async {
     isLoading = true;
-    error = null;
     notifyListeners();
 
     final result = await recipeRepository.getRecipe(id);
     if (result is Ok) {
+      error = null;
       recipe = (result as Ok).value;
     } else {
       error = (result as Error).error.toString();

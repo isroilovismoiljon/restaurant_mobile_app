@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class Styles {
+  static TextStyle s10w500pinkColorEC888D = TextStyle(
+    color: AppColors.pinkColorEC888D,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle s12w400black1C0F0D = TextStyle(
     color: AppColors.backgroundBeigeGradient1C0F0D,
     fontSize: 12,
@@ -49,6 +54,11 @@ class Styles {
   );
   static TextStyle s12w300redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
+    fontSize: 12,
+    fontWeight: FontWeight.w300,
+  );
+  static TextStyle s12w300whiteBeigeFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
     fontSize: 12,
     fontWeight: FontWeight.w300,
   );
@@ -151,6 +161,11 @@ class Styles {
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 25,
     fontWeight: FontWeight.w600,
+  );
+  static TextStyle s25w400redPinkFD5D69 = TextStyle(
+    color: AppColors.redPinkFD5D69,
+    fontSize: 25,
+    fontWeight: FontWeight.w400,
   );
   static TextStyle s64w600whiteFFFDF9 = TextStyle(
     fontSize: 64,

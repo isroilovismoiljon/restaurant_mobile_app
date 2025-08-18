@@ -88,7 +88,7 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> getChefs() async {
     isLoadingChefs = true;
     notifyListeners();
-    var response = await dio.get("/top-chefs/list?Limit=4");
+    var response= await dio.get("/top-chefs/list?Limit=4");
     try {
       final data = response.data as List;
       chefs = data.map((x) => ChefModel.fromJson(x)).toList();
@@ -99,6 +99,7 @@ class HomeViewModel extends ChangeNotifier {
     isLoadingChefs = false;
     notifyListeners();
   }
+
   Future<void> getTrendingRecipe() async {
     isLoadingTrendingRecipe = true;
     notifyListeners();

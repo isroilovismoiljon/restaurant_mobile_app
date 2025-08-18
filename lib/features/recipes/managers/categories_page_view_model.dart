@@ -8,8 +8,12 @@ class CategoriesPageViewModel extends ChangeNotifier {
   bool isLoading = true;
   String? error;
 
-  CategoriesPageViewModel({required RecipeRepository categoryRepo})
-    : _repository = categoryRepo;
+
+
+  CategoriesPageViewModel(RecipeRepository categoryRepo)
+    : _repository = categoryRepo{
+    getCategories();
+  }
   final RecipeRepository _repository;
 
   Future<void> getCategories() async {

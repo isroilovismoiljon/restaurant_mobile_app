@@ -53,7 +53,7 @@ class CategoryDetails extends StatelessWidget {
                             ? Center(
                                 child: CircularProgressIndicator(),
                               )
-                            : CategoryDetailsPageItem(vm: vm),
+                            : CategoryDetailsPageItem(categoryDetails: vm.categoryDetails,),
                       ],
                     ),
                   );

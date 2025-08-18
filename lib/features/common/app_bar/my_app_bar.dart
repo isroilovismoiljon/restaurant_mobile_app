@@ -12,19 +12,23 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.categoryTitle,
     this.actions = const [],
+    this.centerTitle = true,
   });
 
   final String categoryTitle;
   final List<String> actions;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
       leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
-      leadingWidth: 100.w,
-      title: Text(categoryTitle, style: Styles.s20w600redPink),
-      centerTitle: true,
+      leadingWidth: 75.w,
+      title: Text(categoryTitle, style: Styles.s20w600redPink,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,),
+      centerTitle: centerTitle,
       actions: [
         Row(
           children: [

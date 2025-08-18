@@ -45,7 +45,9 @@ class TrendingRecipesViewModel extends ChangeNotifier {
     recipesIsLoading = true;
     recipesError = null;
     notifyListeners();
-    final result = await _recipeRepository.getCategoryDetails(3);
+    final result = await _recipeRepository.getCategoryDetails({
+    'Category': 3
+    });
 
     if (result is Ok) {
       recipes = (result as Ok).value;

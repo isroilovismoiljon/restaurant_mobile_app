@@ -19,4 +19,15 @@ class UsersRepository {
           Result.ok(value.map((x) => ChefModel.fromJson(x)).toList()),
     );
   }
+
+  Future<Result<ChefModel>> getChef(int id) async {
+    // if (mostViewedChefs.isNotEmpty) return Result.ok(mostViewedChefs);
+    var result = await client.get(
+      '/auth/details/$id',
+    );
+    return result.fold((error) => Result.error(error),
+          (value) =>
+          Result.ok(ChefModel.fromJson(value)),
+    );
+  }
 }

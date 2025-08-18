@@ -17,5 +17,6 @@ class Routers{
   static const forgotYourPasswordEnterEmailPage = '/forgotYourPasswordEnterEmail';
   static const enterSendCodePage = '/enterSendCodePage';
   static const topChefs = '/topChefs';
+  static const chefProfile = '/chefProfile';
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import '../../../data/models/users/chef.dart';
 import '../managers/home_vm.dart';
@@ -37,9 +39,14 @@ class TopChefsWidget extends StatelessWidget {
                   ...List.generate(
                     4,
                     (index) {
-                      return TopChefWidget(
-                        firstName: chefs[index].firstName,
-                        profilePhoto: chefs[index].profilePhoto,
+                      return GestureDetector(
+                        onTap: (){
+                          context.push(Routers.topChefs);
+                        },
+                        child: TopChefWidget(
+                          firstName: chefs[index].firstName,
+                          profilePhoto: chefs[index].profilePhoto,
+                        ),
                       );
                     },
                   ),

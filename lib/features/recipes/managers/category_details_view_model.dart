@@ -24,7 +24,9 @@ class CategoryDetailsViewModel extends ChangeNotifier {
   Future<void> getCategoryDetails(int categoryId, String? title) async {
     categoryDetailsLoading = true;
     notifyListeners();
-    final result = await _repository.getCategoryDetails(selectedCategoryId);
+    final result = await _repository.getCategoryDetails({
+    'Category': selectedCategoryId
+    });
 
     if (result is Ok) {
       categoryDetails = (result as Ok).value;
