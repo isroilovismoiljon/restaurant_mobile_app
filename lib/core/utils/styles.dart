@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restourant_mobile_app/core/utils/font_family.dart';
 import 'app_colors.dart';
 
 class Styles {
@@ -7,16 +8,19 @@ class Styles {
     color: AppColors.pinkColorEC888D,
     fontSize: 10.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s12w400black1C0F0D = TextStyle(
     color: AppColors.backgroundBeigeGradient1C0F0D,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins,
   );
   static TextStyle s12w400whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins,
   );
   static TextStyle s8w500whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
@@ -27,16 +31,19 @@ class Styles {
     color: AppColors.redPinkFD5D69,
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
+    decoration: TextDecoration.underline
   );
   static TextStyle s12w400brown3E2823 = TextStyle(
     color: AppColors.brown3E2823,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins,
   );
   static TextStyle s13w300brown3E2823 = TextStyle(
     color: AppColors.brown3E2823,
     fontSize: 13.sp,
     fontWeight: FontWeight.w300,
+    fontFamily: FontFamily.leagueSpartan,
   );
   static TextStyle s13w300redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
@@ -57,6 +64,7 @@ class Styles {
     color: AppColors.redPinkFD5D69,
     fontSize: 12.sp,
     fontWeight: FontWeight.w300,
+    fontFamily: FontFamily.poppins,
   );
   static TextStyle s12w300whiteBeigeFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
@@ -177,6 +185,6 @@ class Styles {
     fontSize: 64.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteBeigeFFFDF9,
-    fontFamily: 'PoppinsSemiBold',
+    fontFamily: FontFamily.poppinsSemiBold,
   );
 }

@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
         ),
         backgroundColor: AppColors.backgroundColor,
         body: Padding(
-          padding: EdgeInsets.only(top: 140, left: 37, right: 36),
+          padding: EdgeInsets.only(top: 140.h, left: 37.w, right: 36.w),
           child: Consumer<LoginViewModel>(
             builder: (context, vm, child) {
               return Column(
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                     hint: '••••••••',
                     controller: passwordController,
                   ),
-                  SizedBox(height: 90,),
+                  SizedBox(height: 90.h,),
                   ToNextPageButton(title: 'Log In', onPressed: ()async{
                     await vm.login(LoginModel(login: emailController.text, password: passwordController.text));
                     if (!context.mounted) return;
@@ -56,7 +56,7 @@ class LoginPage extends StatelessWidget {
                   ToNextPageButton(title: 'Sign Up', buttonTextStyle: Styles.s20w600pinkEC888D, buttonBackgroundColor: AppColors.pinkFFC6C9, onPressed: (){
 
                   }),
-                  SizedBox(height: 57,),
+                  SizedBox(height: 57.h,),
                   Column(
                     spacing: 24.h,
                     children: [

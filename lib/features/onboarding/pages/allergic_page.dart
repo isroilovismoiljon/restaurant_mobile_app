@@ -32,14 +32,14 @@ class AllergicPage extends StatelessWidget {
             backgroundColor: AppColors.backgroundColor,
           ),
           body: Padding(
-            padding: const EdgeInsets.fromLTRB(36, 5, 37, 9.35),
+            padding: EdgeInsets.fromLTRB(36.w, 5.h, 37.w, 9.35.h),
             child: Column(
               spacing: 20.h,
               children: [
                 IndicatorOnBoarding(
                   alignment: Alignment.topRight,
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Text(
                   "¿You have any allergic?",
                   style: Styles.s20w600whiteFFFDF9,
@@ -58,19 +58,19 @@ class AllergicPage extends StatelessWidget {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
-                                    mainAxisSpacing: 10.16,
-                                    crossAxisSpacing: 9.72,
-                                    mainAxisExtent: 127,
+                                    mainAxisSpacing: 10.16.w,
+                                    crossAxisSpacing: 9.72.w,
+                                    mainAxisExtent: 127.h,
                                   ),
                               itemCount: vm.allergicFoods.length,
                               itemBuilder: (context, index) {
                                 return Column(
-                                  spacing: 6,
+                                  spacing: 6.h,
                                   children: [
                                     ClipRRect(
                                       borderRadius:
                                           BorderRadiusGeometry.circular(
-                                            11.74,
+                                            11.74.r,
                                           ),
                                       child: Image.network(
                                         vm.allergicFoods[index].image,
@@ -98,7 +98,7 @@ class AllergicPage extends StatelessWidget {
             children: [
               BottomNavigationBarGradient(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 110),
+                padding: EdgeInsets.symmetric(horizontal: 110.w),
                 child: Container(
                   padding: EdgeInsets.only(bottom: 60.h),
                   child: ToNextPageButton(

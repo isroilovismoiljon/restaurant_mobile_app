@@ -15,19 +15,19 @@ class ChefsItem extends StatelessWidget {
     required this.chefModel,
   });
 
-    final List<ChefModel> chefModel;
-    final int index;
+  final List<ChefModel> chefModel;
+  final int index;
 
-    @override
-    Widget build(BuildContext context) {
-      return GestureDetector(
-        onTap: (){
-          context.push(Routers.chefProfile, extra: chefModel[index].id);
-        },
-        child: SizedBox(
-          height: 226.h,
-          width: 170.w,
-          child: Stack(
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.push(Routers.chefProfile, extra: chefModel[index].id);
+      },
+      child: SizedBox(
+        height: 226.h,
+        width: 170.w,
+        child: Stack(
           alignment: Alignment.center,
           children: [
             Align(
@@ -59,7 +59,9 @@ class ChefsItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 2.h,),
+                    SizedBox(
+                      height: 2.h,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -140,7 +142,6 @@ class ChefsItem extends StatelessWidget {
                     width: 170.w,
                     fit: BoxFit.cover,
                   ),
-
                 ),
               ),
             ),

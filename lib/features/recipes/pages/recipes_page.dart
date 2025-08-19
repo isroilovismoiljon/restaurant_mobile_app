@@ -17,7 +17,10 @@ class RecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => RecipeViewModel(recipeRepository: context.read(), id: categoryDetail['recipeId']),
+      create: (context) => RecipeViewModel(
+        recipeRepository: context.read(),
+        id: categoryDetail['recipeId'],
+      ),
       builder: (context, child) {
         return Consumer<RecipeViewModel>(
           builder: (context, vm, child) {
@@ -34,12 +37,17 @@ class RecipesPage extends StatelessWidget {
                     ),
                     body: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(36.5.w, 26.h, 37.5.w, 125.h),
+                        padding: EdgeInsets.fromLTRB(
+                          36.5.w,
+                          16.h,
+                          37.5.w,
+                          125.h,
+                        ),
                         child: Column(
                           spacing: 31.h,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(10),
+                              borderRadius: BorderRadiusGeometry.circular(10.r),
                               child: Container(
                                 padding: EdgeInsets.only(bottom: 12.h),
                                 alignment: Alignment.topCenter,
@@ -53,7 +61,7 @@ class RecipesPage extends StatelessWidget {
                                   children: [
                                     ClipRRect(
                                       borderRadius:
-                                          BorderRadiusGeometry.circular(10),
+                                          BorderRadiusGeometry.circular(10.r),
                                       child: Image.network(
                                         width: 356.w,
                                         height: 281.h,
@@ -168,7 +176,7 @@ class RecipesPage extends StatelessWidget {
                                       "Details",
                                       style: Styles.s20w600redPinkFD5D69,
                                     ),
-                                    SizedBox(width: 8),
+                                    SizedBox(width: 8.w),
                                     SvgPicture.asset(
                                       AppIcons.clock,
                                       color: AppColors.whiteBeigeFFFDF9,
@@ -221,33 +229,36 @@ class RecipesPage extends StatelessWidget {
                                 Column(
                                   spacing: 11.h,
                                   children: [
-                                    ...List.generate(vm.recipe!.instructions.length, (
-                                      index,
-                                    ) {
-                                      return Container(
-                                        alignment: Alignment.center,
-                                        padding: EdgeInsets.fromLTRB(
-                                          5.w,
-                                          23.h,
-                                          13.w,
-                                          22.h,
-                                        ),
-                                        width: 356.w,
-                                        height: 81.h,
-                                        decoration: BoxDecoration(
-                                          color: index % 2 == 0
-                                              ? AppColors.pinkColorEC888D
-                                              : AppColors.pinkFFC6C9,
-                                          borderRadius: BorderRadius.circular(
-                                            14.r,
+                                    ...List.generate(
+                                      vm.recipe!.instructions.length,
+                                      (
+                                        index,
+                                      ) {
+                                        return Container(
+                                          alignment: Alignment.center,
+                                          padding: EdgeInsets.fromLTRB(
+                                            5.w,
+                                            23.h,
+                                            13.w,
+                                            22.h,
                                           ),
-                                        ),
-                                        child: Text(
-                                          "${index + 1}. ${vm.recipe!.instructions[index].text}",
-                                          style: Styles.s12w400black1C0F0D,
-                                        ),
-                                      );
-                                    }),
+                                          width: 356.w,
+                                          height: 81.h,
+                                          decoration: BoxDecoration(
+                                            color: index % 2 == 0
+                                                ? AppColors.pinkColorEC888D
+                                                : AppColors.pinkFFC6C9,
+                                            borderRadius: BorderRadius.circular(
+                                              14.r,
+                                            ),
+                                          ),
+                                          child: Text(
+                                            "${index + 1}. ${vm.recipe!.instructions[index].text}",
+                                            style: Styles.s12w400black1C0F0D,
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   ],
                                 ),
                               ],

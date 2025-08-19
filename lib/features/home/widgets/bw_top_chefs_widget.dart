@@ -29,9 +29,9 @@ class TopChefsWidget extends StatelessWidget {
         ),
         vm.isLoadingChefs
             ? CircularProgressIndicator()
-            : vm.errorChefs.length > 0
+            : vm.errorChefs != null
             ? Center(
-                child: Text(vm.errorChefs),
+                child: Text(vm.errorChefs!),
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

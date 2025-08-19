@@ -47,7 +47,7 @@ class RecipeRepository {
   }
 
   Future<Result<TrendingRecipeModel>> getTrendingRecipe() async {
-    if (categories.isNotEmpty) return Result.ok(trendingRecipe!);
+    if (trendingRecipe != null) return Result.ok(trendingRecipe!);
     final result = await client.get<Map<String, dynamic>>('/recipes/trending-recipe');
 
     return result.fold(

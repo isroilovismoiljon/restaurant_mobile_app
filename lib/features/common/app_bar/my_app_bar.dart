@@ -67,5 +67,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size(double.infinity, 56);
+  Size get preferredSize => Size(double.infinity, 56.h);
 }

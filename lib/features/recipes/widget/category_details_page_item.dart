@@ -19,7 +19,7 @@ class CategoryDetailsPageItem extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 30.h,
+        mainAxisSpacing: 30.w,
         crossAxisSpacing: 19.w,
         mainAxisExtent: 226.h,
       ),
@@ -52,26 +52,31 @@ class CategoryDetailsPageItem extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 7.h),
                     child: Column(
-                      spacing: 1.h,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          categoryDetails[index].title,
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.color3E2823,
-                          ),
-                        ),
-                        Text(
-                          categoryDetails[index].description,
-                          style: TextStyle(
-                            height: 1.h,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.color3E2823,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              categoryDetails[index].title,
+                              style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.color3E2823,
+                              ),
+                            ),
+                            Text(
+                              categoryDetails[index].description,
+                              style: TextStyle(
+                                height: 1.h,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.color3E2823,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
                         ),
                         Row(
                           spacing: 40.w,

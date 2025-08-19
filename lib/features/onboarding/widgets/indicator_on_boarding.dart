@@ -13,14 +13,14 @@ class IndicatorOnBoarding extends StatelessWidget {
       width: 230.w,
       height: 12.h,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(100.r),
         color: AppColors.whiteD9D9D9,
       ),
       child: Container(
         width: 65.w,
         height: 12.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(100.r),
           color: AppColors.redPinkFD5D69,
         ),
       ),

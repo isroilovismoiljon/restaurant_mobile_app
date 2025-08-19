@@ -7,7 +7,6 @@ import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/indicator_on_boarding.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
-
 import '../../common/app_bar/app_bar_leading_back_arrow.dart';
 import '../magagers/cuisine_view_model.dart';
 
@@ -31,14 +30,14 @@ class CuisinesPage extends StatelessWidget {
             backgroundColor: AppColors.backgroundColor,
           ),
           body: Padding(
-            padding: const EdgeInsets.fromLTRB(36, 5, 37, 9.35),
+            padding: EdgeInsets.fromLTRB(36.w, 5.h, 37.w, 9.35.h),
             child: Column(
               spacing: 20.h,
               children: [
                 IndicatorOnBoarding(
                   alignment: Alignment.center,
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: 5.h),
                 Text(
                   "Select your cuisines preferences",
                   style: Styles.s20w600whiteFFFDF9,
@@ -57,20 +56,17 @@ class CuisinesPage extends StatelessWidget {
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3,
-                                    mainAxisSpacing: 10.16,
-                                    crossAxisSpacing: 9.72,
-                                    mainAxisExtent: 127,
+                                    mainAxisSpacing: 10.16.w,
+                                    crossAxisSpacing: 9.72.w,
+                                    mainAxisExtent: 127.h,
                                   ),
                               itemCount: vm.cuisines.length,
                               itemBuilder: (context, index) {
                                 return Column(
-                                  spacing: 6,
+                                  spacing: 6.h,
                                   children: [
                                     ClipRRect(
-                                      borderRadius:
-                                          BorderRadiusGeometry.circular(
-                                            11.74,
-                                          ),
+                                      borderRadius: BorderRadius.circular(11.74.r),
                                       child: Image.network(
                                         vm.cuisines[index].image,
                                         width: 98.w,

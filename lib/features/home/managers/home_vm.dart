@@ -1,31 +1,37 @@
 import 'package:flutter/cupertino.dart';
-import '../../../core/client.dart';
+import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
+import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
+import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
 import '../../../data/models/recipes/category_model.dart';
-import '../../../data/models/recipes/recenly_added_recipe.dart';
 import '../../../data/models/recipes/trending_recipe.dart';
-import '../../../data/models/recipes/your_recipe_model.dart';
 import '../../../data/models/users/chef.dart';
 
 class HomeViewModel extends ChangeNotifier {
   late TrendingRecipeModel trendingRecipe;
   bool isLoadingTrendingRecipe = true;
-  List<YourRecipeModel> yourRecipes = [];
+  List<CategoryDetailsModel> yourRecipes = [];
   bool isLoadingYourRecipes = true;
-  List<RecentlyAddedRecipeModel> recentlyRecipes = [];
+  List<CategoryDetailsModel> recentlyRecipes = [];
   bool isLoadingRecentlyRecipes = true;
   List<CategoryModel> categories = [];
   bool isLoadingCategories = true;
   List<ChefModel> chefs = [];
   bool isLoadingChefs = true;
-  String errorYourRecipes = '';
-  String errorRecentlyRecipes = '';
-  String errorCategories = '';
-  String errorChefs = '';
-  String errorTrendingRecipe = '';
+  String? errorYourRecipes = '';
+  String? errorRecentlyRecipes = '';
+  String? errorCategories = '';
+  String? errorChefs = '';
+  String? errorTrendingRecipe = '';
 
   int? selectedCategory;
+  final UsersRepository _usersRepository;
+  final RecipeRepository _recipeRepository;
 
-  HomeViewModel() {
+  HomeViewModel(
+    UsersRepository usersRepository,
+    RecipeRepository recipeRepository,
+  ) : _recipeRepository = recipeRepository,
+      _usersRepository = usersRepository {
     getYourRecipes();
     getRecentlyAddedRecipes();
     getChefs();
@@ -37,18 +43,15 @@ class HomeViewModel extends ChangeNotifier {
     isLoadingCategories = true;
     notifyListeners();
 
-    var response = await dio.get("/recipes/list");
-    try {
-      final data = response.data as List;
-      categories = data.map((x) => CategoryModel.fromJson(x)).toList();
-      errorCategories = '';
-    } catch (e) {
-      errorCategories = e.toString();
-    }
-
+    var result = await _recipeRepository.getCategories();
+    result.fold(
+      (error) => errorCategories = error.toString(),
+      (value) => categories = value,
+    );
     isLoadingCategories = false;
     notifyListeners();
   }
+
   void selectCategory(int id) {
     selectedCategory = id;
     notifyListeners();
@@ -58,29 +61,35 @@ class HomeViewModel extends ChangeNotifier {
     isLoadingYourRecipes = true;
     notifyListeners();
 
-    var response = await dio.get("/recipes/list?Page=1&Limit=2");
-    try {
-      final data = response.data as List;
-      yourRecipes = data.map((x) => YourRecipeModel.fromJson(x)).toList();
-      errorYourRecipes = '';
-    } catch (e) {
-      errorYourRecipes = e.toString();
-    }
-
+    var result = await _recipeRepository.getCategoryDetails({
+      'Page': 1,
+      'Limit': 2,
+    });
+    result.fold(
+      (error) => errorYourRecipes = error.toString(),
+      (value) {
+        errorYourRecipes = null;
+        yourRecipes = value;
+      },
+    );
     isLoadingYourRecipes = false;
     notifyListeners();
   }
+
   Future<void> getRecentlyAddedRecipes() async {
     isLoadingRecentlyRecipes = true;
     notifyListeners();
-    var response = await dio.get("/recipes/list?Page=2&Limit=2");
-    try {
-      final data = response.data as List;
-      recentlyRecipes = data.map((x) => RecentlyAddedRecipeModel.fromJson(x)).toList();
-      errorRecentlyRecipes = '';
-    } catch (e) {
-      errorRecentlyRecipes = e.toString();
-    }
+    var result = await _recipeRepository.getCategoryDetails({
+      'Page': 2,
+      'Limit': 2,
+    });
+    result.fold(
+      (error) => errorRecentlyRecipes = error.toString(),
+      (value) {
+        errorRecentlyRecipes = null;
+        recentlyRecipes = value;
+      },
+    );
     isLoadingRecentlyRecipes = false;
     notifyListeners();
   }
@@ -88,14 +97,14 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> getChefs() async {
     isLoadingChefs = true;
     notifyListeners();
-    var response= await dio.get("/top-chefs/list?Limit=4");
-    try {
-      final data = response.data as List;
-      chefs = data.map((x) => ChefModel.fromJson(x)).toList();
-      errorChefs = '';
-    } catch (e) {
-      errorChefs = e.toString();
-    }
+    var result = await _usersRepository.getChefs({'Limit': 4});
+    result.fold(
+      (error) => errorChefs = error.toString(),
+      (value) {
+        errorChefs = null;
+        chefs = value;
+      },
+    );
     isLoadingChefs = false;
     notifyListeners();
   }
@@ -103,14 +112,14 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> getTrendingRecipe() async {
     isLoadingTrendingRecipe = true;
     notifyListeners();
-    var response = await dio.get("/recipes/trending-recipe");
-    try {
-      final data = response.data;
-      trendingRecipe = TrendingRecipeModel.fromJson(data);
-      errorTrendingRecipe = '';
-    } catch (e) {
-      errorTrendingRecipe = e.toString();
-    }
+    var result = await _recipeRepository.getTrendingRecipe();
+    result.fold(
+      (error) => errorTrendingRecipe = error.toString(),
+      (value) {
+        errorTrendingRecipe = null;
+        trendingRecipe = value;
+      },
+    );
     isLoadingTrendingRecipe = false;
     notifyListeners();
   }

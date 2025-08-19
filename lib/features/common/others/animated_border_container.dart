@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 
 class AnimatedBorderContainer extends StatefulWidget {
@@ -49,12 +50,12 @@ class BorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = Rect.fromLTWH(0, 0, size.width, size.height);
-    final radius = 14.0;
+    final rect = Rect.fromLTWH(0.w, 0.h, size.width, size.height);
+    final radius = 14.0.r;
 
     final paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 2
+      ..strokeWidth = 2.w
       ..shader = SweepGradient(
         startAngle: 0,
         endAngle: 6.28, // 2*pi

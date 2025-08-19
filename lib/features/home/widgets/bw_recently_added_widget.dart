@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import '../../../data/models/recipes/recenly_added_recipe.dart';
+import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
 import '../managers/home_vm.dart';
 import 'recently_added_item.dart';
 
@@ -12,7 +12,7 @@ class RecentlyAddedWidget extends StatelessWidget {
   });
 
   final HomeViewModel vm;
-  final List<RecentlyAddedRecipeModel> recentlyAddedRecipe;
+  final List<CategoryDetailsModel> recentlyAddedRecipe;
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,10 @@ class RecentlyAddedWidget extends StatelessWidget {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : vm.errorRecentlyRecipes.length > 0
+            : vm.errorRecentlyRecipes != null
             ? Center(
                 child: Text(
-                  vm.errorRecentlyRecipes,
+                  vm.errorRecentlyRecipes!,
                 ),
               )
             : Row(

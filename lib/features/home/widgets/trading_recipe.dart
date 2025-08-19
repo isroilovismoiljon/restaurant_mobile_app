@@ -43,13 +43,13 @@ class _TradingRecipeState extends State<TradingRecipe> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            padding: EdgeInsets.fromLTRB(15.w, 8.h, 15.w, 2.h),
+            padding: EdgeInsets.fromLTRB(15.w, 9.h, 15.w, 2.h),
             alignment: Alignment.topLeft,
             width: 348.w,
             height: 49.h,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(14),
+                  bottom: Radius.circular(14.r),
                 ),
                 border: Border.all(
                   color: AppColors.pinkColorEC888D,
@@ -57,6 +57,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
                 color: widget.colorContainer
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
                   width: 260.w,
@@ -67,7 +68,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
                         widget.title,
                         style: TextStyle(
                     color: widget.colorTitle,
-                    fontSize: 13,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.w400,
                   ),
                       ),
@@ -75,16 +76,15 @@ class _TradingRecipeState extends State<TradingRecipe> {
                         widget.description,
                         style: TextStyle(
                           color: widget.colorDescription,
-                          fontSize: 13,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w300,
-                        ),
+                        ).copyWith(height: 1.h),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
                 ),
-                Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -107,7 +107,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
                       children: [
                         Text(
                           "${widget.rating}",
-                          style: Styles.s12w400pinkColorEC888D,
+                          style: Styles.s12w400pinkColorEC888D.copyWith(height: 1.h),
                         ),
                         SvgPicture.asset(
                           AppIcons.star,
@@ -125,7 +125,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
         Align(
           alignment: Alignment.topCenter,
           child: ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(14),
+            borderRadius: BorderRadiusGeometry.circular(14.r),
             child: Image.network(
               widget.photo,
               width: 358.w,
@@ -137,7 +137,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
         Align(
           alignment: Alignment.topRight,
           child: Padding(
-            padding: const EdgeInsets.only(top: 7, right: 8.52),
+            padding: EdgeInsets.only(top: 7.h, right: 8.52.w),
             child: GestureDetector(
               onTap: () {
                 setState(() {

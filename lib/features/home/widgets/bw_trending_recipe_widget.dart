@@ -23,7 +23,7 @@ class TrendingRecipeWidget extends StatelessWidget {
         ),
         SizedBox(
           width: 358.w,
-          height: 185.h,
+          height: 182.h,
           child: TradingRecipe(
             title: vm.trendingRecipe.title,
             description: vm.trendingRecipe.description,

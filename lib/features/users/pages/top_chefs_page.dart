@@ -29,7 +29,12 @@ class TopChefsPage extends StatelessWidget {
                     vm.isLoadingMostViewedChefs
                         ? Center(child: CircularProgressIndicator())
                         : Container(
-                            padding: EdgeInsets.fromLTRB(36.w, 12.h, 36.w, 20.h),
+                            padding: EdgeInsets.fromLTRB(
+                              36.w,
+                              12.h,
+                              36.w,
+                              20.h,
+                            ),
                             width: double.infinity,
                             height: 285.h,
                             decoration: BoxDecoration(
@@ -46,7 +51,8 @@ class TopChefsPage extends StatelessWidget {
                                   style: Styles.s15w500whiteBeigeFFFDF9,
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     ...List.generate(
                                       2,
@@ -65,8 +71,11 @@ class TopChefsPage extends StatelessWidget {
                     vm.isLoadingMostLikedChefs
                         ? Center(child: CircularProgressIndicator())
                         : Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 15.h),
-                          child: Column(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 37.w,
+                              vertical: 15.h,
+                            ),
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +86,8 @@ class TopChefsPage extends StatelessWidget {
                                   style: Styles.s15w500redPinkFD5D69,
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     ...List.generate(
                                       2,
@@ -92,12 +102,15 @@ class TopChefsPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                        ),
+                          ),
                     vm.isLoadingNewChefs
                         ? Center(child: CircularProgressIndicator())
                         : Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 15.h),
-                          child: Column(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 37.w,
+                              vertical: 15.h,
+                            ),
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,14 +121,15 @@ class TopChefsPage extends StatelessWidget {
                                   style: Styles.s15w500redPinkFD5D69,
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     ...List.generate(
                                       2,
                                       (index) {
                                         return ChefsItem(
                                           chefModel: vm.newChefs,
-                                          index: index
+                                          index: index,
                                         );
                                       },
                                     ),
@@ -123,7 +137,7 @@ class TopChefsPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                        ),
+                          ),
                   ],
                 ),
               ),

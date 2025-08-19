@@ -30,7 +30,7 @@ class ForgotYourPasswordEnterEmailPage extends StatelessWidget {
       ),
       backgroundColor: AppColors.backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 37, vertical: 45),
+        padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 45.h),
         child: Column(
           spacing: 43.h,
           children: [
@@ -65,7 +65,7 @@ class ForgotYourPasswordEnterEmailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 112),
+        padding: EdgeInsets.symmetric(vertical: 48.h, horizontal: 112.w),
         child: ToNextPageButton(
           title: "Continue",
           onPressed: () {

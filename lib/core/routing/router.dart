@@ -3,9 +3,9 @@ import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/features/auth/pages/enter_send_code_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/forgot_your_password_enter_email_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/login_page.dart';
-import 'package:restourant_mobile_app/features/auth/pages/register.dart';
+import 'package:restourant_mobile_app/features/auth/pages/register_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/categories_page.dart';
-import 'package:restourant_mobile_app/features/recipes/pages/category_details.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/category_details_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/recipes_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/allergic_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/cooking_level_page.dart';
@@ -22,7 +22,7 @@ import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.topChefs,
+    initialLocation: Routers.home,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,

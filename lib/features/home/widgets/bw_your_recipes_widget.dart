@@ -19,7 +19,7 @@ class YourRecipesWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: AppColors.redPinkFD5D69,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       width: double.infinity,
       height: 255.h,
@@ -35,9 +35,9 @@ class YourRecipesWidget extends StatelessWidget {
               ? Center(
                   child: CircularProgressIndicator(),
                 )
-              : vm.errorYourRecipes.length > 0
+              : vm.errorYourRecipes != null
               ? Center(
-                  child: Text(vm.errorYourRecipes),
+                  child: Text(vm.errorYourRecipes!),
                 )
               : Row(
                   spacing: 17.w,

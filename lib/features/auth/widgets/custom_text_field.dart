@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -28,9 +29,9 @@ class CustomTextField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(color: Colors.white, fontSize: 14),
+          style: TextStyle(color: Colors.white, fontSize: 14.sp),
         ),
-        const SizedBox(height: 6),
+        SizedBox(height: 6.h),
         TextField(
           controller: controller,
           keyboardType: keyboardType,
@@ -39,9 +40,9 @@ class CustomTextField extends StatelessWidget {
             hintText: hint,
             filled: true,
             fillColor: AppColors.pinkFFC6C9,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 9),
+            contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 9.h),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(30.r),
               borderSide: BorderSide.none,
             ),
             suffixIcon: suffixIcon != null

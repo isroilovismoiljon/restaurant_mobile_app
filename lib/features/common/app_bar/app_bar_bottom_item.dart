@@ -51,8 +51,8 @@ class _AppBarBottomItemState extends State<AppBarBottomItem> {
                               widget.vm.categories[index].id
                           ? AppColors.redPinkFD5D69
                           : Colors.transparent,
-                      padding:  EdgeInsets.symmetric(horizontal: 9, vertical: 5),
-                      minimumSize: Size(0, 0)
+                      padding:  EdgeInsets.symmetric(horizontal: 9.w, vertical: 5.h),
+                      minimumSize: Size(0.w, 0.h)
                     ),
                     child: Text(
                       widget.vm.categories[index].title,

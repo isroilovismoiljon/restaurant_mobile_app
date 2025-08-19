@@ -60,24 +60,32 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedItem> {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          widget.title,
-                          style: Styles.s12w400brown3E2823.copyWith(height: 1),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          widget.description,
-                          style: Styles.s13w300brown3E2823.copyWith(height: 1),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.title,
+                              style: Styles.s12w400brown3E2823,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              widget.description,
+                              style: Styles.s13w300brown3E2823.copyWith(
+                                height: 1.h,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
                         ),
                         SizedBox(
                           height: 7.h,
                         ),
                         Row(
-
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               spacing: 5.w,
@@ -93,7 +101,6 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedItem> {
                                 ),
                               ],
                             ),
-                            Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               spacing: 6.w,

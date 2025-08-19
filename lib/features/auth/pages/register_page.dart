@@ -29,8 +29,8 @@ class RegisterPage extends StatelessWidget {
             builder: (context, vm, child) {
               return SingleChildScrollView(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 5,
+                  horizontal: 24.w,
+                  vertical: 5.h,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,7 +39,7 @@ class RegisterPage extends StatelessWidget {
                       "Sign Up",
                       style: Styles.s20w600redPinkFD5D69
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 30.h),
                     Column(
                       spacing: 15.h,
                       children: [
@@ -88,9 +88,9 @@ class RegisterPage extends StatelessWidget {
                       ],
                     ),
 
-                    SizedBox(height: 16),
+                    SizedBox(height: 16.h),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0.w),
                       child: Text.rich(
                         TextSpan(
                           text: "By continuing, you agree to\n",
@@ -113,7 +113,7 @@ class RegisterPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 15.h),
                     SizedBox(
                       width: 194.w,
                       height: 45.h,
@@ -144,7 +144,7 @@ class RegisterPage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.redPinkFD5D69,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
+                            borderRadius: BorderRadius.circular(24.r),
                           ),
                         ),
                         child: Text(
@@ -153,7 +153,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -170,7 +170,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 24),
+                    SizedBox(height: 24.h),
                   ],
                 ),
               );

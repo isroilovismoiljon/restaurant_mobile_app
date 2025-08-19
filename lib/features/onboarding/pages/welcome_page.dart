@@ -30,43 +30,45 @@ class WelcomePage extends StatelessWidget {
         body: Consumer<CategoriesPageViewModel>(
           builder: (context, vm, child) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 37),
+              padding: EdgeInsets.symmetric(horizontal: 37.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 spacing: 13.h,
                 children: [
                   vm.isLoading
-                      ? Center(child: CircularProgressIndicator(),)
-                      :
-                  Expanded(
-                    child: SizedBox(
-                      height: 565.h,
-                      child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 27.h,
-                          crossAxisSpacing: 24.w,
-                          mainAxisExtent: 170,
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Expanded(
+                          child: SizedBox(
+                            height: 565.h,
+                            child: GridView.builder(
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 27.w,
+                                    crossAxisSpacing: 24.w,
+                                    mainAxisExtent: 170.h,
+                                  ),
+                              itemCount: 6,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(15.r),
+                                      child: Image.network(
+                                        vm.categories[index].image,
+                                        width: 166.w,
+                                        height: 166.h,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
                         ),
-                        itemCount: 6,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.network(
-                                  vm.categories[index].image,
-                                  width: 166.w,
-                                  height: 166.h,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                    ),
-                  ),
                   Text(
                     "Welcome",
                     style: Styles.s25w600whiteBeigeFFFDF9,
@@ -91,7 +93,9 @@ class WelcomePage extends StatelessWidget {
                       context.push(Routers.categoriesPage);
                     },
                   ),
-                  SizedBox(height: 10.h,)
+                  SizedBox(
+                    height: 10.h,
+                  ),
                 ],
               ),
             );

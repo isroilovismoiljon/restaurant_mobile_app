@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-
 import '../../../core/routing/routes.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../common/app_bar/app_bar_leading_back_arrow.dart';
@@ -47,7 +46,7 @@ class _CookingLevelPageState extends State<CookingLevelPage> {
         backgroundColor: AppColors.backgroundColor,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(36, 5, 37, 9.35),
+        padding: EdgeInsets.fromLTRB(36.w, 5.h, 37.w, 9.35.h),
         child: Column(
           spacing: 32.h,
           children: [
@@ -76,7 +75,7 @@ class _CookingLevelPageState extends State<CookingLevelPage> {
                 },
                 child: Container(
                   alignment: Alignment.topLeft,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10,), border: BoxBorder.all(color: selectedItemNum == index ? AppColors.redPinkFD5D69 : AppColors.pinkFFC6C9)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r,), border: BoxBorder.all(color: selectedItemNum == index ? AppColors.redPinkFD5D69 : AppColors.pinkFFC6C9)),
                   padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 17.w),
                   child: Column(
                     spacing: 4.h,

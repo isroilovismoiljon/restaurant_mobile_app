@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 
-import '../../../core/utils/icons.dart';
 
 class AppBarAction extends StatelessWidget {
   const AppBarAction({super.key, required this.icon});
@@ -17,7 +16,7 @@ class AppBarAction extends StatelessWidget {
       height: 28.h,
       decoration: BoxDecoration(
         color: AppColors.pinkFFC6C9,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(14.r),
       ),
       child: SvgPicture.asset(icon, color: AppColors.pinkColorEC888D,),
     );

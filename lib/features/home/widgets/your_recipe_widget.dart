@@ -63,12 +63,12 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
                   horizontal: 15.w,
                 ),
                 child: Column(
-                  spacing: 2.h,
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       widget.title,
-                      style: Styles.s12w400black1C0F0D.copyWith(height: 1),
+                      style: Styles.s12w400black1C0F0D,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

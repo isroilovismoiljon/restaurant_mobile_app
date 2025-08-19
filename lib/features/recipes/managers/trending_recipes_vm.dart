@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
+import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 
@@ -7,7 +7,7 @@ import '../../../core/utils/result.dart';
 
 class TrendingRecipesViewModel extends ChangeNotifier {
   TrendingRecipeModel? trendingRecipe;
-  List<RecipeModel> recipes = [];
+  List<CategoryDetailsModel> recipes = [];
 
   bool trendingRecipeIsLoading = true;
   String? trendingRecipeError;
@@ -16,9 +16,9 @@ class TrendingRecipesViewModel extends ChangeNotifier {
   String? recipesError;
   final RecipeRepository _recipeRepository;
 
-  TrendingRecipesViewModel({
-    required RecipeRepository recipeRepo,
-  }) : _recipeRepository = recipeRepo{
+  TrendingRecipesViewModel(
+    RecipeRepository recipeRepo,
+  ) : _recipeRepository = recipeRepo {
     getTrendingRecipe();
     getRecipes();
   }
@@ -26,32 +26,28 @@ class TrendingRecipesViewModel extends ChangeNotifier {
   Future<void> getTrendingRecipe() async {
     trendingRecipeIsLoading = true;
     notifyListeners();
-    final result = await _recipeRepository.getTrendingRecipe();
+    var result = await _recipeRepository.getTrendingRecipe();
     result.fold(
       (error) {
         trendingRecipeError = error.toString();
-        trendingRecipeIsLoading = false;
-        notifyListeners();
       },
       (value) {
         trendingRecipe = value;
-        trendingRecipeIsLoading = false;
-        notifyListeners();
       },
     );
+    trendingRecipeIsLoading = false;
+    notifyListeners();
   }
-  
+
   Future<void> getRecipes() async {
     recipesIsLoading = true;
-    recipesError = null;
     notifyListeners();
-    final result = await _recipeRepository.getCategoryDetails({
-    'Category': 3
-    });
+    var result = await _recipeRepository.getCategoryDetails({'Category': 3});
 
     if (result is Ok) {
+      recipesError = null;
       recipes = (result as Ok).value;
-    } else{
+    } else {
       recipesError = (result as Error).error.toString();
     }
     recipesIsLoading = false;

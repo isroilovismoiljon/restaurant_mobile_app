@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => HomeViewModel(),
+      create: (context) => HomeViewModel(context.read(), context.read()),
       builder: (context, child) {
         return Consumer<HomeViewModel>(
           builder: (context, vm, child) {
@@ -89,14 +89,14 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             vm.isLoadingTrendingRecipe
                                 ? CircularProgressIndicator()
-                                : vm.errorTrendingRecipe.length > 0
+                                : vm.errorTrendingRecipe != null
                                 ? Center(
-                                    child: Text(vm.errorTrendingRecipe),
+                                    child: Text(vm.errorTrendingRecipe!),
                                   )
                                 : GestureDetector(
-                              onTap: (){
-                                context.push(Routers.trendingRecipesPage);
-                              },
+                                onTap: (){
+                                  context.push(Routers.trendingRecipesPage);
+                                },
                                   child: TrendingRecipeWidget(
                                       vm: vm,
                                     ),

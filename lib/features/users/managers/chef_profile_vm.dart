@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:restourant_mobile_app/core/client.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
-import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
 import 'package:restourant_mobile_app/data/models/users/chef.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/users_repository.dart';

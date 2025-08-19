@@ -27,7 +27,7 @@ class CategoryItems extends StatelessWidget {
               });
             },
             child: Column(
-              spacing: 6,
+              spacing: 6.h,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14),
@@ -41,7 +41,7 @@ class CategoryItems extends StatelessWidget {
                 Text(
                   vm.categories[index].title,
                   style: TextStyle(
-                    fontSize: 14.23,
+                    fontSize: 14.23.sp,
                     fontWeight: FontWeight.w500,
                     color: AppColors.whiteBeigeFFFDF9,
                   ),

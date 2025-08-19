@@ -104,7 +104,7 @@ class ChefProfilePage extends StatelessWidget {
                               left: 45.w,
                               top: 50.h,
                               right: 56.w,
-                              bottom: 65.h
+                              bottom: 65.h,
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -162,7 +162,7 @@ class ChefProfilePage extends StatelessWidget {
                               SizedBox(
                                 width: 205.w,
                                 child: Column(
-                                  spacing: 6,
+                                  spacing: 6.h,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
@@ -187,8 +187,8 @@ class ChefProfilePage extends StatelessWidget {
                                             MaterialTapTargetSize.shrinkWrap,
                                         minimumSize: Size.zero,
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 2.h,
-                                          horizontal: 3.w,
+                                          vertical: 3.h,
+                                          horizontal: 17.w,
                                         ),
                                       ),
                                       onPressed: () {},

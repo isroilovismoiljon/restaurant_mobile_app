@@ -6,6 +6,7 @@ import 'package:restourant_mobile_app/features/recipes/managers/category_details
 import 'package:restourant_mobile_app/features/common/app_bar/app_bar_bottom.dart';
 import 'package:restourant_mobile_app/features/recipes/widget/category_details_page_item.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
+import '../../../core/utils/styles.dart';
 import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class CategoryDetails extends StatelessWidget {
@@ -54,6 +55,13 @@ class CategoryDetails extends StatelessWidget {
                           vm.categoryDetailsLoading
                               ? Center(
                                   child: CircularProgressIndicator(),
+                                )
+                              : vm.categoryDetails.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    'Recipes is Empty in this Category',
+                                    style: Styles.s15w500redPinkFD5D69,
+                                  ),
                                 )
                               : CategoryDetailsPageItem(
                                   categoryDetails: vm.categoryDetails,

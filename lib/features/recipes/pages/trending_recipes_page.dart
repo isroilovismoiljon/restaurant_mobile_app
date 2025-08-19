@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
@@ -16,16 +18,16 @@ class TrendingRecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => TrendingRecipesViewModel(recipeRepo: context.read()),
+      create: (context) => TrendingRecipesViewModel(context.read()),
       child: Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
         appBar: MyAppBar(categoryTitle: 'Trending Recipes'),
         body: Consumer<TrendingRecipesViewModel>(
           builder: (context, vm, child) {
-            return Padding(
-              padding: EdgeInsets.only(top: 20.h, bottom: 125.h),
-              child: SingleChildScrollView(
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(top: 20.h, bottom: 125.h),
                 child: Column(
                   children: [
                     Container(
@@ -79,14 +81,17 @@ class TrendingRecipesPage extends StatelessWidget {
                             alignment: Alignment.topRight,
                             child: TextButton(
                               onPressed: () {},
-                              child: Text(
-                                'See All',
-                                style: Styles.s12w500redPinkFD5D69,
+                              child: GestureDetector(
+                                onTap: (){context.push(Routers.categoryDetails, extra: {'categoryId': 1, 'categoryTitle': 'Breakfast'});},
+                                child: Text(
+                                  'See All',
+                                  style: Styles.s12w500redPinkFD5D69,
+                                ),
                               ),
                             ),
                           ),
                           Column(
-                            spacing: 15.w,
+                            spacing: 15.h,
                             children: [
                               ...List.generate(
                                 vm.recipes.length,
@@ -121,13 +126,14 @@ class TrendingRecipesPage extends StatelessWidget {
                                                     ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.only(
-                                                  left: 10.w,
-                                                  right: 10.w,
-                                                  top: 10.h,
+                                                padding: EdgeInsets.symmetric(
+                                                  vertical: 10.h,
+                                                  horizontal: 10.w,
                                                 ),
                                                 child: Column(
-                                                  spacing: 6.h,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
@@ -141,13 +147,16 @@ class TrendingRecipesPage extends StatelessWidget {
                                                           .recipes[index]
                                                           .description,
                                                       style: Styles
-                                                          .s13w300brown3E2823,
+                                                          .s13w300brown3E2823
+                                                          .copyWith(
+                                                            height: 1.h,
+                                                          ),
                                                       maxLines: 2,
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                     ),
                                                     Text(
-                                                      "By Chef ${vm.recipes[index].chef.firstName}",
+                                                      "By Chef Kimdir",
                                                       style: Styles
                                                           .s12w300redPinkFD5D69,
                                                       maxLines: 1,

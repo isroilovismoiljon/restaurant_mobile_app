@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../../../core/client.dart';
 import '../../../data/models/onboarding/allergic_model.dart';
-import '../../../data/models/onboarding/cuisine_model.dart';
 
 class AllergicViewModel extends ChangeNotifier{
   List<AllergicModel> allergicFoods = [];

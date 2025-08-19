@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
 
 class ForgotYourPasswordTitleSubtitleWidget extends StatelessWidget {
   const ForgotYourPasswordTitleSubtitleWidget({
