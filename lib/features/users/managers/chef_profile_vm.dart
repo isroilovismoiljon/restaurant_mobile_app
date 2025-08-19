@@ -17,16 +17,16 @@ class ChefProfileViewModel extends ChangeNotifier {
   final ApiClient client;
   final UsersRepository _repository;
   final RecipeRepository _repositoryRecipe;
+  final int chefId;
 
-  ChefProfileViewModel(
-    RecipeRepository repositoryRecipe,
-    UsersRepository repository, {
-    required this.client,
-    required int id,
-  }) : _repository = repository,
-       _repositoryRecipe = repositoryRecipe {
-    getChef(id);
-    getCategoryDetails(id);
+  ChefProfileViewModel(RecipeRepository repositoryRecipe,
+      UsersRepository repository, {
+        required this.client, required this.chefId,
+      })
+      : _repository = repository,
+        _repositoryRecipe = repositoryRecipe {
+    getChef(chefId);
+    getCategoryDetails(chefId);
   }
 
   Future<void> getChef(int id) async {

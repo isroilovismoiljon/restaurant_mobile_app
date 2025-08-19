@@ -55,10 +55,22 @@ class Styles {
     fontSize: 13.sp,
     fontWeight: FontWeight.w300,
   );
+  static TextStyle s13w300whiteFFFDF9leagueSpartan = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w300,
+      fontFamily: FontFamily.leagueSpartan
+  );
   static TextStyle s12w400redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
+  );
+  static TextStyle s12w400redPinkFD5D69poppins = TextStyle(
+    color: AppColors.redPinkFD5D69,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s12w300redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
@@ -85,6 +97,7 @@ class Styles {
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 13.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s14w300whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
@@ -120,6 +133,12 @@ class Styles {
     color: AppColors.redPinkFD5D69,
     fontSize: 15.sp,
     fontWeight: FontWeight.w500,
+  );
+  static TextStyle s15w400redPinkFD5D69poppins = TextStyle(
+    color: AppColors.redPinkFD5D69,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s16w400redPink = TextStyle(
     color: AppColors.redPinkFD5D69,

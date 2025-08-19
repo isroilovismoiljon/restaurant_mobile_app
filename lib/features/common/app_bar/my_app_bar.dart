@@ -42,7 +42,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         overflow: TextOverflow.ellipsis,
       ),
       centerTitle: centerTitle,
-      actions: [
+      actions:
+      actions.isEmpty
+      ? null
+      : [
         Row(
           children: [
             GestureDetector(

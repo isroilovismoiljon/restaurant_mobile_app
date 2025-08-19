@@ -23,7 +23,7 @@ class ChefProfilePage extends StatelessWidget {
         context.read(),
         context.read(),
         client: context.read(),
-        id: chefId,
+        chefId: chefId,
       ),
       child: Consumer<ChefProfileViewModel>(
         builder: (context, vm, child) {

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/recipes_view_model.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
+import 'package:restourant_mobile_app/features/reviews/managers/reviews_vm.dart';
 import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class RecipesPage extends StatelessWidget {
@@ -69,51 +72,58 @@ class RecipesPage extends StatelessWidget {
                                         vm.recipe!.photo,
                                       ),
                                     ),
-                                    Row(
-                                      spacing: 15.w,
-                                      children: [
-                                        SizedBox(),
-                                        SizedBox(
-                                          width: 220.w,
-                                          child: Text(
-                                            vm.recipe!.title,
-                                            style: Styles.s20w500whiteFFFDF9,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ),
-                                        Row(
-                                          spacing: 10.w,
+                                    Padding(
+                                      padding: EdgeInsets.only(right: 10.w, left: 10.w),
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          context.push(Routers.reviewsPage, extra: vm.recipe!.id);
+                                        },
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Row(
-                                              spacing: 5.w,
-                                              children: [
-                                                SvgPicture.asset(
-                                                  AppIcons.starFilled,
-                                                ),
-                                                Text(
-                                                  "${vm.recipe!.rating}",
-                                                  style:
-                                                      Styles.s12w400whiteFFFDF9,
-                                                ),
-                                              ],
+                                            SizedBox(
+                                              width: 220.w,
+                                              child: Text(
+                                                vm.recipe!.title,
+                                                style: Styles.s20w500whiteFFFDF9,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
                                             ),
                                             Row(
-                                              spacing: 5.w,
+                                              spacing: 10.w,
                                               children: [
-                                                SvgPicture.asset(
-                                                  AppIcons.reviews,
+                                                Row(
+                                                  spacing: 5.w,
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      AppIcons.starFilled,
+                                                    ),
+                                                    Text(
+                                                      "${vm.recipe!.rating}",
+                                                      style:
+                                                          Styles.s12w400whiteFFFDF9,
+                                                    ),
+                                                  ],
                                                 ),
-                                                Text(
-                                                  "${vm.recipe!.reviewsCount}",
-                                                  style:
-                                                      Styles.s12w400whiteFFFDF9,
+                                                Row(
+                                                  spacing: 5.w,
+                                                  children: [
+                                                    SvgPicture.asset(
+                                                      AppIcons.reviews,
+                                                    ),
+                                                    Text(
+                                                      "${vm.recipe!.reviewsCount}",
+                                                      style:
+                                                          Styles.s12w400whiteFFFDF9,
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
                                           ],
                                         ),
-                                      ],
+                                      ),
                                     ),
                                   ],
                                 ),

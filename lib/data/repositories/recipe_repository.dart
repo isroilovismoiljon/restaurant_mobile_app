@@ -4,12 +4,14 @@ import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
 import '../../core/client.dart';
 import '../models/recipes/category_details_model.dart';
 import '../models/recipes/category_model.dart';
+import '../models/recipes/review_model.dart';
 
 class RecipeRepository {
   RecipeModel? recipe;
   List<CategoryDetailsModel> categoryDetails = [];
   List<CategoryModel> categories = [];
   TrendingRecipeModel? trendingRecipe;
+  ReviewModel? reviewModel;
 
   final ApiClient client;
 
@@ -48,11 +50,21 @@ class RecipeRepository {
 
   Future<Result<TrendingRecipeModel>> getTrendingRecipe() async {
     if (trendingRecipe != null) return Result.ok(trendingRecipe!);
-    final result = await client.get<Map<String, dynamic>>('/recipes/trending-recipe');
+    var result = await client.get<Map<String, dynamic>>('/recipes/trending-recipe');
 
     return result.fold(
       (error) => Result.error(error),
       (value) => Result.ok(TrendingRecipeModel.fromJson(value)),
+    );
+  }
+
+
+  Future<Result<ReviewModel>> getReview(int recipeId) async {
+    if (reviewModel != null) return Result.ok(reviewModel!);
+    var result = await client.get<Map<String, dynamic>>('/recipes/reviews/detail/${recipeId}');
+    return result.fold(
+          (error) => Result.error(error),
+          (value) => Result.ok(ReviewModel.fromJson(value)),
     );
   }
 }

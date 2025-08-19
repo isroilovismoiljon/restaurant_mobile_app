@@ -18,11 +18,12 @@ import '../../features/home/pages/home.dart';
 import '../../features/onboarding/pages/cuisines_page.dart';
 import '../../features/onboarding/pages/launch.dart';
 import '../../features/onboarding/pages/onboarding_page.dart';
+import '../../features/reviews/page/reviews_page.dart';
 import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.home,
+    initialLocation: Routers.categoriesPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -90,7 +91,11 @@ class MyRouter {
       ),
       GoRoute(
         path: Routers.chefProfile,
-        builder: (context, state) => ChefProfilePage(chefId: state.extra as int),
+        builder: (context, state) => ChefProfilePage(chefId: state.extra as int,),
+      ),
+      GoRoute(
+        path: Routers.reviewsPage,
+        builder: (context, state) => ReviewsPage(recipeId: state.extra as int,),
       ),
     ],
   );

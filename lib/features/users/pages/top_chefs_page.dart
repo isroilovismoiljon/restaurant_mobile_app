@@ -5,6 +5,7 @@ import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
+import 'package:restourant_mobile_app/features/users/managers/chef_profile_vm.dart';
 import 'package:restourant_mobile_app/features/users/managers/top_chefs_vm.dart';
 import 'package:restourant_mobile_app/features/users/widgets/chefs_item.dart';
 

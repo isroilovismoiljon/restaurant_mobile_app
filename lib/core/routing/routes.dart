@@ -18,5 +18,6 @@ class Routers{
   static const enterSendCodePage = '/enterSendCodePage';
   static const topChefs = '/topChefs';
   static const chefProfile = '/chefProfile';
+  static const reviewsPage = '/reviewsPage';
 
 }
