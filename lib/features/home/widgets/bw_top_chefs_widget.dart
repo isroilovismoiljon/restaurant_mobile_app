@@ -34,7 +34,7 @@ class TopChefsWidget extends StatelessWidget {
                 child: Text(vm.errorChefs),
               )
             : Row(
-                spacing: 9.w,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ...List.generate(
                     4,

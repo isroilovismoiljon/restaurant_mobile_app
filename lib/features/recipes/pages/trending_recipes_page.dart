@@ -22,183 +22,204 @@ class TrendingRecipesPage extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
         appBar: MyAppBar(categoryTitle: 'Trending Recipes'),
         body: Consumer<TrendingRecipesViewModel>(
-            builder: (context, vm, child) {
-              return Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 125),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 241.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.r),
-                          color: AppColors.redPinkFD5D69,
-                        ),
-                        padding: const EdgeInsets.only(
-                          top: 9,
-                          bottom: 18,
-                          right: 36,
-                          left: 36,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          spacing: 9,
-                          children: [
-                            Text(
-                              'Most Viewed Today',
-                              style: Styles.s15w500whiteBeigeFFFDF9,
-                            ),
-                            SizedBox(
-                              width: 358.w,
-                              height: 183.h,
-                              child: vm.recipesIsLoading
-                                  ? Center(child: CircularProgressIndicator(),)
-                                  : TradingRecipe(
-                                title: vm.trendingRecipe!.title,
-                                description: vm.trendingRecipe!.description,
-                                photo: vm.trendingRecipe!.photo,
-                                timeRequired: vm.trendingRecipe!.timeRequired,
-                                rating: vm.trendingRecipe!.rating,
-                                colorContainer: AppColors.whiteBeigeFFFDF9,
-                                colorDescription: AppColors.brown1C0F0D,
-                                colorTitle: AppColors.brown1C0F0D,
-                              ),
-                            ),
-                          ],
-                        ),
+          builder: (context, vm, child) {
+            return Padding(
+              padding: EdgeInsets.only(top: 20.h, bottom: 125.h),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 241.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.r),
+                        color: AppColors.redPinkFD5D69,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 36),
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'See All',
-                                  style: Styles.s12w500redPinkFD5D69,
-                                ),
+                      padding: EdgeInsets.only(
+                        top: 9.h,
+                        bottom: 18.h,
+                        right: 36.w,
+                        left: 36.w,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 9.h,
+                        children: [
+                          Text(
+                            'Most Viewed Today',
+                            style: Styles.s15w500whiteBeigeFFFDF9,
+                          ),
+                          SizedBox(
+                            width: 358.w,
+                            height: 183.h,
+                            child: vm.recipesIsLoading
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : TradingRecipe(
+                                    title: vm.trendingRecipe!.title,
+                                    description: vm.trendingRecipe!.description,
+                                    photo: vm.trendingRecipe!.photo,
+                                    timeRequired:
+                                        vm.trendingRecipe!.timeRequired,
+                                    rating: vm.trendingRecipe!.rating,
+                                    colorContainer: AppColors.whiteBeigeFFFDF9,
+                                    colorDescription: AppColors.brown1C0F0D,
+                                    colorTitle: AppColors.brown1C0F0D,
+                                  ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 36.w),
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'See All',
+                                style: Styles.s12w500redPinkFD5D69,
                               ),
                             ),
-                            Column(
-                              spacing: 15,
-                              children: [
-                                ...List.generate(
-                                  vm.recipes.length,
-                                      (index) {
-                                    return
-                                      vm.recipesIsLoading
-                                      ? Center(child: CircularProgressIndicator(),)
+                          ),
+                          Column(
+                            spacing: 15.w,
+                            children: [
+                              ...List.generate(
+                                vm.recipes.length,
+                                (index) {
+                                  return vm.recipesIsLoading
+                                      ? Center(
+                                          child: CircularProgressIndicator(),
+                                        )
                                       : Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(14.r),
-                                          child: Image.network(
-                                            vm.recipes[index].photo,
-                                            width: 150.w,
-                                            height: 150.h,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 207.w,
-                                          height: 122.h,
-                                          decoration: BoxDecoration(
-                                            color: AppColors.whiteBeigeFFFDF9,
-                                            borderRadius: BorderRadius.horizontal(
-                                              right: Radius.circular(14.r),
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(14.r),
+                                              child: Image.network(
+                                                vm.recipes[index].photo,
+                                                width: 150.w,
+                                                height: 150.h,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 10,
-                                              right: 10,
-                                              top: 10,
-                                            ),
-                                            child: Column(
-                                              spacing: 6.h,
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  vm.recipes[index].title,
-                                                  style: Styles.s12w400brown3E2823,
+                                            Container(
+                                              width: 207.w,
+                                              height: 122.h,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    AppColors.whiteBeigeFFFDF9,
+                                                borderRadius:
+                                                    BorderRadius.horizontal(
+                                                      right: Radius.circular(
+                                                        14.r,
+                                                      ),
+                                                    ),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.only(
+                                                  left: 10.w,
+                                                  right: 10.w,
+                                                  top: 10.h,
                                                 ),
-                                                Text(
-                                                  vm.recipes[index].description,
-                                                  style: Styles.s13w300brown3E2823,
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                                Text(
-                                                  "By Chef ${vm.recipes[index].chef.firstName}",
-                                                  style: Styles.s12w300redPinkFD5D69,
-                                                  maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.spaceBetween,
+                                                child: Column(
+                                                  spacing: 6.h,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Row(
-                                                      spacing: 4.w,
-                                                      children: [
-                                                        SvgPicture.asset(
-                                                          AppIcons.clock,
-                                                        ),
-                                                        Text(
-                                                          '${vm.recipes[index].timeRequired}min',
-                                                          style: Styles
-                                                              .s12w400redPinkFD5D69,
-                                                        ),
-                                                      ],
+                                                    Text(
+                                                      vm.recipes[index].title,
+                                                      style: Styles
+                                                          .s12w400brown3E2823,
+                                                    ),
+                                                    Text(
+                                                      vm
+                                                          .recipes[index]
+                                                          .description,
+                                                      style: Styles
+                                                          .s13w300brown3E2823,
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                    ),
+                                                    Text(
+                                                      "By Chef ${vm.recipes[index].chef.firstName}",
+                                                      style: Styles
+                                                          .s12w300redPinkFD5D69,
+                                                      maxLines: 1,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                     ),
                                                     Row(
-                                                      spacing: 4.w,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
                                                       children: [
-                                                        Text(
-                                                          vm.recipes[index].difficulty,
-                                                          style: Styles
-                                                              .s12w400redPinkFD5D69,
+                                                        Row(
+                                                          spacing: 4.w,
+                                                          children: [
+                                                            SvgPicture.asset(
+                                                              AppIcons.clock,
+                                                            ),
+                                                            Text(
+                                                              '${vm.recipes[index].timeRequired}min',
+                                                              style: Styles
+                                                                  .s12w400redPinkFD5D69,
+                                                            ),
+                                                          ],
                                                         ),
-                                                        SvgPicture.asset(
-                                                          AppIcons.vector,
+                                                        Row(
+                                                          spacing: 4.w,
+                                                          children: [
+                                                            Text(
+                                                              vm
+                                                                  .recipes[index]
+                                                                  .difficulty,
+                                                              style: Styles
+                                                                  .s12w400redPinkFD5D69,
+                                                            ),
+                                                            SvgPicture.asset(
+                                                              AppIcons.vector,
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      spacing: 4.w,
-                                                      children: [
-                                                        Text(
-                                                          "${vm.recipes[index].rating}",
-                                                          style: Styles
-                                                              .s12w400redPinkFD5D69,
+                                                        Row(
+                                                          spacing: 4.w,
+                                                          children: [
+                                                            Text(
+                                                              "${vm.recipes[index].rating}",
+                                                              style: Styles
+                                                                  .s12w400redPinkFD5D69,
+                                                            ),
+                                                            SvgPicture.asset(
+                                                              AppIcons.star,
+                                                            ),
+                                                          ],
                                                         ),
-                                                        SvgPicture.asset(AppIcons.star),
                                                       ],
                                                     ),
                                                   ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                                          ],
+                                        );
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              );
-            }
+              ),
+            );
+          },
         ),
         bottomNavigationBar: MyBottomNavigationBar(),
       ),

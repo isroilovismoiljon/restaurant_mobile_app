@@ -13,41 +13,55 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.categoryTitle,
     this.actions = const [],
     this.centerTitle = true,
+    this.onTapFirstIcon = _defaultOnTap,
+    this.onTapLastIcon = _defaultOnTap,
   });
+
+  static void _defaultOnTap(){}
 
   final String categoryTitle;
   final List<String> actions;
   final bool centerTitle;
+  final VoidCallback onTapFirstIcon;
+  final VoidCallback onTapLastIcon;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.backgroundColor,
-      leading: AppBarLeadingBackArrow(onPressed: () {Navigator.of(context).pop();  },),
+      leading: AppBarLeadingBackArrow(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
       leadingWidth: 75.w,
-      title: Text(categoryTitle, style: Styles.s20w600redPink,
+      title: Text(
+        categoryTitle,
+        style: Styles.s20w600redPink,
         maxLines: 1,
-        overflow: TextOverflow.ellipsis,),
+        overflow: TextOverflow.ellipsis,
+      ),
       centerTitle: centerTitle,
       actions: [
         Row(
           children: [
-            AppBarAction(
-              icon: actions.isNotEmpty
-                  ? actions[0]
-                  : AppIcons.notification,
+            GestureDetector(
+              onTap: onTapFirstIcon,
+              child: AppBarAction(
+                icon: actions.isNotEmpty ? actions[0] : AppIcons.notification,
+              ),
             ),
             SizedBox(width: 5.w),
-            AppBarAction(
-              icon: actions.length > 1
-                  ? actions[1]
-                  : AppIcons.search,
+            GestureDetector(
+              onTap: onTapLastIcon,
+              child: AppBarAction(
+                icon: actions.length > 1 ? actions[1] : AppIcons.search,
+              ),
             ),
           ],
         ),
         SizedBox(width: 37.w),
       ],
-
     );
   }
 

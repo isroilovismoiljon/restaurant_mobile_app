@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/category_details_view_model.dart';
@@ -37,24 +38,28 @@ class CategoryDetails extends StatelessWidget {
               ),
               body: Consumer<CategoryDetailsViewModel>(
                 builder: (context, vm, child) {
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(37, 19, 37, 5),
-                    child: Column(
-                      children: [
-                        vm.categoriesLoading
-                            ? Center(
-                                child: CircularProgressIndicator(),
-                              )
-                            : AppBarBottom(
-                                vm: vm,
-                              ),
-                        SizedBox(height: 19),
-                        vm.categoryDetailsLoading
-                            ? Center(
-                                child: CircularProgressIndicator(),
-                              )
-                            : CategoryDetailsPageItem(categoryDetails: vm.categoryDetails,),
-                      ],
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 5.h),
+                      child: Column(
+                        children: [
+                          vm.categoriesLoading
+                              ? Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              : AppBarBottom(
+                                  vm: vm,
+                                ),
+                          SizedBox(height: 19.h),
+                          vm.categoryDetailsLoading
+                              ? Center(
+                                  child: CircularProgressIndicator(),
+                                )
+                              : CategoryDetailsPageItem(
+                                  categoryDetails: vm.categoryDetails,
+                                ),
+                        ],
+                      ),
                     ),
                   );
                 },

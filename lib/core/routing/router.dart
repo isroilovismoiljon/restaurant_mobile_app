@@ -22,7 +22,7 @@ import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.home,
+    initialLocation: Routers.topChefs,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,

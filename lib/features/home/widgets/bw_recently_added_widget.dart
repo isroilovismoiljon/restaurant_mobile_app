@@ -35,7 +35,7 @@ class RecentlyAddedWidget extends StatelessWidget {
                 ),
               )
             : Row(
-                spacing: 19.w,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   RecentlyAddedItem(
                     image: recentlyAddedRecipe[0].photo,

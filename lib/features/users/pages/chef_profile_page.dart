@@ -7,8 +7,8 @@ import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/users/managers/chef_profile_vm.dart';
 import 'package:restourant_mobile_app/features/users/widgets/chef_profile_stats.dart';
-
 import '../../../core/utils/icons.dart';
+import '../../common/others/animated_border_container.dart';
 import '../../recipes/widget/category_details_page_item.dart';
 
 class ChefProfilePage extends StatelessWidget {
@@ -34,20 +34,118 @@ class ChefProfilePage extends StatelessWidget {
                   ),
                 )
               : Scaffold(
-            extendBody: true,
+                  extendBody: true,
                   appBar: MyAppBar(
                     categoryTitle: '@${vm.chef!.username}',
                     centerTitle: false,
                     actions: [AppIcons.share, AppIcons.threeDots],
-
+                    onTapFirstIcon: () async {
+                      await showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.r),
+                            color: AppColors.whiteBeigeFFFDF9,
+                          ),
+                          constraints: BoxConstraints(minHeight: 240.h),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 45.w,
+                              top: 50.h,
+                              right: 56.w,
+                            ),
+                            child: Column(
+                              spacing: 17.h,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  spacing: 15.w,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(32.r),
+                                      child: Image.network(
+                                        vm.chef!.profilePhoto,
+                                        height: 64.h,
+                                        width: 64.w,
+                                      ),
+                                    ),
+                                    Text(
+                                      "@${vm.chef!.username}",
+                                      style: Styles.s15w500redPinkFD5D69,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Copy Profile URL',
+                                  style: Styles.s15w400beigeGradient1C0F0D,
+                                ),
+                                Text(
+                                  'Share this Profile',
+                                  style: Styles.s15w400beigeGradient1C0F0D,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    onTapLastIcon: () async {
+                      await showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.r),
+                            color: AppColors.whiteBeigeFFFDF9,
+                          ),
+                          constraints: BoxConstraints(minHeight: 100.h),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 45.w,
+                              top: 50.h,
+                              right: 56.w,
+                              bottom: 65.h
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              spacing: 17.h,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  spacing: 15.w,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(32.r),
+                                      child: Image.network(
+                                        vm.chef!.profilePhoto,
+                                        height: 64.h,
+                                        width: 64.w,
+                                      ),
+                                    ),
+                                    Text(
+                                      "@${vm.chef!.username}",
+                                      style: Styles.s15w500redPinkFD5D69,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'Report',
+                                  style: Styles.s15w400beigeGradient1C0F0D,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   backgroundColor: AppColors.backgroundColor,
                   body: SingleChildScrollView(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 37),
+                      padding: EdgeInsets.symmetric(horizontal: 37.w),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        spacing: 13,
+                        spacing: 13.h,
                         children: [
                           Row(
                             spacing: 13.w,
@@ -89,8 +187,8 @@ class ChefProfilePage extends StatelessWidget {
                                             MaterialTapTargetSize.shrinkWrap,
                                         minimumSize: Size.zero,
                                         padding: EdgeInsets.symmetric(
-                                          vertical: 2,
-                                          horizontal: 3,
+                                          vertical: 2.h,
+                                          horizontal: 3.w,
                                         ),
                                       ),
                                       onPressed: () {},
@@ -104,7 +202,9 @@ class ChefProfilePage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          ChefProfileStats(model: vm.chef!),
+                          AnimatedBorderContainer(
+                            child: ChefProfileStats(model: vm.chef!),
+                          ),
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -118,15 +218,19 @@ class ChefProfilePage extends StatelessWidget {
                                 height: 2.h,
                                 radius: BorderRadius.circular(2.r),
                               ),
-                              SizedBox(height: 15.h,),
-                              CategoryDetailsPageItem(categoryDetails: vm.categoryDetails)
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              CategoryDetailsPageItem(
+                                categoryDetails: vm.categoryDetails,
+                              ),
                             ],
                           ),
                         ],
                       ),
                     ),
                   ),
-            bottomNavigationBar: MyBottomNavigationBar(),
+                  bottomNavigationBar: MyBottomNavigationBar(),
                 );
         },
       ),

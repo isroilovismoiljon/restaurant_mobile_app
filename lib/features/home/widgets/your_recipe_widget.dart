@@ -39,7 +39,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
           Align(
             alignment: Alignment.topLeft,
             child: ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(13),
+              borderRadius: BorderRadiusGeometry.circular(13.r),
               child: Image.network(
                 widget.image,
                 width: 168.w,
@@ -58,9 +58,9 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
               width: 168.w,
               height: 48.h,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 15,
+                padding: EdgeInsets.symmetric(
+                  vertical: 5.h,
+                  horizontal: 15.w,
                 ),
                 child: Column(
                   spacing: 2.h,
@@ -68,7 +68,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
                   children: [
                     Text(
                       widget.title,
-                      style: Styles.s12w400black1C0F0D,
+                      style: Styles.s12w400black1C0F0D.copyWith(height: 1),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -105,7 +105,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
           Align(
             alignment: Alignment.topRight,
             child: Padding(
-              padding: const EdgeInsets.only(top: 7, right: 8.52),
+              padding: EdgeInsets.only(top: 7.h, right: 8.52.w),
               child: GestureDetector(
                 onTap: () {
                   setState(() {

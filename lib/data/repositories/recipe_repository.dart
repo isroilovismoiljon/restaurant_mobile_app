@@ -37,7 +37,7 @@ class RecipeRepository {
 
   Future<Result<List<CategoryModel>>> getCategories() async {
     if (categories.isNotEmpty) return Result.ok(categories);
-    final result = await client.get<List>('/recipes/list');
+    final result = await client.get<List>('/categories/list');
 
     return result.fold(
       (error) => Result.error(error),

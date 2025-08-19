@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/categories_page_view_model.dart';
@@ -23,7 +24,7 @@ class CategoriesPage extends StatelessWidget {
               return vm.isLoading
                 ? Center(child: CircularProgressIndicator(),)
                 : Padding(
-                padding: const EdgeInsets.fromLTRB(37, 5, 37, 5),
+                padding: EdgeInsets.fromLTRB(37.w, 5.h, 37.w, 5.h),
                 child: Column(children: [CategoryItems(vm: vm,)]),
               );
             },

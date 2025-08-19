@@ -34,7 +34,7 @@ class RecipesPage extends StatelessWidget {
                     ),
                     body: SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(36.5, 26, 37.5, 125),
+                        padding: EdgeInsets.fromLTRB(36.5.w, 26.h, 37.5.w, 125.h),
                         child: Column(
                           spacing: 31.h,
                           children: [
@@ -116,7 +116,7 @@ class RecipesPage extends StatelessWidget {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadiusGeometry.circular(
-                                    32,
+                                    32.r,
                                   ),
                                   child: Image.network(
                                     vm.recipe!.chef.profilePhoto,
@@ -227,10 +227,10 @@ class RecipesPage extends StatelessWidget {
                                       return Container(
                                         alignment: Alignment.center,
                                         padding: EdgeInsets.fromLTRB(
-                                          5,
-                                          23,
-                                          13,
-                                          22,
+                                          5.w,
+                                          23.h,
+                                          13.w,
+                                          22.h,
                                         ),
                                         width: 356.w,
                                         height: 81.h,
@@ -239,7 +239,7 @@ class RecipesPage extends StatelessWidget {
                                               ? AppColors.pinkColorEC888D
                                               : AppColors.pinkFFC6C9,
                                           borderRadius: BorderRadius.circular(
-                                            14,
+                                            14.r,
                                           ),
                                         ),
                                         child: Text(

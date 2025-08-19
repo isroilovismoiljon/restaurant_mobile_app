@@ -15,7 +15,7 @@ class CategoryItems extends StatelessWidget {
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisExtent: 185,
+          mainAxisExtent: 185.h,
         ),
         itemCount: vm.categories.length,
         itemBuilder: (context, index) {

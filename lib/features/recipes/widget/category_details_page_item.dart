@@ -9,6 +9,7 @@ import '../../../core/utils/icons.dart';
 
 class CategoryDetailsPageItem extends StatelessWidget {
   const CategoryDetailsPageItem({super.key, required this.categoryDetails});
+
   final List<CategoryDetailsModel> categoryDetails;
 
   @override
@@ -16,21 +17,23 @@ class CategoryDetailsPageItem extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      gridDelegate:
-      SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 30,
-        crossAxisSpacing: 19,
-        mainAxisExtent: 226,
+        mainAxisSpacing: 30.h,
+        crossAxisSpacing: 19.w,
+        mainAxisExtent: 226.h,
       ),
       itemCount: categoryDetails.length,
       itemBuilder: (context, index) {
         return InkWell(
-          onTap: (){
-            context.push(Routers.recipesPage, extra: {
-              'recipeId': categoryDetails[index].id,
-              'recipeTitle': categoryDetails[index].title,
-            });
+          onTap: () {
+            context.push(
+              Routers.recipesPage,
+              extra: {
+                'recipeId': categoryDetails[index].id,
+                'recipeTitle': categoryDetails[index].title,
+              },
+            );
           },
           child: Stack(
             children: [
@@ -42,19 +45,19 @@ class CategoryDetailsPageItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.whiteBeigeFFFDF9,
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(14),
-                      bottomRight: Radius.circular(14),
+                      bottomLeft: Radius.circular(14.r),
+                      bottomRight: Radius.circular(14.r),
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 10, 15, 7),
+                    padding: EdgeInsets.fromLTRB(15.w, 10.h, 15.w, 7.h),
                     child: Column(
-                      spacing: 1,
+                      spacing: 1.h,
                       children: [
                         Text(
                           categoryDetails[index].title,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
                             color: AppColors.color3E2823,
                           ),
@@ -62,8 +65,8 @@ class CategoryDetailsPageItem extends StatelessWidget {
                         Text(
                           categoryDetails[index].description,
                           style: TextStyle(
-                            height: 1,
-                            fontSize: 12,
+                            height: 1.h,
+                            fontSize: 12.sp,
                             fontWeight: FontWeight.w400,
                             color: AppColors.color3E2823,
                           ),
@@ -80,7 +83,7 @@ class CategoryDetailsPageItem extends StatelessWidget {
                                   "${categoryDetails[index].rating}",
                                   style: TextStyle(
                                     color: AppColors.pinkColorEC888D,
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -88,14 +91,14 @@ class CategoryDetailsPageItem extends StatelessWidget {
                               ],
                             ),
                             Row(
-                              spacing: 5,
+                              spacing: 5.w,
                               children: [
                                 SvgPicture.asset(AppIcons.clock),
                                 Text(
                                   "${categoryDetails[index].timeRequired}min",
                                   style: TextStyle(
                                     color: AppColors.pinkColorEC888D,
-                                    fontSize: 12,
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -115,13 +118,13 @@ class CategoryDetailsPageItem extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.4),
-                        blurRadius: 3,
+                        blurRadius: 3.r,
                         offset: Offset(0, 4),
                       ),
                     ],
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(14.r),
                     child: Image.network(
                       categoryDetails[index].photo,
                       width: 169.w,

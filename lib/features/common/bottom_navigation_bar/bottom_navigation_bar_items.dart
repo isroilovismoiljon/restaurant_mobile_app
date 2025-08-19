@@ -16,20 +16,20 @@ class BottomNavigationBarItems extends StatelessWidget {
       height: 126.h,
       decoration: BoxDecoration(color: Colors.transparent),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(75, 36, 74, 35),
+        padding: EdgeInsets.fromLTRB(75.w, 36.h, 74.w, 35.h),
         child: Container(
           width: 281.w,
           height: 56.h,
           decoration: BoxDecoration(
             color: AppColors.redPinkFD5D69,
-            borderRadius: BorderRadius.circular(33),
+            borderRadius: BorderRadius.circular(33.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
                 onPressed: () {
-                  context.push(Routers.home);
+                  context.go(Routers.home);
                 },
                 icon: SvgPicture.asset(AppIcons.home),
               ),

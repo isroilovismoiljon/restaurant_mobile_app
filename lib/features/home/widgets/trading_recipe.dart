@@ -43,7 +43,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            padding: EdgeInsets.fromLTRB(15, 8, 15, 2),
+            padding: EdgeInsets.fromLTRB(15.w, 8.h, 15.w, 2.h),
             alignment: Alignment.topLeft,
             width: 348.w,
             height: 49.h,

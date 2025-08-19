@@ -23,6 +23,7 @@ class TopChefWidget extends StatelessWidget {
             profilePhoto,
             width: 83.w,
             height: 74.h,
+            fit: BoxFit.cover,
           ),
         ),
         Text(

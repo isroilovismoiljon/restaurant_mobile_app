@@ -20,7 +20,7 @@ class Like extends StatelessWidget {
       height: 28.h,
       decoration: BoxDecoration(
         color: isTapLike ? AppColors.redPinkFD5D69 : AppColors.pinkFFC6C9,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(14.r),
       ),
       child: SvgPicture.asset(
         AppIcons.like,

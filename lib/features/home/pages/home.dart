@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
@@ -28,15 +30,14 @@ class _HomePageState extends State<HomePage> {
       builder: (context, child) {
         return Consumer<HomeViewModel>(
           builder: (context, vm, child) {
-            final recentlyAddedRecipe = vm.recentlyRecipes;
-            final chefs = vm.chefs;
             return Scaffold(
               extendBody: true,
               backgroundColor: AppColors.backgroundBeigeGradient1C0F0D,
               appBar: AppBar(
                 backgroundColor: AppColors.backgroundBeigeGradient1C0F0D,
+                leading: null,
                 title: Padding(
-                  padding: const EdgeInsets.fromLTRB(19, 19, 0, 20),
+                  padding: EdgeInsets.fromLTRB(19.w, 19.h, 0.w, 20.h),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 actions: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 38),
+                    padding: EdgeInsets.only(right: 38.w),
                     child: Row(
                       spacing: 5.w,
                       children: [
@@ -71,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               body: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 36, right: 36),
+                    padding: EdgeInsets.only(left: 36.w, right: 36.w),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: vm.isLoadingCategories
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom: 125, top: 19),
+                        padding: EdgeInsets.only(bottom: 125.h, top: 19.h),
                         child: Column(
                           spacing: 19.h,
                           children: [
@@ -92,23 +93,28 @@ class _HomePageState extends State<HomePage> {
                                 ? Center(
                                     child: Text(vm.errorTrendingRecipe),
                                   )
-                                : TrendingRecipeWidget(
-                                    vm: vm,
-                                  ),
+                                : GestureDetector(
+                              onTap: (){
+                                context.push(Routers.trendingRecipesPage);
+                              },
+                                  child: TrendingRecipeWidget(
+                                      vm: vm,
+                                    ),
+                                ),
                             YourRecipesWidget(
                               vm: vm,
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(35, 0, 35, 0),
+                              padding: EdgeInsets.symmetric(horizontal: 35.w),
                               child: Column(
-                                spacing: 19.h,
+                                spacing: 10.h,
                                 children: [
                                   TopChefsWidget(
-                                    chefs: chefs,
+                                    chefs: vm.chefs,
                                     vm: vm,
                                   ),
                                   RecentlyAddedWidget(
-                                    recentlyAddedRecipe: recentlyAddedRecipe,
+                                    recentlyAddedRecipe: vm.recentlyRecipes,
                                     vm: vm,
                                   ),
                                 ],

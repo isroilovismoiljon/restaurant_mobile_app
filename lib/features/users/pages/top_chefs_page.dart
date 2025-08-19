@@ -23,13 +23,13 @@ class TopChefsPage extends StatelessWidget {
           builder: (context, vm, child) {
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 125),
+                padding: EdgeInsets.only(bottom: 125.h),
                 child: Column(
                   children: [
                     vm.isLoadingMostViewedChefs
                         ? Center(child: CircularProgressIndicator())
                         : Container(
-                            padding: EdgeInsets.fromLTRB(36, 12, 36, 20),
+                            padding: EdgeInsets.fromLTRB(36.w, 12.h, 36.w, 20.h),
                             width: double.infinity,
                             height: 285.h,
                             decoration: BoxDecoration(
@@ -65,12 +65,12 @@ class TopChefsPage extends StatelessWidget {
                     vm.isLoadingMostLikedChefs
                         ? Center(child: CircularProgressIndicator())
                         : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 37, vertical: 15),
+                          padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 15.h),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              spacing: 9,
+                              spacing: 9.h,
                               children: [
                                 Text(
                                   'Most Liked Chefs',
@@ -96,12 +96,12 @@ class TopChefsPage extends StatelessWidget {
                     vm.isLoadingNewChefs
                         ? Center(child: CircularProgressIndicator())
                         : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 37, vertical: 15),
+                          padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 15.h),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              spacing: 9,
+                              spacing: 9.h,
                               children: [
                                 Text(
                                   'New Chefs',

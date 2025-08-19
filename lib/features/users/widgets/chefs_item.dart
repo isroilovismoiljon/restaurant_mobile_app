@@ -25,7 +25,7 @@ class ChefsItem extends StatelessWidget {
           context.push(Routers.chefProfile, extra: chefModel[index].id);
         },
         child: SizedBox(
-          height: 218.h,
+          height: 226.h,
           width: 170.w,
           child: Stack(
           alignment: Alignment.center,
@@ -33,9 +33,9 @@ class ChefsItem extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.fromLTRB(10, 12, 10, 10),
+                padding: EdgeInsets.fromLTRB(10.w, 12.h, 10.w, 10.h),
                 width: 160.w,
-                height: 76.h,
+                height: 80.h,
                 decoration: BoxDecoration(
                   color: AppColors.whiteBeigeFFFDF9,
                   borderRadius: BorderRadius.vertical(
@@ -59,9 +59,7 @@ class ChefsItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(
-                      height: 4,
-                    ),
+                    SizedBox(height: 2.h,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -85,8 +83,8 @@ class ChefsItem extends StatelessWidget {
                               style: TextButton.styleFrom(
                                 backgroundColor: AppColors.redPinkFD5D69,
                                 padding: EdgeInsets.symmetric(
-                                  vertical: 2,
-                                  horizontal: 3,
+                                  vertical: 2.h,
+                                  horizontal: 3.w,
                                 ),
                                 minimumSize: Size.zero,
                                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -102,16 +100,16 @@ class ChefsItem extends StatelessWidget {
                               style: IconButton.styleFrom(
                                 backgroundColor: AppColors.redPinkFD5D69,
                                 padding: EdgeInsets.symmetric(
-                                  vertical: 3,
-                                  horizontal: 3,
+                                  vertical: 3.h,
+                                  horizontal: 3.w,
                                 ),
                                 minimumSize: Size.zero,
                                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                               ),
                               icon: SvgPicture.asset(
                                 AppIcons.share,
-                                width: 8,
-                                height: 9,
+                                width: 8.w,
+                                height: 9.h,
                               ),
                             ),
                           ],
@@ -129,7 +127,7 @@ class ChefsItem extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.3),
-                      blurRadius: 2,
+                      blurRadius: 2.r,
                       offset: Offset(0, 2),
                     ),
                   ],

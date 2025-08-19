@@ -9,7 +9,6 @@ class CategoriesPageViewModel extends ChangeNotifier {
   String? error;
 
 
-
   CategoriesPageViewModel(RecipeRepository categoryRepo)
     : _repository = categoryRepo{
     getCategories();
@@ -20,7 +19,7 @@ class CategoriesPageViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final result = await _repository.getCategories();
+    var result = await _repository.getCategories();
     if (result is Ok) {
       categories = (result as Ok).value;
     }  else{

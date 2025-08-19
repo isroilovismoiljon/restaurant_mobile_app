@@ -54,22 +54,22 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedItem> {
                   width: 159.w,
                   height: 76.h,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 6,
-                      horizontal: 15,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 6.h,
+                      horizontal: 15.w,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           widget.title,
-                          style: Styles.s12w400brown3E2823,
+                          style: Styles.s12w400brown3E2823.copyWith(height: 1),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           widget.description,
-                          style: Styles.s13w300brown3E2823,
+                          style: Styles.s13w300brown3E2823.copyWith(height: 1),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -77,6 +77,7 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedItem> {
                           height: 7.h,
                         ),
                         Row(
+
                           children: [
                             Row(
                               spacing: 5.w,
@@ -127,7 +128,7 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedItem> {
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 7, right: 8),
+                  padding: EdgeInsets.only(top: 7.h, right: 8.w),
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
