@@ -44,7 +44,7 @@ class TopChefsWidget extends StatelessWidget {
                           context.push(Routers.topChefs);
                         },
                         child: TopChefWidget(
-                          firstName: chefs[index].firstName,
+                          firstName: chefs[index].firstName!,
                           profilePhoto: chefs[index].profilePhoto,
                         ),
                       );

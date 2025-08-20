@@ -1,7 +1,7 @@
 class ChefModel {
   int id;
-  String profilePhoto, username, firstName, lastName;
-  String? presentation;
+  String username, profilePhoto;
+  String? firstName, lastName, presentation;
   int? recipesCount, followingCount, followerCount;
 
   ChefModel({

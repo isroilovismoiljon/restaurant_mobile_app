@@ -1,28 +1,30 @@
 import 'package:restourant_mobile_app/data/models/users/chef.dart';
 
 class ReviewModel {
-  final int id, reviewsCount;
-  final String title, photo;
+  final int id;
   final num rating;
-  final ChefModel chef;
+  final String comment;
+  final String? image;
+  final ChefModel user;
+  final String created;
 
   ReviewModel({
     required this.id,
-    required this.reviewsCount,
-    required this.title,
-    required this.photo,
     required this.rating,
-    required this.chef,
+    required this.comment,
+    required this.image,
+    required this.user,
+    required this.created,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
     return ReviewModel(
       id: json['id'],
-      reviewsCount: json['reviewsCount'],
-      title: json['title'],
-      photo: json['photo'],
       rating: json['rating'],
-      chef: ChefModel.fromJson(json["user"]),
+      comment: json['comment'],
+      image: json['image'],
+      user: ChefModel.fromJson(json['user']),
+      created: json['created'],
     );
   }
 }
