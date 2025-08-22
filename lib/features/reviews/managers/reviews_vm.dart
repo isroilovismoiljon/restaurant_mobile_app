@@ -4,13 +4,15 @@ import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 
 class ReviewsViewModel extends ChangeNotifier {
-  RecipeReviewModel? reviewModel;
+  RecipeReviewModel? recipe;
   bool isLoadingRecipe = true;
   String? errorRecipe;
 
   List<ReviewModel> reviews = [];
   bool isLoadingReviews = true;
   String? errorReviews;
+  bool isLoadingAddReviews = true;
+  String? errorAddReviews;
 
   final RecipeRepository _repository;
 
@@ -25,7 +27,7 @@ class ReviewsViewModel extends ChangeNotifier {
     var result = await _repository.getRecipeReview(recipeId);
     result.fold(
       (error) => errorRecipe = error.toString(),
-      (value) => reviewModel = value,
+      (value) => recipe = value,
     );
     isLoadingRecipe = false;
     notifyListeners();
@@ -41,5 +43,15 @@ class ReviewsViewModel extends ChangeNotifier {
     );
     isLoadingReviews = false;
     notifyListeners();
+  }
+
+  Future<String> addReview(ReviewModel model) async {
+    isLoadingAddReviews = true;
+    notifyListeners();
+    var result = await _repository.postReview(model);
+    return result.fold(
+      (error) => errorAddReviews = error.toString(),
+      (value) => "ok",
+    );
   }
 }

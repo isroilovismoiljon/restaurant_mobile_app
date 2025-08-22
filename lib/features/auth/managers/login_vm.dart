@@ -15,15 +15,15 @@ class LoginViewModel extends ChangeNotifier {
 
   Future<void> login(LoginModel model) async {
     isLoading = true;
-    errorMessage = null;
     notifyListeners();
 
-    final result = await _repository.login(model);
+    var result = await _repository.login(model);
     result.fold(
       (error) {
         errorMessage = (result as Error).error.toString();
       },
       (value) {
+        errorMessage = null;
         accessToken = (result as Ok).value;
       },
     );

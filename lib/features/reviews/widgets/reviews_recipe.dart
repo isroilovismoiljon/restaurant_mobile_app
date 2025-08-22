@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
@@ -31,7 +33,7 @@ class ReviewsRecipe extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14.35.r),
                   child: Image.network(
-                    vm.reviewModel!.photo,
+                    vm.recipe!.photo,
                     height: 162.h,
                     width: 162.w,
                     fit: BoxFit.cover,
@@ -44,7 +46,7 @@ class ReviewsRecipe extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        vm.reviewModel!.title,
+                        vm.recipe!.title,
                         style: Styles.s20w500whiteFFFDF9,
                       ),
                       Row(
@@ -55,13 +57,13 @@ class ReviewsRecipe extends StatelessWidget {
                             spacing: 4.w,
                             children: [
                               ...List.generate(
-                                vm.reviewModel!.rating.round(),
+                                vm.recipe!.rating.round(),
                                 (index) => SvgPicture.asset(
                                   AppIcons.starFilled,
                                 ),
                               ),
                               ...List.generate(
-                                5 - vm.reviewModel!.rating.round(),
+                                5 - vm.recipe!.rating.round(),
                                 (index) => SvgPicture.asset(
                                   AppIcons.starEmpty,
                                 ),
@@ -69,7 +71,7 @@ class ReviewsRecipe extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            '(${vm.reviewModel!.reviewsCount} Reviews)',
+                            '(${vm.recipe!.reviewsCount} Reviews)',
                             style: Styles.s12w400whiteFFFDF9,
                           ),
                         ],
@@ -82,7 +84,7 @@ class ReviewsRecipe extends StatelessWidget {
                               16.r,
                             ),
                             child: Image.network(
-                              vm.reviewModel!.chef.profilePhoto,
+                              vm.recipe!.chef.profilePhoto,
                               width: 32.w,
                               height: 32.h,
                             ),
@@ -91,11 +93,11 @@ class ReviewsRecipe extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '@${vm.reviewModel!.chef.username}',
+                                '@${vm.recipe!.chef.username}',
                                 style: Styles.s13w400whiteFFFDF9,
                               ),
                               Text(
-                                '${vm.reviewModel!.chef.firstName} ${vm.reviewModel!.chef.firstName}-Chef',
+                                '${vm.recipe!.chef.firstName} ${vm.recipe!.chef.firstName}-Chef',
                                 style: Styles.s13w300whiteFFFDF9leagueSpartan,
                               ),
                             ],
@@ -103,7 +105,9 @@ class ReviewsRecipe extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push(Routers.createdReviewsPage, extra: vm.recipe!.id);
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: AppColors.whiteD9D9D9,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,

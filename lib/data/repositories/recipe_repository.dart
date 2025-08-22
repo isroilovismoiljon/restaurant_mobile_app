@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
@@ -45,8 +47,7 @@ class RecipeRepository {
 
     return result.fold(
       (error) => Result.error(error),
-      (value) =>
-          Result.ok(value.map((x) => CategoryModel.fromJson(x)).toList()),
+      (value) => Result.ok(value.map((x) => CategoryModel.fromJson(x)).toList()),
     );
   }
 
@@ -60,21 +61,28 @@ class RecipeRepository {
     );
   }
 
-
   Future<Result<RecipeReviewModel>> getRecipeReview(int recipeId) async {
     if (recipeReviewModel != null) return Result.ok(recipeReviewModel!);
     var result = await client.get<Map<String, dynamic>>('/recipes/reviews/detail/${recipeId}');
     return result.fold(
-          (error) => Result.error(error),
-          (value) => Result.ok(RecipeReviewModel.fromJson(value)),
+      (error) => Result.error(error),
+      (value) => Result.ok(RecipeReviewModel.fromJson(value)),
     );
   }
+
   Future<Result<List<ReviewModel>>> getReviews(int recipeId) async {
     if (reviews.isNotEmpty) return Result.ok(reviews);
     var result = await client.get<List>('/reviews/list', queryParams: {'recipeId': recipeId});
     return result.fold(
-          (error) => Result.error(error),
-          (value) => Result.ok(value.map((x) => ReviewModel.fromJson(x)).toList()),
+      (error) => Result.error(error),
+      (value) => Result.ok(value.map((x) => ReviewModel.fromJson(x)).toList()),
     );
+  }
+
+  Future<Result<ReviewModel>> postReview(ReviewModel model) async {
+    var result = await client.post('/reviews/create', data: model.toJson());
+    return result.fold(
+      (error) => Result.error(error),
+      (value) => Result.ok(value));
   }
 }

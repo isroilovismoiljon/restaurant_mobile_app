@@ -19,5 +19,6 @@ class Routers{
   static const topChefs = '/topChefs';
   static const chefProfile = '/chefProfile';
   static const reviewsPage = '/reviewsPage';
+  static const createdReviewsPage = '/createdReviewsPage';
 
 }

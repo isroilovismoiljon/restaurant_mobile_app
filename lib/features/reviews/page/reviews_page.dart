@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
+import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/reviews/managers/reviews_vm.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/review_comment.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/reviews_recipe.dart';
@@ -77,6 +78,7 @@ class ReviewsPage extends StatelessWidget {
             );
           },
         ),
+        bottomNavigationBar: MyBottomNavigationBar(),
       ),
     );
   }

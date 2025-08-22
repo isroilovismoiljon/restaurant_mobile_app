@@ -13,10 +13,9 @@ class RegisterViewModel extends ChangeNotifier {
 
   Future<void> register(RegisterModel model) async {
     isLoading = true;
-    errorMessage = null;
     notifyListeners();
 
-    final result = await repository.register(model);
+    var result = await repository.register(model);
     result.fold(
           (error) {
         errorMessage = error.toString();

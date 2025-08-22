@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/auth_interceptor.dart';
 import 'package:restourant_mobile_app/core/client.dart';
 import 'package:restourant_mobile_app/core/routing/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,16 +22,18 @@ class MyApp extends StatelessWidget {
       designSize: Size(430, 932),
       child: MultiProvider(
         providers: [
+          Provider(create: (context) => FlutterSecureStorage(),),
+          Provider(create: (context) => AuthInterceptor(secureStorage: context.read()),),
           Provider(
             create: (context) =>
-                ApiClient(baseUrl: "http://192.168.8.196:8888/api/v1"),
+                ApiClient(interceptor: context.read(), baseUrl: "http://192.168.8.196:8888/api/v1"),
           ),
           Provider(
             create: (context) => RecipeRepository(client: context.read()),
           ),
           Provider(
             create: (context) =>
-                AuthenticationRepository(client: context.read()),
+                AuthenticationRepository(client: context.read(), secureStorage: context.read()),
           ),
           Provider(
             create: (context) =>

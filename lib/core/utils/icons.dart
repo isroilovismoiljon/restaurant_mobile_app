@@ -20,4 +20,5 @@ class AppIcons{
   static String google = 'assets/Icons/google.svg';
   static String facebook = 'assets/Icons/facebook.svg';
   static String vector = 'assets/Icons/vector.svg';
+  static String bigTick = 'assets/Icons/big-tick.svg';
 }

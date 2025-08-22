@@ -99,6 +99,12 @@ class Styles {
     fontWeight: FontWeight.w400,
     fontFamily: FontFamily.poppins
   );
+  static TextStyle s13w400beige1C0F0D = TextStyle(
+      color: AppColors.backgroundBeigeGradient1C0F0D,
+      fontSize: 13.sp,
+      fontWeight: FontWeight.w400,
+      fontFamily: FontFamily.poppins
+  );
   static TextStyle s14w300whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 14.sp,
@@ -114,9 +120,9 @@ class Styles {
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
   );
-  static TextStyle s15w500pinkEC888D = TextStyle(
+  static const TextStyle s15w500pinkEC888D = TextStyle(
     color: AppColors.pinkColorEC888D,
-    fontSize: 15.sp,
+    fontSize: 15,
     fontWeight: FontWeight.w500,
   );
   static TextStyle s15w500whiteBeigeFFFDF9 = TextStyle(
@@ -124,10 +130,22 @@ class Styles {
     fontSize: 15.sp,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle s15w300whiteFFFDF9 = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w300,
+    fontFamily: FontFamily.poppins
+  );
   static TextStyle s15w400beigeGradient1C0F0D = TextStyle(
     color: AppColors.backgroundBeigeGradient1C0F0D,
     fontSize: 15.sp,
     fontWeight: FontWeight.w400,
+  );
+  static TextStyle s15w400beige1C0F0D_opacity45 = TextStyle(
+    color: AppColors.backgroundBeigeGradient1C0F0D.withValues(alpha: 0.45),
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s15w500redPinkFD5D69 = TextStyle(
     color: AppColors.redPinkFD5D69,
@@ -182,6 +200,11 @@ class Styles {
   );
   static TextStyle s20w600pinkEC888D = TextStyle(
     color: AppColors.pinkColorEC888D,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle s20w600beige1C0F0D = TextStyle(
+    color: AppColors.backgroundBeigeGradient1C0F0D,
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
   );
