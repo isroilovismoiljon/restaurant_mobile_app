@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:restourant_mobile_app/data/models/users/chef.dart';
 
-class RecipeReviewModel {
+class RecipeReviewModel{
   final int id, reviewsCount;
   final String title, photo;
   final num rating;

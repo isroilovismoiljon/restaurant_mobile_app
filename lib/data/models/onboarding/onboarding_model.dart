@@ -16,7 +16,7 @@ class OnboardingModel {
       order: json['order'],
       title: json['title'],
       subtitle: json['subtitle'],
-      image: json['image'],
+      image: json['photo'],
     );
   }
 }

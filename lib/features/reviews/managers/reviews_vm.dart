@@ -50,8 +50,16 @@ class ReviewsViewModel extends ChangeNotifier {
     notifyListeners();
     var result = await _repository.postReview(model);
     return result.fold(
-      (error) => errorAddReviews = error.toString(),
-      (value) => "ok",
+      (error) {
+        isLoadingAddReviews = false;
+        notifyListeners();
+        return errorAddReviews = error.toString();
+      },
+      (value) {
+        isLoadingAddReviews = false;
+        notifyListeners();
+        return value;
+      },
     );
   }
 }

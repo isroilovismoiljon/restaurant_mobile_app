@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
@@ -79,10 +80,11 @@ class RecipeRepository {
     );
   }
 
-  Future<Result<ReviewModel>> postReview(ReviewModel model) async {
-    var result = await client.post('/reviews/create', data: model.toJson());
+  Future<Result<String>> postReview(ReviewModel model) async {
+    var result = await client.post<Map<String, dynamic>>('/reviews/create', data: FormData.fromMap(model.toJson()));
     return result.fold(
       (error) => Result.error(error),
-      (value) => Result.ok(value));
+      (value) => Result.ok('ok'),
+    );
   }
 }

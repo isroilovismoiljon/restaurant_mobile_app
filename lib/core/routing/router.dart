@@ -24,7 +24,7 @@ import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.createdReviewsPage,
+    initialLocation: Routers.categoriesPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -100,7 +100,7 @@ class MyRouter {
       ),
       GoRoute(
         path: Routers.createdReviewsPage,
-        builder: (context, state) => CreateReviewPage(), //recipeId: state.extra as int,
+        builder: (context, state) => CreateReviewPage(recipeId: state.extra as int,), //recipeId: state.extra as int,
       ),
     ],
   );

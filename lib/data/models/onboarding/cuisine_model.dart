@@ -7,7 +7,7 @@ class CuisineModel {
   factory CuisineModel.fromJson(Map<String, dynamic> json) {
     return CuisineModel(
       id: json['id'],
-      image: json['image'],
+      image: json['photo'],
       title: json['title'],
     );
   }

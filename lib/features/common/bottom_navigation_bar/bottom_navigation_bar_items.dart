@@ -44,7 +44,10 @@ class BottomNavigationBarItems extends StatelessWidget {
                 icon: SvgPicture.asset(AppIcons.categories),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+
+                  context.go(Routers.loginPage);
+                },
                 icon: SvgPicture.asset(AppIcons.profile),
               ),
             ],

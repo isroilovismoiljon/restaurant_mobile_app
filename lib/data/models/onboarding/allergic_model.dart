@@ -7,7 +7,7 @@ class AllergicModel {
   factory AllergicModel.fromJson(Map<String, dynamic> json) {
     return AllergicModel(
       id: json['id'],
-      image: json['image'],
+      image: json['photo'],
       title: json['title'],
     );
   }

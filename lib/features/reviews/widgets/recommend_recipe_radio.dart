@@ -7,8 +7,9 @@ import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 
 class RecommendRecipeRadio extends StatefulWidget {
+  final ValueChanged<bool> onChanged;
   const RecommendRecipeRadio({
-    super.key,
+    super.key, required this.onChanged,
   });
 
   @override
@@ -37,6 +38,7 @@ class _RecommendRecipeRadioState extends State<RecommendRecipeRadio> {
                 setState(() {
                   groupValue = value;
                 });
+                widget.onChanged(false);
               },
             ),
           ],
@@ -55,6 +57,7 @@ class _RecommendRecipeRadioState extends State<RecommendRecipeRadio> {
                 setState(() {
                   groupValue = value;
                 });
+                widget.onChanged(true);
               },
             ),
           ],

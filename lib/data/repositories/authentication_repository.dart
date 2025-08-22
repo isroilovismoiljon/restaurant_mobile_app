@@ -13,7 +13,7 @@ class AuthenticationRepository {
     : _secureStorage = secureStorage;
 
   Future<Result<String>> register(RegisterModel model) async {
-    final result = await client.post<Map<String, dynamic>>(
+    var result = await client.post<Map<String, dynamic>>(
       '/auth/register',
       data: model.toJson(),
     );
@@ -29,7 +29,7 @@ class AuthenticationRepository {
   }
 
   Future<Result<String>> login(LoginModel model) async {
-    final result = await client.post<Map<String, dynamic>>(
+    var result = await client.post<Map<String, dynamic>>(
       '/auth/login',
       data: model.toJson(),
     );

@@ -18,7 +18,7 @@ class ReviewComment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? profilePhoto = vm.reviews[index].user.profilePhoto;
+    final String? profilePhoto = vm.reviews[index].user!.profilePhoto;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 10.h,
@@ -41,20 +41,20 @@ class ReviewComment extends StatelessWidget {
                           fit: BoxFit.cover,
                         )
                       : Image.network(
-                          vm.reviews[index].user.profilePhoto,
+                          vm.reviews[index].user!.profilePhoto,
                           width: 44.w,
                           height: 44.h,
                           fit: BoxFit.cover,
                         ),
                 ),
                 Text(
-                  '@${vm.reviews[index].user.username}',
+                  '@${vm.reviews[index].user!.username}',
                   style: Styles.s15w400redPinkFD5D69poppins,
                 ),
               ],
             ),
             Text(
-              "(${TimeHelper.timeAgo(vm.reviews[index].created)})",
+              "(${TimeHelper.timeAgo(vm.reviews[index].created!)})",
               style: Styles.s12w400pinkColorEC888D,
             ),
           ],
