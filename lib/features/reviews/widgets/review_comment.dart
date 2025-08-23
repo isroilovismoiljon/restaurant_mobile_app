@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/time_helper.dart';
+import 'package:restourant_mobile_app/features/common/time/time_helper.dart';
 import 'package:restourant_mobile_app/features/reviews/managers/reviews_vm.dart';
 
 class ReviewComment extends StatelessWidget {

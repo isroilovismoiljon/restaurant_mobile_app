@@ -5,7 +5,7 @@ import 'package:restourant_mobile_app/core/utils/app_colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 
-import '../../common/like.dart';
+import '../../common/like/like.dart';
 
 class TradingRecipe extends StatefulWidget {
   const TradingRecipe({

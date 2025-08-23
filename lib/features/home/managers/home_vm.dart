@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
+import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
 import '../../../data/models/recipes/category_model.dart';
@@ -9,7 +10,7 @@ import '../../../data/models/users/chef.dart';
 class HomeViewModel extends ChangeNotifier {
   late TrendingRecipeModel trendingRecipe;
   bool isLoadingTrendingRecipe = true;
-  List<CategoryDetailsModel> yourRecipes = [];
+  List<YourRecipeModel> yourRecipes = [];
   bool isLoadingYourRecipes = true;
   List<CategoryDetailsModel> recentlyRecipes = [];
   bool isLoadingRecentlyRecipes = true;
@@ -61,7 +62,7 @@ class HomeViewModel extends ChangeNotifier {
     isLoadingYourRecipes = true;
     notifyListeners();
 
-    var result = await _recipeRepository.getCategoryDetails({
+    var result = await _recipeRepository.getYourRecipes({
       'Page': 1,
       'Limit': 2,
     });

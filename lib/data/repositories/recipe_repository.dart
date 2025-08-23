@@ -5,6 +5,7 @@ import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
+import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
 import '../../core/client.dart';
 import '../models/recipes/category_details_model.dart';
 import '../models/recipes/category_model.dart';
@@ -14,6 +15,7 @@ class RecipeRepository {
   RecipeModel? recipe;
   List<CategoryDetailsModel> categoryDetails = [];
   List<CategoryModel> categories = [];
+  List<YourRecipeModel> yourRecipes = [];
   TrendingRecipeModel? trendingRecipe;
   RecipeReviewModel? recipeReviewModel;
   List<ReviewModel> reviews = [];
@@ -33,7 +35,7 @@ class RecipeRepository {
 
   Future<Result<List<CategoryDetailsModel>>> getCategoryDetails(Map<String, dynamic> queryParams) async {
     if (categoryDetails.isNotEmpty) return Result.ok(categoryDetails);
-    final result = await client.get<List>('/recipes/list', queryParams: queryParams);
+    var result = await client.get<List>('/recipes/list', queryParams: queryParams);
     return result.fold(
       (error) => Result.error(error),
       (value) => Result.ok(
@@ -42,9 +44,20 @@ class RecipeRepository {
     );
   }
 
+  Future<Result<List<YourRecipeModel>>> getYourRecipes(Map<String, dynamic> queryParams) async {
+    if (yourRecipes.isNotEmpty) return Result.ok(yourRecipes);
+    var result = await client.get<List>('/recipes/my-recipes', queryParams: queryParams);
+    return result.fold(
+      (error) => Result.error(error),
+      (value) => Result.ok(
+        value.map((x) => YourRecipeModel.fromJson(x)).toList(),
+      ),
+    );
+  }
+
   Future<Result<List<CategoryModel>>> getCategories() async {
     if (categories.isNotEmpty) return Result.ok(categories);
-    final result = await client.get<List>('/categories/list');
+    var result = await client.get<List>('/categories/list');
 
     return result.fold(
       (error) => Result.error(error),

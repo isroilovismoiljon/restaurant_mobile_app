@@ -33,9 +33,7 @@ class CategoryDetails extends StatelessWidget {
               extendBody: true,
               backgroundColor: AppColors.backgroundColor,
               appBar: MyAppBar(
-                categoryTitle: vm.selectedCategoryTitle.isEmpty
-                    ? items['categoryTitle']
-                    : vm.selectedCategoryTitle,
+                categoryTitle: vm.selectedCategoryTitle.isEmpty ? items['categoryTitle'] : vm.selectedCategoryTitle,
               ),
               body: Consumer<CategoryDetailsViewModel>(
                 builder: (context, vm, child) {
@@ -45,17 +43,13 @@ class CategoryDetails extends StatelessWidget {
                       child: Column(
                         children: [
                           vm.categoriesLoading
-                              ? Center(
-                                  child: CircularProgressIndicator(),
-                                )
+                              ? Center(child: CircularProgressIndicator())
                               : AppBarBottom(
                                   vm: vm,
                                 ),
                           SizedBox(height: 19.h),
                           vm.categoryDetailsLoading
-                              ? Center(
-                                  child: CircularProgressIndicator(),
-                                )
+                              ? Center(child: CircularProgressIndicator())
                               : vm.categoryDetails.isEmpty
                               ? Center(
                                   child: Text(

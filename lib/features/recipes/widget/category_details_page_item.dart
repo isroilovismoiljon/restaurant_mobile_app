@@ -4,14 +4,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/app_colors.dart';
-import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
 import '../../../core/utils/icons.dart';
+import '../../common/like/like.dart';
 
-class CategoryDetailsPageItem extends StatelessWidget {
+class CategoryDetailsPageItem extends StatefulWidget {
   const CategoryDetailsPageItem({super.key, required this.categoryDetails});
 
-  final List<CategoryDetailsModel> categoryDetails;
+  final List categoryDetails;
 
+  @override
+  State<CategoryDetailsPageItem> createState() => _CategoryDetailsPageItemState();
+}
+
+class _CategoryDetailsPageItemState extends State<CategoryDetailsPageItem> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -23,15 +28,17 @@ class CategoryDetailsPageItem extends StatelessWidget {
         crossAxisSpacing: 19.w,
         mainAxisExtent: 226.h,
       ),
-      itemCount: categoryDetails.length,
+      itemCount: widget.categoryDetails.length,
       itemBuilder: (context, index) {
+
+        bool isTapLike = false;
         return InkWell(
           onTap: () {
             context.push(
               Routers.recipesPage,
               extra: {
-                'recipeId': categoryDetails[index].id,
-                'recipeTitle': categoryDetails[index].title,
+                'recipeId': widget.categoryDetails[index].id,
+                'recipeTitle': widget.categoryDetails[index].title,
               },
             );
           },
@@ -58,7 +65,7 @@ class CategoryDetailsPageItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              categoryDetails[index].title,
+                              widget.categoryDetails[index].title,
                               style: TextStyle(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
@@ -66,7 +73,7 @@ class CategoryDetailsPageItem extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              categoryDetails[index].description,
+                              widget.categoryDetails[index].description,
                               style: TextStyle(
                                 height: 1.h,
                                 fontSize: 12.sp,
@@ -85,7 +92,7 @@ class CategoryDetailsPageItem extends StatelessWidget {
                               spacing: 5.w,
                               children: [
                                 Text(
-                                  "${categoryDetails[index].rating}",
+                                  "${widget.categoryDetails[index].rating}",
                                   style: TextStyle(
                                     color: AppColors.pinkColorEC888D,
                                     fontSize: 12.sp,
@@ -100,7 +107,7 @@ class CategoryDetailsPageItem extends StatelessWidget {
                               children: [
                                 SvgPicture.asset(AppIcons.clock),
                                 Text(
-                                  "${categoryDetails[index].timeRequired}min",
+                                  "${widget.categoryDetails[index].timeRequired}min",
                                   style: TextStyle(
                                     color: AppColors.pinkColorEC888D,
                                     fontSize: 12.sp,
@@ -131,10 +138,26 @@ class CategoryDetailsPageItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(14.r),
                     child: Image.network(
-                      categoryDetails[index].photo,
+                      widget.categoryDetails[index].photo,
                       width: 169.w,
                       height: 153.h,
                       fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 7.h, right: 8.52.w),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isTapLike = !isTapLike;
+                      });
+                    },
+                    child: Like(
+                      isTapLike: isTapLike,
                     ),
                   ),
                 ),

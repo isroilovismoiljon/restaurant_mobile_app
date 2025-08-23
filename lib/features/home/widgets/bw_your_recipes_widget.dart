@@ -28,8 +28,8 @@ class YourRecipesWidget extends StatelessWidget {
         spacing: 9.h,
         children: [
           Text(
-            "Your recipes",
-            style: Styles.s13w400whiteFFFDF9,
+            "Your Recipes",
+            style: Styles.s15w500whiteBeigeFFFDF9,
           ),
           vm.isLoadingYourRecipes
               ? Center(
