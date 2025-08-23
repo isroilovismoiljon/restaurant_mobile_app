@@ -101,8 +101,13 @@ class _HomePageState extends State<HomePage> {
                                       vm: vm,
                                     ),
                                 ),
-                            YourRecipesWidget(
-                              vm: vm,
+                            GestureDetector(
+                              onTap: (){
+                                context.push(Routers.yourRecipes);
+                              },
+                              child: YourRecipesWidget(
+                                vm: vm,
+                              ),
                             ),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 35.w),

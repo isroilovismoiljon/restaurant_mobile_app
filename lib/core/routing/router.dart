@@ -11,6 +11,7 @@ import 'package:restourant_mobile_app/features/onboarding/pages/allergic_page.da
 import 'package:restourant_mobile_app/features/onboarding/pages/cooking_level_page.dart';
 import 'package:restourant_mobile_app/features/onboarding/pages/welcome_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/trending_recipes_page.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/your_recipes.dart';
 import 'package:restourant_mobile_app/features/reviews/page/create_review_page.dart';
 import 'package:restourant_mobile_app/features/users/pages/chef_profile_page.dart';
 import '../../features/common/custom_transition_page.dart';
@@ -24,7 +25,7 @@ import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.categoriesPage,
+    initialLocation: Routers.home,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -101,6 +102,10 @@ class MyRouter {
       GoRoute(
         path: Routers.createdReviewsPage,
         builder: (context, state) => CreateReviewPage(recipeId: state.extra as int,), //recipeId: state.extra as int,
+      ),
+      GoRoute(
+        path: Routers.yourRecipes,
+        builder: (context, state) => YourRecipes(), //recipeId: state.extra as int,
       ),
     ],
   );
