@@ -4,6 +4,7 @@ import 'package:restourant_mobile_app/features/auth/pages/enter_send_code_page.d
 import 'package:restourant_mobile_app/features/auth/pages/forgot_your_password_enter_email_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/login_page.dart';
 import 'package:restourant_mobile_app/features/auth/pages/register_page.dart';
+import 'package:restourant_mobile_app/features/recipes/pages/community_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/categories_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/category_details_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/recipes_page.dart';
@@ -25,7 +26,7 @@ import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.home,
+    initialLocation: Routers.community,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -106,6 +107,10 @@ class MyRouter {
       GoRoute(
         path: Routers.yourRecipes,
         builder: (context, state) => YourRecipes(), //recipeId: state.extra as int,
+      ),
+      GoRoute(
+        path: Routers.community,
+        builder: (context, state) => CommunityPage(), //recipeId: state.extra as int,
       ),
     ],
   );

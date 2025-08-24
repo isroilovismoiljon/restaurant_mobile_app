@@ -21,5 +21,6 @@ class Routers{
   static const reviewsPage = '/reviewsPage';
   static const createdReviewsPage = '/createdReviewsPage';
   static const yourRecipes = '/yourRecipes';
+  static const community = '/community';
 
 }

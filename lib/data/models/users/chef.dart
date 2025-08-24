@@ -27,4 +27,12 @@ class ChefModel {
     followingCount: json["followingCount"],
     followerCount: json["followerCount"],
   );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "username": username,
+    "firstName": firstName,
+    "lastName": lastName,
+    "profilePhoto": profilePhoto,
+  };
 }

@@ -141,6 +141,12 @@ class Styles {
     fontSize: 15.sp,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle s15w400whiteBeigeFFFDF9poppins = TextStyle(
+    color: AppColors.whiteBeigeFFFDF9,
+    fontSize: 15.sp,
+    fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
+  );
   static TextStyle s15w400beige1C0F0D_opacity45 = TextStyle(
     color: AppColors.backgroundBeigeGradient1C0F0D.withValues(alpha: 0.45),
     fontSize: 15.sp,

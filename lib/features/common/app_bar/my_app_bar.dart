@@ -43,7 +43,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       centerTitle: centerTitle,
       actions:
-      actions.isEmpty
+      actions.isNotEmpty
       ? null
       : [
         Row(

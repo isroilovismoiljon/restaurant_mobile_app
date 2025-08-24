@@ -12,8 +12,12 @@ class TimeHelper{
       return '${diff.inHours} hours ago';
     } else if (diff.inDays < 7) {
       return '${diff.inDays} days ago';
-    } else {
+    } else if (diff.inDays < 30) {
       return '${(diff.inDays / 7).floor()} weeks ago';
+    } else if (diff.inDays < 365) {
+      return '${(diff.inDays / 30).floor()} months ago';
+    } else {
+      return '${(diff.inDays / 365).floor()} years ago';
     }
   }
 

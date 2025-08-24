@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
+import 'package:restourant_mobile_app/data/models/recipes/community_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
@@ -19,6 +20,7 @@ class RecipeRepository {
   TrendingRecipeModel? trendingRecipe;
   RecipeReviewModel? recipeReviewModel;
   List<ReviewModel> reviews = [];
+  List<CommunityModel> communities = [];
 
   final ApiClient client;
 
@@ -98,6 +100,15 @@ class RecipeRepository {
     return result.fold(
       (error) => Result.error(error),
       (value) => Result.ok('ok'),
+    );
+  }
+
+  Future<Result<List<CommunityModel>>> getCommunities(Map<String, dynamic> queryParams) async {
+    if (communities.isNotEmpty) return Result.ok(communities);
+    var result = await client.get<List>('/recipes/community/list', queryParams: queryParams);
+    return result.fold(
+          (error) => Result.error(error),
+          (value) => Result.ok(value.map((x) => CommunityModel.fromJson(x)).toList()),
     );
   }
 }

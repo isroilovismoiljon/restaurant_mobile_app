@@ -34,7 +34,9 @@ class BottomNavigationBarItems extends StatelessWidget {
                 icon: SvgPicture.asset(AppIcons.home),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.push(Routers.community);
+                },
                 icon: SvgPicture.asset(AppIcons.community),
               ),
               IconButton(
