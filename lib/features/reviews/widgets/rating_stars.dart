@@ -27,12 +27,12 @@ class _RatingStarsState extends State<RatingStars> {
           (index) {
             return IconButton(
               onPressed: () {
-                rating = index + 2;
+                rating = index + 1;
                 widget.onChanged(rating);
                 setState(() {});
               },
               icon: SvgPicture.asset(
-                index + 1 < rating ? AppIcons.starFilled : AppIcons.starEmpty,
+                index < rating ? AppIcons.starFilled : AppIcons.starEmpty,
                 width: 29.w,
                 height: 29.h,
                 colorFilter: ColorFilter.mode(AppColors.redPinkFD5D69, BlendMode.srcIn),

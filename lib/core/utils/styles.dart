@@ -168,11 +168,13 @@ class Styles {
     color: AppColors.redPinkFD5D69,
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s16w400white = TextStyle(
     color: AppColors.whiteFFFFFF,
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
+    fontFamily: FontFamily.poppins
   );
   static TextStyle s16w500whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,

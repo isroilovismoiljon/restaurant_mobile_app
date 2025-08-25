@@ -33,7 +33,9 @@ class ReviewsPage extends StatelessWidget {
                   SizedBox(
                     height: 17.h,
                   ),
-                  ReviewsRecipe(vm: vm,),
+                  ReviewsRecipe(
+                    vm: vm,
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 27.h),
                     child: Column(
@@ -47,6 +49,16 @@ class ReviewsPage extends StatelessWidget {
                         vm.isLoadingRecipe
                             ? Center(
                                 child: CircularProgressIndicator(),
+                              )
+                            : vm.reviews.isEmpty
+                            ? Center(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 50.h),
+                                  child: Text(
+                                    'Comments not found!',
+                                    style: Styles.s15w500whiteBeigeFFFDF9,
+                                  ),
+                                ),
                               )
                             : Column(
                                 children: [

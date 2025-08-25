@@ -27,8 +27,6 @@ class YourRecipeWidget extends StatefulWidget {
 
 class _YourRecipeWidgetState extends State<YourRecipeWidget> {
   bool isTapLike = false;
-
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
