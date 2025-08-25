@@ -30,60 +30,57 @@ class _CommunityPageState extends State<CommunityPage> {
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
         appBar: MyAppBar(categoryTitle: 'Community'),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 36.w),
-          child: Column(
-            spacing: 22.h,
-            children: [
-              Row(
+        body: Column(
+          spacing: 22.h,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 36.w),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       appbarBottomIndex = bottomTopIndex;
+                      var vm = context.read<CommunityViewModel>().getTopCommunities();
                       setState(() {});
                     },
                     child: Container(
                       height: 25.h,
                       padding: EdgeInsets.symmetric(horizontal: 10.w),
                       decoration: BoxDecoration(
-                        color: appbarBottomIndex == bottomTopIndex
-                            ? AppColors.redPinkFD5D69
-                            : Colors.transparent,
+                        color: appbarBottomIndex == bottomTopIndex ? AppColors.redPinkFD5D69 : Colors.transparent,
                         borderRadius: BorderRadius.circular(18.r),
                       ),
                       child: Text(
                         'Top Recipes',
-                        style: appbarBottomIndex == bottomTopIndex
-                            ? Styles.s16w400white
-                            : Styles.s16w400redPink,
+                        style: appbarBottomIndex == bottomTopIndex ? Styles.s16w400white : Styles.s16w400redPink,
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       appbarBottomIndex = bottomNewIndex;
+                      var vm = context.read<CommunityViewModel>().getNewCommunities();
                       setState(() {});
                     },
                     child: Container(
                       height: 25.h,
                       padding: EdgeInsets.symmetric(horizontal: 10.w),
                       decoration: BoxDecoration(
-                        color: appbarBottomIndex == bottomNewIndex
-                            ? AppColors.redPinkFD5D69
-                            : Colors.transparent,
+                        color: appbarBottomIndex == bottomNewIndex ? AppColors.redPinkFD5D69 : Colors.transparent,
                         borderRadius: BorderRadius.circular(18.r),
                       ),
                       child: Text(
                         'Newest',
-                        style: appbarBottomIndex == bottomNewIndex
-                            ? Styles.s16w400white
-                            : Styles.s16w400redPink,
+                        style: appbarBottomIndex == bottomNewIndex ? Styles.s16w400white : Styles.s16w400redPink,
                       ),
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
+                        appbarBottomIndex = bottomTopIndex;
+                        var vm = context.read<CommunityViewModel>().getOldCommunities();
+                        setState(() {});
                       appbarBottomIndex = bottomOldIndex;
                       setState(() {});
                     },
@@ -91,29 +88,28 @@ class _CommunityPageState extends State<CommunityPage> {
                       height: 25.h,
                       padding: EdgeInsets.symmetric(horizontal: 10.w),
                       decoration: BoxDecoration(
-                        color: appbarBottomIndex == bottomOldIndex
-                            ? AppColors.redPinkFD5D69
-                            : Colors.transparent,
+                        color: appbarBottomIndex == bottomOldIndex ? AppColors.redPinkFD5D69 : Colors.transparent,
                         borderRadius: BorderRadius.circular(18.r),
                       ),
                       child: Text(
                         'Oldest',
-                        style: appbarBottomIndex == bottomOldIndex
-                            ? Styles.s16w400white
-                            : Styles.s16w400redPink,
+                        style: appbarBottomIndex == bottomOldIndex ? Styles.s16w400white : Styles.s16w400redPink,
                       ),
                     ),
                   ),
                 ],
               ),
-              Expanded(
-                child: Selector<CommunityViewModel, (bool, List<CommunityModel>)>(
-                  selector: (context, vm) => (vm.isLoading, vm.communities),
-                  builder: (context, value, child) {
-                    final (isLoading, communities) = value;
-                    return isLoading
-                        ? Center(child: CircularProgressIndicator())
-                        : SingleChildScrollView(
+            ),
+            Expanded(
+              child: Selector<CommunityViewModel, (bool, List<CommunityModel>)>(
+                selector: (context, vm) => (vm.isLoading, vm.communities),
+                builder: (context, value, child) {
+                  final (isLoading, communities) = value;
+                  return isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : SingleChildScrollView(
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(36.w, 20.h, 36.w, 125.h),
                             child: Column(
                               spacing: 34.h,
                               children: [
@@ -125,12 +121,12 @@ class _CommunityPageState extends State<CommunityPage> {
                                 ),
                               ],
                             ),
-                          );
-                  },
-                ),
+                          ),
+                        );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         bottomNavigationBar: MyBottomNavigationBar(),
       ),
