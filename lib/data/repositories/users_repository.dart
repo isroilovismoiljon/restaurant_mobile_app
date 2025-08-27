@@ -3,7 +3,6 @@ import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/models/users/chef.dart';
 
 class UsersRepository {
-
   final ApiClient client;
 
   UsersRepository({required this.client});
@@ -14,9 +13,9 @@ class UsersRepository {
       '/top-chefs/list',
       queryParams: params,
     );
-    return result.fold((error) => Result.error(error),
-          (value) =>
-          Result.ok(value.map((x) => ChefModel.fromJson(x)).toList()),
+    return result.fold(
+      (error) => Result.error(error),
+      (value) => Result.ok(value.map((x) => ChefModel.fromJson(x)).toList()),
     );
   }
 
@@ -25,9 +24,27 @@ class UsersRepository {
     var result = await client.get(
       '/auth/details/$id',
     );
-    return result.fold((error) => Result.error(error),
-          (value) =>
-          Result.ok(ChefModel.fromJson(value)),
+    return result.fold(
+      (error) => Result.error(error),
+      (value) => Result.ok(ChefModel.fromJson(value)),
+    );
+  }
+
+  Future<Result<ChefModel>> getMe() async {
+    var result = await client.get(
+      '/auth/me',
+    );
+    return result.fold(
+      (error) => Result.error(error),
+      (value) => Result.ok(ChefModel.fromJson(value)),
+    );
+  }
+
+  Future<Result<String>> follow(int userId) async {
+    var result = await client.post<String>('/auth/follow/$userId', data: userId);
+    return result.fold(
+      (error) => Result.error(error),
+      (value) => Result.ok(value),
     );
   }
 }

@@ -22,5 +22,6 @@ class Routers{
   static const createdReviewsPage = '/createdReviewsPage';
   static const yourRecipes = '/yourRecipes';
   static const community = '/community';
+  static const myProfile = '/myProfile';
 
 }

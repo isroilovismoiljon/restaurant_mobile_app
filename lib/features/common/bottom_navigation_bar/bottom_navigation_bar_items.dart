@@ -48,7 +48,7 @@ class BottomNavigationBarItems extends StatelessWidget {
               IconButton(
                 onPressed: () {
 
-                  context.go(Routers.loginPage);
+                  context.go(Routers.myProfile);
                 },
                 icon: SvgPicture.asset(AppIcons.profile),
               ),

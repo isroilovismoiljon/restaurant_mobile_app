@@ -15,6 +15,7 @@ import 'package:restourant_mobile_app/features/recipes/pages/trending_recipes_pa
 import 'package:restourant_mobile_app/features/recipes/pages/your_recipes_page.dart';
 import 'package:restourant_mobile_app/features/reviews/page/create_review_page.dart';
 import 'package:restourant_mobile_app/features/users/pages/chef_profile_page.dart';
+import 'package:restourant_mobile_app/features/users/pages/your_profile_page.dart';
 import '../../features/common/transition/custom_transition_page.dart';
 import '../../features/error/error404.dart';
 import '../../features/home/pages/home.dart';
@@ -26,7 +27,7 @@ import '../../features/users/pages/top_chefs_page.dart';
 
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.community,
+    initialLocation: Routers.myProfile,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -111,6 +112,10 @@ class MyRouter {
       GoRoute(
         path: Routers.community,
         builder: (context, state) => CommunityPage(), //recipeId: state.extra as int,
+      ),
+      GoRoute(
+        path: Routers.myProfile,
+        builder: (context, state) => YourProfilePage(), //recipeId: state.extra as int,
       ),
     ],
   );

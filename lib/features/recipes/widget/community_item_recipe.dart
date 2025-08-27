@@ -39,7 +39,7 @@ class _CommunityItemRecipeState extends State<CommunityItemRecipe> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                padding: EdgeInsets.only(left: 15.w, right: 15.w, top: 2.h),
                 height: 78.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.vertical(bottom: Radius.circular(14.r)),

@@ -9,7 +9,9 @@ import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
 class ChefProfileViewModel extends ChangeNotifier {
   ChefModel? chef;
   bool isLoadingChef = true;
+  bool isLoadingFollow = true;
   String? errorChef;
+  String? errorFollow;
   List<CategoryDetailsModel> categoryDetails = [];
   bool isLoadingCategoryDetails = true;
   String? errorCategoryDetails;
@@ -33,12 +35,10 @@ class ChefProfileViewModel extends ChangeNotifier {
     isLoadingChef = true;
     notifyListeners();
     var result = await _repository.getChef(id);
-    if (result is Ok) {
-      chef = (result as Ok).value;
-    } else {
-      errorChef = (result as Error).error.toString();
-    }
-
+    result.fold((error) => errorChef = error.toString(), (value) {
+      chef = value;
+      errorChef = null;
+    },);
     isLoadingChef = false;
     notifyListeners();
   }
@@ -47,12 +47,28 @@ class ChefProfileViewModel extends ChangeNotifier {
     isLoadingCategoryDetails = true;
     notifyListeners();
     var result = await _repositoryRecipe.getCategoryDetails({'UserId': chefId});
-    if (result is Ok) {
-      categoryDetails = (result as Ok).value;
-    } else {
-      errorCategoryDetails = (result as Error).error.toString();
-    }
-    isLoadingChef = false;
+    result.fold((error) => errorCategoryDetails = error.toString(), (value) {
+      categoryDetails = value;
+      errorCategoryDetails = null;
+    },);
+    isLoadingCategoryDetails = false;
+    notifyListeners();
+  }
+
+  Future<String> followToUser(int userId) async {
+    isLoadingFollow = true;
+    notifyListeners();
+    var result = await _repository.follow(userId);
+    return result.fold((error) {
+      isLoadingFollow = false;
+      notifyListeners();
+      return errorFollow = error.toString();
+    }, (value) {
+      isLoadingFollow = false;
+      notifyListeners();
+      return 'ok';
+    },);
+    isLoadingFollow = false;
     notifyListeners();
   }
 }

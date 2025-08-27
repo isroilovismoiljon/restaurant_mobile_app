@@ -95,7 +95,7 @@ class RecipeRepository {
     );
   }
 
-  Future<Result<String>> postReview(ReviewModel model) async {
+  Future<Result<String>> addReview(ReviewModel model) async {
     var result = await client.post<Map<String, dynamic>>('/reviews/create', data: FormData.fromMap(model.toJson()));
     return result.fold(
       (error) => Result.error(error),

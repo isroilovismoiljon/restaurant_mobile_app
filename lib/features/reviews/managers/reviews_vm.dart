@@ -48,18 +48,16 @@ class ReviewsViewModel extends ChangeNotifier {
   Future<String> addReview(ReviewModel model) async {
     isLoadingAddReviews = true;
     notifyListeners();
-    var result = await _repository.postReview(model);
+    var result = await _repository.addReview(model);
     return result.fold(
       (error) {
-        isLoadingAddReviews = false;
-        notifyListeners();
         return errorAddReviews = error.toString();
       },
       (value) {
-        isLoadingAddReviews = false;
-        notifyListeners();
         return value;
       },
     );
+    isLoadingAddReviews = false;
+    notifyListeners();
   }
 }

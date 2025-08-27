@@ -7,9 +7,11 @@ import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/users/managers/chef_profile_vm.dart';
 import 'package:restourant_mobile_app/features/users/widgets/chef_profile_stats.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../core/utils/icons.dart';
 import '../../common/others/animated_border_container.dart';
 import '../../recipes/widget/category_details_page_item.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
 class ChefProfilePage extends StatelessWidget {
   const ChefProfilePage({super.key, required this.chefId});
@@ -183,15 +185,28 @@ class ChefProfilePage extends StatelessWidget {
                                     TextButton(
                                       style: TextButton.styleFrom(
                                         backgroundColor: AppColors.pinkFFC6C9,
-                                        tapTargetSize:
-                                            MaterialTapTargetSize.shrinkWrap,
+                                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                         minimumSize: Size.zero,
                                         padding: EdgeInsets.symmetric(
                                           vertical: 3.h,
                                           horizontal: 17.w,
                                         ),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        var result = await context.read<ChefProfileViewModel>().followToUser(chefId);
+                                        showTopSnackBar(
+                                          Overlay.of(context),
+                                          displayDuration: Duration(microseconds: 300),
+                                          result == 'ok'
+                                              ? CustomSnackBar.success(
+                                                  message: "You are followed!",
+                                                  messagePadding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
+                                                )
+                                              : CustomSnackBar.error(
+                                                  message: result,
+                                                ),
+                                        );
+                                      },
                                       child: Text(
                                         'Following',
                                         style: Styles.s10w500pinkColorEC888D,

@@ -5,6 +5,8 @@ import 'package:restourant_mobile_app/core/auth_interceptor.dart';
 import 'package:restourant_mobile_app/core/client.dart';
 import 'package:restourant_mobile_app/core/routing/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:restourant_mobile_app/core/utils/app_theme.dart';
+import 'package:restourant_mobile_app/core/utils/theme_mode_view_model.dart';
 import 'package:restourant_mobile_app/data/repositories/authentication_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
@@ -39,8 +41,12 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 UsersRepository(client: context.read()),
           ),
+          ChangeNotifierProvider(create: (context) => ThemeModeViewModel(),)
         ],
         builder: (context, child) => MaterialApp.router(
+          theme: AppThemes.light,
+          darkTheme: AppThemes.dark,
+          themeMode: context.watch<ThemeModeViewModel>().mode,
           debugShowCheckedModeBanner: true,
           routerConfig: MyRouter().router,
         ),
