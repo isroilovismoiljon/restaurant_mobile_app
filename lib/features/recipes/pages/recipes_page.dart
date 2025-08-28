@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/recipes_view_model.dart';

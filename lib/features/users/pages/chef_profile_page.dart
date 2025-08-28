@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
@@ -9,7 +9,7 @@ import 'package:restourant_mobile_app/features/users/managers/chef_profile_vm.da
 import 'package:restourant_mobile_app/features/users/widgets/chef_profile_stats.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../core/utils/icons.dart';
-import '../../common/others/animated_border_container.dart';
+import '../../common/border/animated_border_container.dart';
 import '../../recipes/widget/category_details_page_item.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 

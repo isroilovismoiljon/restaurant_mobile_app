@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/features/onboarding/magagers/onboarding_view_model.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/utils/icons.dart';
 import '../../../core/utils/styles.dart';
-import '../../common/bottom_navigation_bar/bottom_navigation_bar_gradient.dart';
+import '../../common/widgets/bottom_navigation_bar/bottom_navigation_bar_gradient.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});

@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/utils/app_theme.dart';
-import '../../../core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/features/recipes/widget/category_details_page_item.dart';
+import '../../../core/utils/colors.dart';
 import '../../../core/utils/styles.dart';
-import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
-import '../../common/others/animated_border_container.dart';
-import '../../recipes/widget/category_details_page_item.dart';
+import '../../common/widgets/border/animated_border_container.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import '../managers/your_profile_vm.dart';
 import '../widgets/chef_profile_stats.dart';
 
-class YourProfilePage extends StatelessWidget {
+class YourProfilePage extends StatefulWidget {
   const YourProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<YourProfilePage> createState() => _YourProfilePageState();
+}
+
+class _YourProfilePageState extends State<YourProfilePage> with SingleTickerProviderStateMixin {
+  late final TabController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,137 +50,145 @@ class YourProfilePage extends StatelessWidget {
               : Scaffold(
                   extendBody: true,
                   backgroundColor: AppColors.backgroundColor,
-                  body: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 36.w, left: 36.w, top: 47.h),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        spacing: 13.h,
-                        children: [
-                          Row(
-                            spacing: 13.w,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(50.r),
-                                child: Image.network(
-                                  vm.user!.profilePhoto,
-                                  width: 102.w,
-                                  height: 97.h,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 205.w,
-                                child: Column(
-                                  spacing: 6.h,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                  body: Padding(
+                    padding: EdgeInsets.only(right: 36.w, left: 36.w),
+                    child: CustomScrollView(
+                      shrinkWrap: true,
+                      slivers: [
+                        SliverAppBar(
+                          leading: SizedBox(),
+                          pinned: true,
+                          surfaceTintColor: Colors.transparent,
+                          leadingWidth: 0,
+                          titleSpacing: 0,
+                          toolbarHeight: 220.h,
+                          title: Padding(
+                            padding: EdgeInsets.zero,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              spacing: 13.h,
+                              children: [
+                                Row(
+                                  spacing: 13.w,
                                   children: [
-                                    Text(
-                                      '${vm.user!.firstName} ${vm.user!.lastName}',
-                                      style: Styles.s15w500redPinkFD5D69,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.r),
+                                      child: Image.network(
+                                        vm.user!.profilePhoto,
+                                        width: 102.w,
+                                        height: 97.h,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                    Text(
-                                      "@${vm.user!.username}",
-                                      style: Styles.s12w400pinkColorEC888D,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    Text(
-                                      vm.user!.presentation!,
-                                      style: Styles.s12w300whiteBeigeFFFDF9,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
+                                    SizedBox(
+                                      width: 205.w,
+                                      child: Column(
+                                        spacing: 6.h,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${vm.user!.firstName} ${vm.user!.lastName}',
+                                            style: Styles.s15w500redPinkFD5D69,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Text(
+                                            "@${vm.user!.username}",
+                                            style: Styles.s12w400pinkColorEC888D,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Text(
+                                            vm.user!.presentation!,
+                                            style: Styles.s12w300whiteBeigeFFFDF9,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                  backgroundColor: ColorScheme.of(context).secondary,
-                                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  fixedSize: Size(175.w, 27.h),
-                                  minimumSize: Size.zero,
-                                  padding: EdgeInsets.zero
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {},
+                                      style: TextButton.styleFrom(
+                                        backgroundColor: ColorScheme.of(context).secondary,
+                                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                        fixedSize: Size(175.w, 27.h),
+                                        minimumSize: Size.zero,
+                                        padding: EdgeInsets.zero,
+                                      ),
+                                      child: Text(
+                                        'Edit Profile',
+                                        style: Styles.s15w500pinkEC888D,
+                                      ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      style: TextButton.styleFrom(
+                                        backgroundColor: ColorScheme.of(context).secondary,
+                                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                        fixedSize: Size(175.w, 27.h),
+                                        minimumSize: Size.zero,
+                                        padding: EdgeInsets.zero,
+                                      ),
+                                      child: Text(
+                                        'Share Profile',
+                                        style: Styles.s15w500pinkEC888D,
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                AnimatedBorderContainer(
+                                  child: ChefProfileStats(model: vm.user!),
+                                ),
+                              ],
+                            ),
+                          ),
+                          bottom: TabBar(
+                            dividerColor: Colors.transparent,
+                            controller: _controller,
+                            tabs: [
+                              Tab(
                                 child: Text(
-                                  'Edit Profile',
-                                  style: Styles.s15w500pinkEC888D,
+                                  'Recipes',
+                                  style: Styles.s12w400whiteFFFDF9,
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                    backgroundColor: ColorScheme.of(context).secondary,
-                                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                    fixedSize: Size(175.w, 27.h),
-                                    minimumSize: Size.zero,
-                                    padding: EdgeInsets.zero
-                                ),
+                              Tab(
                                 child: Text(
-                                  'Share Profile',
-                                  style: Styles.s15w500pinkEC888D,
+                                  'Favourites',
+                                  style: Styles.s12w400whiteFFFDF9,
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ],
                           ),
-                          AnimatedBorderContainer(
-                            child: ChefProfileStats(model: vm.user!),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Column(
-                                    spacing: 2.h,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Recipes',
-                                        style: Styles.s12w400whiteFFFDF9,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Divider(
-                                        color: AppColors.redPinkFD5D69,
-                                        height: 2.h,
-                                        radius: BorderRadius.circular(2.r),
-                                      ),
-                                    ],
+                        ),
+                        SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: 700.h, // Set a fixed height for the TabBarView
+                            child: TabBarView(
+                              controller: _controller,
+                              children: [
+                                CategoryDetailsPageItem(categoryDetails: vm.yourRecipe),
+                                Container(
+                                  padding: EdgeInsets.all(16.w),
+                                  child: Text(
+                                    'Favourites Tab Content',
+                                    style: Styles.s12w400whiteFFFDF9,
+                                    textAlign: TextAlign.center,
                                   ),
-                                  Column(
-                                    spacing: 2.h,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Favourites',
-                                        style: Styles.s12w400whiteFFFDF9,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Divider(
-                                        color: AppColors.redPinkFD5D69,
-                                        height: 2.h,
-                                        radius: BorderRadius.circular(2.r),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              CategoryDetailsPageItem(
-                                categoryDetails: vm.yourRecipe,
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   bottomNavigationBar: MyBottomNavigationBar(),

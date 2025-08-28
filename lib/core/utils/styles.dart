@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/core/utils/font_family.dart';
-import 'app_colors.dart';
+import 'colors.dart';
 
 class Styles {
   static TextStyle s10w500pinkColorEC888D = TextStyle(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 
-import '../../home/managers/home_vm.dart';
+import '../../../home/managers/home_vm.dart';
 
 class AppBarBottomItem extends StatefulWidget {
   const AppBarBottomItem({

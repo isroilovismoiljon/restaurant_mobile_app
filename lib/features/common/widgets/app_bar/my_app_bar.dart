@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/app_bar_action.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/app_bar_leading_back_arrow.dart';
-
-import '../../../core/utils/icons.dart';
+import '../../../../core/utils/icons.dart';
+import 'app_bar_action.dart';
+import 'app_bar_leading_back_arrow.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({
@@ -69,6 +68,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size(double.infinity, 56.h);
 }

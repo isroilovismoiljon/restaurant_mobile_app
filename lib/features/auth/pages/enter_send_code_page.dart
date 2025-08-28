@@ -5,7 +5,7 @@ import 'package:restourant_mobile_app/features/auth/widgets/enter_code_form_fiel
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
 
 import '../../../core/routing/routes.dart';
-import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/colors.dart';
 import '../../../core/utils/styles.dart';
 import '../widgets/forgot_your_password_title_subtitle_widget.dart';
 

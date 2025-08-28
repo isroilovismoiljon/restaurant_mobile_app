@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/data/models/auth/login_model.dart';
 import 'package:restourant_mobile_app/features/auth/managers/login_vm.dart';

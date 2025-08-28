@@ -3,14 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/bottom_navigation_bar_gradient.dart';
 import 'package:restourant_mobile_app/features/onboarding/magagers/allergic_view_model.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/indicator_on_boarding.dart';
 import 'package:restourant_mobile_app/features/onboarding/widgets/to_next_page_button.dart';
-
-import '../../common/app_bar/app_bar_leading_back_arrow.dart';
+import '../../common/widgets/app_bar/app_bar_leading_back_arrow.dart';
+import '../../common/widgets/bottom_navigation_bar/bottom_navigation_bar_gradient.dart';
 
 class AllergicPage extends StatelessWidget {
   const AllergicPage({super.key});

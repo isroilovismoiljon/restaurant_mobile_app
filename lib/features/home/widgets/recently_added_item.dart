@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-
-import '../../common/like/like.dart';
+import '../../common/widgets/like/like.dart';
 
 class RecentlyAddedItem extends StatefulWidget {
   const RecentlyAddedItem({

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import '../../../core/routing/routes.dart';
-import '../../../core/utils/app_colors.dart';
-import '../../common/app_bar/app_bar_leading_back_arrow.dart';
+import '../../../core/utils/colors.dart';
+import '../../common/widgets/app_bar/app_bar_leading_back_arrow.dart';
 import '../widgets/indicator_on_boarding.dart';
 import '../widgets/to_next_page_button.dart';
 

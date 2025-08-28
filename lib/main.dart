@@ -5,7 +5,7 @@ import 'package:restourant_mobile_app/core/auth_interceptor.dart';
 import 'package:restourant_mobile_app/core/client.dart';
 import 'package:restourant_mobile_app/core/routing/router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restourant_mobile_app/core/utils/app_theme.dart';
+import 'package:restourant_mobile_app/core/utils/themes.dart';
 import 'package:restourant_mobile_app/core/utils/theme_mode_view_model.dart';
 import 'package:restourant_mobile_app/data/repositories/authentication_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';

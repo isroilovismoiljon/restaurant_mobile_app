@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
 import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';

@@ -15,6 +15,9 @@ class YourProfileViewModel extends ChangeNotifier {
   List<YourRecipeModel> yourRecipe = [];
   bool isLoadingYourRecipe = true;
   String? errorYourRecipe;
+  List<YourRecipeModel> favourite = [];
+  bool isLoadingFavourite = true;
+  String? errorFavourite;
 
   final ApiClient client;
   final UsersRepository _repository;
@@ -28,6 +31,7 @@ class YourProfileViewModel extends ChangeNotifier {
         _repositoryRecipe = repositoryRecipe {
     getMe();
     getYourRecipes();
+    getFavouriteRecipes();
   }
 
   Future<void> getMe() async {
@@ -54,15 +58,15 @@ class YourProfileViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getFavouriteRecipes(int userId) async {
-    isLoadingYourRecipe = true;
+  Future<void> getFavouriteRecipes() async {
+    isLoadingFavourite = true;
     notifyListeners();
     var result = await _repositoryRecipe.getYourRecipes({'Page': 2, 'Limit': 5});
-    result.fold((error) => errorYourRecipe = error.toString(), (value) {
-      yourRecipe = value;
-      errorYourRecipe = null;
+    result.fold((error) => errorFavourite = error.toString(), (value) {
+      favourite = value;
+      errorFavourite = null;
     },);
-    isLoadingYourRecipe = false;
+    isLoadingFavourite = false;
     notifyListeners();
   }
 }

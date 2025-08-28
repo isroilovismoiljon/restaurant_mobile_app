@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restourant_mobile_app/core/utils/app_colors.dart';
+import 'package:restourant_mobile_app/core/utils/colors.dart';
 
 class AppThemes{
   static ThemeMode mode = ThemeMode.dark;
