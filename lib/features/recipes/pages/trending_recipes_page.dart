@@ -7,9 +7,9 @@ import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/trending_recipes_vm.dart';
+import '../../common/widgets/app_bar/my_app_bar.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import '../../home/widgets/trading_recipe.dart';
 
 class TrendingRecipesPage extends StatelessWidget {

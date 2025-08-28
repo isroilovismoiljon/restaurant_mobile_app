@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/community_vm.dart';
 import 'package:restourant_mobile_app/features/recipes/widget/community_item.dart';
 import '../../../core/utils/styles.dart';
 import '../../../data/models/recipes/community_model.dart';
+import '../../common/widgets/app_bar/my_app_bar.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class CommunityPage extends StatefulWidget {
   const CommunityPage({Key? key}) : super(key: key);

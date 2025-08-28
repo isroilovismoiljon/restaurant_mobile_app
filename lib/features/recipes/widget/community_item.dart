@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/time/time_helper.dart';
 import 'package:restourant_mobile_app/features/recipes/widget/community_item_recipe.dart';
-
 import '../../../core/routing/routes.dart';
 import '../../../data/models/recipes/community_model.dart';
+import '../../common/widgets/time/time_helper.dart';
 
 class CommunityItem extends StatelessWidget {
   const CommunityItem({

@@ -5,10 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/like/like.dart';
-import 'package:restourant_mobile_app/features/common/time/time_helper.dart';
 import '../../../core/routing/routes.dart';
 import '../../../data/models/recipes/community_model.dart';
+import '../../common/widgets/like/like.dart';
 class CommunityItemRecipe extends StatefulWidget {
   const CommunityItemRecipe({
     super.key,

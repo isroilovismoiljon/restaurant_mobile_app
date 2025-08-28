@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
-import 'package:restourant_mobile_app/features/users/managers/chef_profile_vm.dart';
 import 'package:restourant_mobile_app/features/users/managers/top_chefs_vm.dart';
 import 'package:restourant_mobile_app/features/users/widgets/chefs_item.dart';
+
+import '../../common/widgets/app_bar/my_app_bar.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class TopChefsPage extends StatelessWidget {
   const TopChefsPage({super.key});

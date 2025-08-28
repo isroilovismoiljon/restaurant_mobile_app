@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/features/recipes/managers/category_details_view_model.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/app_bar_bottom.dart';
 import 'package:restourant_mobile_app/features/recipes/widget/category_details_page_item.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
 import '../../../core/utils/styles.dart';
-import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
+import '../../common/widgets/app_bar/app_bar_bottom.dart';
+import '../../common/widgets/app_bar/my_app_bar.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class CategoryDetails extends StatelessWidget {
   final Map items;

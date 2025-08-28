@@ -12,12 +12,13 @@ import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/data/models/recipes/recipe_review_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/reviews/managers/reviews_vm.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/create_review_button.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/rating_stars.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/recommend_recipe_radio.dart';
+
+import '../../common/widgets/app_bar/my_app_bar.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class CreateReviewPage extends StatefulWidget {
   final int recipeId;

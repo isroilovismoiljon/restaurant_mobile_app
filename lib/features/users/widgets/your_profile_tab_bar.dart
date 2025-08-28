@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-
-import '../../../core/utils/colors.dart';
 import '../../../core/utils/styles.dart';
-import '../../common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
-import '../../common/border/animated_border_container.dart';
 import '../../recipes/widget/category_details_page_item.dart';
 import '../managers/your_profile_vm.dart';
-import 'chef_profile_stats.dart';
 
 class YourProfileTabBar extends StatefulWidget {
   YourProfileTabBar({

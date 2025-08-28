@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
 import '../../../core/utils/icons.dart';
-import '../../common/like/like.dart';
+import '../../common/widgets/like/like.dart';
 
 class CategoryDetailsPageItem extends StatefulWidget {
   const CategoryDetailsPageItem({super.key, required this.categoryDetails});

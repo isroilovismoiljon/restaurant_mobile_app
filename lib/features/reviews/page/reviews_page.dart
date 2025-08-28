@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:restourant_mobile_app/core/utils/colors.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/features/common/app_bar/my_app_bar.dart';
-import 'package:restourant_mobile_app/features/common/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/reviews/managers/reviews_vm.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/review_comment.dart';
 import 'package:restourant_mobile_app/features/reviews/widgets/reviews_recipe.dart';
+
+import '../../common/widgets/app_bar/my_app_bar.dart';
+import '../../common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 
 class ReviewsPage extends StatelessWidget {
   const ReviewsPage({super.key, required this.recipeId});
