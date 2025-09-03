@@ -1,6 +1,15 @@
+import 'package:hive/hive.dart';
+
+part 'category_model.g.dart';
+
+@HiveType(typeId: 0)
 class CategoryModel {
+  @HiveField(0)
   final int id;
-  final String image, title;
+  @HiveField(1)
+  final String image;
+  @HiveField(2)
+  final String title;
 
   CategoryModel({required this.id, required this.image, required this.title});
 

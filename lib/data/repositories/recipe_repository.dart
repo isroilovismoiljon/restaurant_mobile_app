@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:hive/hive.dart';
 import 'package:dio/dio.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/models/recipes/community_model.dart';
@@ -7,6 +7,7 @@ import 'package:restourant_mobile_app/data/models/recipes/recipe_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/review_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
 import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
+import 'package:restourant_mobile_app/data/repositories/cache/category_cache.dart';
 import '../../core/client.dart';
 import '../models/recipes/category_details_model.dart';
 import '../models/recipes/category_model.dart';
@@ -14,8 +15,8 @@ import '../models/recipes/recipe_review_model.dart';
 
 class RecipeRepository {
   RecipeModel? recipe;
-  List<CategoryDetailsModel> categoryDetails = [];
   List<CategoryModel> categories = [];
+  List<CategoryDetailsModel> categoryDetails = [];
   List<YourRecipeModel> yourRecipes = [];
   TrendingRecipeModel? trendingRecipe;
   RecipeReviewModel? recipeReviewModel;
@@ -23,6 +24,7 @@ class RecipeRepository {
   List<CommunityModel> communities = [];
 
   final ApiClient client;
+  final CategoryCache cacheCategory = CategoryCache();
 
   RecipeRepository({required this.client});
 
@@ -58,12 +60,17 @@ class RecipeRepository {
   }
 
   Future<Result<List<CategoryModel>>> getCategories() async {
+    final categories = await cacheCategory.getCachedCategories();
     if (categories.isNotEmpty) return Result.ok(categories);
     var result = await client.get<List>('/categories/list');
 
     return result.fold(
       (error) => Result.error(error),
-      (value) => Result.ok(value.map((x) => CategoryModel.fromJson(x)).toList()),
+      (value) {
+        final categories = value.map((x) => CategoryModel.fromJson(x)).toList();
+        cacheCategory.cacheCategories(categories);
+        return Result.ok(categories);
+      },
     );
   }
 

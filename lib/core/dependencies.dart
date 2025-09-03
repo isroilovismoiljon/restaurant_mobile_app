@@ -11,7 +11,7 @@ final dependencies = [
   Provider(create: (context) => FlutterSecureStorage()),
   Provider(create: (context) => AuthInterceptor(secureStorage: context.read())),
   Provider(
-    create: (context) => ApiClient(interceptor: context.read(), baseUrl: "http://192.168.8.196:8888/api/v1"),
+    create: (context) => ApiClient(interceptor: context.read(), baseUrl: "http://192.168.9.118:8888/api/v1"),
   ),
   Provider(create: (context) => RecipeRepository(client: context.read())),
   Provider(

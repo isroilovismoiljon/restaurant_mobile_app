@@ -126,7 +126,6 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
                           setState(() {
                             ingredientAmountControllers.removeAt(index);
                             ingredientNameControllers.removeAt(index);
-
                           });
                         },
                       ),
