@@ -23,6 +23,12 @@ class _YourProfileTabBarState extends State<YourProfileTabBar> with SingleTicker
   }
 
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -46,24 +52,80 @@ class _YourProfileTabBarState extends State<YourProfileTabBar> with SingleTicker
             ),
           ],
         ),
-        TabBarView(
-          controller: controller,
-          children: <Widget>[
-            widget.vm.isLoadingYourRecipe
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : CategoryDetailsPageItem(
-                    categoryDetails: widget.vm.yourRecipe,
-                  ),
-            widget.vm.isLoadingFavourite
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : CategoryDetailsPageItem(
-                    categoryDetails: widget.vm.favourite,
-                  ),
-          ],
+        Expanded(
+          child: TabBarView(
+            controller: controller,
+            children: <Widget>[
+              // Recipes Tab
+              widget.vm.isLoadingYourRecipe
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : widget.vm.errorYourRecipe != null
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Failed to load recipes',
+                                style: AppStyles.s12w400whiteFFFDF9,
+                              ),
+                              TextButton(
+                                onPressed: () => widget.vm.getYourRecipes(),
+                                child: Text(
+                                  'Retry',
+                                  style: AppStyles.s12w400whiteFFFDF9,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : widget.vm.yourRecipe.isEmpty
+                          ? Center(
+                              child: Text(
+                                'No recipes found',
+                                style: AppStyles.s12w400whiteFFFDF9,
+                              ),
+                            )
+                          : CategoryDetailsPageItem(
+                              categoryDetails: widget.vm.yourRecipe,
+                            ),
+              // Favourites Tab
+              widget.vm.isLoadingFavourite
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : widget.vm.errorFavourite != null
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Failed to load favourites',
+                                style: AppStyles.s12w400whiteFFFDF9,
+                              ),
+                              TextButton(
+                                onPressed: () => widget.vm.getFavouriteRecipes(),
+                                child: Text(
+                                  'Retry',
+                                  style: AppStyles.s12w400whiteFFFDF9,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : widget.vm.favourite.isEmpty
+                          ? Center(
+                              child: Text(
+                                'No favourite recipes found',
+                                style: AppStyles.s12w400whiteFFFDF9,
+                              ),
+                            )
+                          : CategoryDetailsPageItem(
+                              categoryDetails: widget.vm.favourite,
+                            ),
+            ],
+          ),
         ),
       ],
     );

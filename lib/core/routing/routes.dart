@@ -24,5 +24,6 @@ class Routers{
   static const community = '/community';
   static const myProfile = '/myProfile';
   static const addRecipe = '/addRecipe';
+  static const settings = '/settings';
 
 }

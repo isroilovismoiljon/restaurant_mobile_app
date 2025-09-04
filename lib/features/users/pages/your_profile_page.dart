@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+import 'package:restourant_mobile_app/core/routing/router.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
+import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/features/recipes/widget/category_details_page_item.dart';
 import '../../../core/utils/colors.dart';
 import '../../../core/utils/styles.dart';
@@ -51,13 +57,12 @@ class _YourProfilePageState extends State<YourProfilePage> with SingleTickerProv
                   extendBody: true,
                   backgroundColor: AppColors.backgroundColor,
                   body: Padding(
-                    padding: EdgeInsets.only(right: 36.w, left: 36.w),
+                    padding: EdgeInsets.only(right: 36.w, left: 36.w, bottom: 126.h),
                     child: CustomScrollView(
                       shrinkWrap: true,
                       slivers: [
                         SliverAppBar(
                           leading: SizedBox(),
-                          pinned: true,
                           surfaceTintColor: Colors.transparent,
                           leadingWidth: 0,
                           titleSpacing: 0,
@@ -69,7 +74,8 @@ class _YourProfilePageState extends State<YourProfilePage> with SingleTickerProv
                               spacing: 13.h,
                               children: [
                                 Row(
-                                  spacing: 13.w,
+                                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  spacing: 13.h,
                                   children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(50.r),
@@ -81,28 +87,81 @@ class _YourProfilePageState extends State<YourProfilePage> with SingleTickerProv
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 205.w,
-                                      child: Column(
-                                        spacing: 6.h,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      width: 241.w,
+                                      height: 97.h,
+                                      child: Stack(
                                         children: [
-                                          Text(
-                                            '${vm.user!.firstName} ${vm.user!.lastName}',
-                                            style: AppStyles.s15w500redPinkFD5D69,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
+                                          Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                              spacing: 6.h,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  '${vm.user!.firstName} ${vm.user!.lastName}',
+                                                  style: AppStyles.s15w500redPinkFD5D69,
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  "@${vm.user!.username}",
+                                                  style: AppStyles.s12w400pinkColorEC888D,
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                                Text(
+                                                  vm.user!.presentation!,
+                                                  style: AppStyles.s12w300whiteBeigeFFFDF9,
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          Text(
-                                            "@${vm.user!.username}",
-                                            style: AppStyles.s12w400pinkColorEC888D,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Text(
-                                            vm.user!.presentation!,
-                                            style: AppStyles.s12w300whiteBeigeFFFDF9,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
+                                          Align(
+                                            alignment: Alignment.topRight,
+                                            child: Row(
+                                              spacing: 5.w,
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                SizedBox(
+                                                  width: 28.w,
+                                                  height: 28.h,
+                                                  child: IconButton(
+                                                    onPressed: () {
+                                                      context.push(Routers.addRecipe);
+                                                    },
+                                                    icon: SvgPicture.asset(
+                                                      AppIcons.plus,
+                                                    ),
+                                                    color: AppColors.pinkFFC6C9,
+                                                    padding: EdgeInsets.all(7.r),
+                                                    style: IconButton.styleFrom(
+                                                      shape: CircleBorder(),
+                                                      backgroundColor: AppColors.pinkFFC6C9,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 28.w,
+                                                  height: 28.h,
+                                                  child: IconButton(
+                                                    onPressed: () {
+                                                      context.push(Routers.settings);
+                                                    },
+                                                    padding: EdgeInsets.all(8.r),
+                                                    icon: SvgPicture.asset(
+                                                      AppIcons.threeLine,
+                                                    ),
+                                                    style: IconButton.styleFrom(
+                                                      shape: CircleBorder(),
+                                                      backgroundColor: AppColors.pinkFFC6C9,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -169,23 +228,79 @@ class _YourProfilePageState extends State<YourProfilePage> with SingleTickerProv
                             ],
                           ),
                         ),
-                        SliverToBoxAdapter(
-                          child: SizedBox(
-                            height: 700.h, // Set a fixed height for the TabBarView
-                            child: TabBarView(
-                              controller: _controller,
-                              children: [
-                                CategoryDetailsPageItem(categoryDetails: vm.yourRecipe),
-                                Container(
-                                  padding: EdgeInsets.all(16.w),
-                                  child: Text(
-                                    'Favourites Tab Content',
-                                    style: AppStyles.s12w400whiteFFFDF9,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                              ],
-                            ),
+                        SliverFillRemaining(
+                          child: TabBarView(
+                            controller: _controller,
+                            children: [
+                              // Recipes Tab
+                              vm.isLoadingYourRecipe
+                                  ? Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : vm.errorYourRecipe != null
+                                  ? Center(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Failed to load recipes',
+                                            style: AppStyles.s15w500redPinkFD5D69,
+                                          ),
+                                          SizedBox(height: 10.h),
+                                          TextButton(
+                                            onPressed: () => vm.getYourRecipes(),
+                                            child: Text(
+                                              'Retry',
+                                              style: AppStyles.s12w400whiteFFFDF9,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : vm.yourRecipe.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        'No recipes found',
+                                        style: AppStyles.s15w500redPinkFD5D69,
+                                      ),
+                                    )
+                                  : CategoryDetailsPageItem(categoryDetails: vm.yourRecipe),
+                              // Favourites Tab
+                              vm.isLoadingFavourite
+                                  ? Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : vm.errorFavourite != null
+                                  ? Center(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Failed to load favourites',
+                                            style: AppStyles.s15w500redPinkFD5D69,
+                                          ),
+                                          SizedBox(height: 10.h),
+                                          TextButton(
+                                            onPressed: () => vm.getFavouriteRecipes(),
+                                            child: Text(
+                                              'Retry',
+                                              style: AppStyles.s12w400whiteFFFDF9,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : vm.favourite.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        'No favourite recipes found',
+                                        style: AppStyles.s15w500redPinkFD5D69,
+                                      ),
+                                    )
+                                  : CategoryDetailsPageItem(
+                                      categoryDetails: vm.favourite,
+                                    ),
+                            ],
                           ),
                         ),
                       ],
