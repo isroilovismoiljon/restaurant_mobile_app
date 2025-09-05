@@ -110,6 +110,12 @@ class AppStyles {
     fontSize: 14.sp,
     fontWeight: FontWeight.w300,
   );
+  static TextStyle s14w300redPinkFD5D69 = TextStyle(
+    color: AppColors.redPinkFD5D69,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w300,
+    fontFamily: FontFamily.leagueSpartan
+  );
   static TextStyle s14w400whiteFFFDF9 = TextStyle(
     color: AppColors.whiteBeigeFFFDF9,
     fontSize: 14.sp,
