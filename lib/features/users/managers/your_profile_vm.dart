@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
 import '../../../core/client.dart';
-import '../../../data/models/recipes/category_details_model.dart';
+import '../../../data/models/recipes/recipe_details_model.dart';
 import '../../../data/models/users/chef.dart';
 import '../../../data/repositories/recipe_repository.dart';
 import '../../../data/repositories/users_repository.dart';

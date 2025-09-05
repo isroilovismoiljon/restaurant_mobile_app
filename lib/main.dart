@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/core/utils/themes.dart';
 import 'package:restourant_mobile_app/features/common/managers/theme_mode_view_model.dart';
 
-import 'data/models/recipes/category_model.dart';
+import 'data/models/category/category_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

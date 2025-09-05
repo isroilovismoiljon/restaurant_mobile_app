@@ -28,7 +28,7 @@ import '../../features/reviews/page/reviews_page.dart';
 import '../../features/users/pages/top_chefs_page.dart';
 
 GoRouter router = GoRouter(
-  initialLocation: Routers.categoriesPage,
+  initialLocation: Routers.addRecipe,
   routes: <RouteBase>[
     GoRoute(
       path: Routers.launchPage,

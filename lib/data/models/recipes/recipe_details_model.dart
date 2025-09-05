@@ -1,9 +1,9 @@
-class CategoryDetailsModel {
+class RecipeDetailsModel {
   final int id, categoryId, timeRequired;
   final num rating;
   final String title, description, difficulty, photo;
 
-  CategoryDetailsModel({
+  RecipeDetailsModel({
     required this.id,
     required this.categoryId,
     required this.timeRequired,
@@ -14,8 +14,8 @@ class CategoryDetailsModel {
     required this.photo,
   });
 
-  factory CategoryDetailsModel.fromJson(Map<String, dynamic> json){
-    return CategoryDetailsModel(id: json['id'],
+  factory RecipeDetailsModel.fromJson(Map<String, dynamic> json){
+    return RecipeDetailsModel(id: json['id'],
         categoryId: json['categoryId'],
         timeRequired: json['timeRequired'],
         rating: json['rating'],

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
-import '../../../data/models/recipes/category_model.dart';
+import '../../../data/models/category/category_model.dart';
 import '../../../data/repositories/recipe_repository.dart';
 
 class CategoriesPageViewModel extends ChangeNotifier {

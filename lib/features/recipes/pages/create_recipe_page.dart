@@ -6,6 +6,7 @@ import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/features/common/widgets/bottom_navigation_bar/my_bottom_navigation_bar.dart';
 import 'package:restourant_mobile_app/features/recipes/widget/add_recipe_image.dart';
+import '../../common/widgets/app_bar/app_bar_leading_back_arrow.dart';
 import '../widget/add_button.dart';
 import '../widget/add_recipe_custom_text_field.dart';
 import '../widget/ingredient_field.dart';
@@ -58,30 +59,59 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
       extendBody: true,
       backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        title: Text("Create Recipe", style: TextStyle(color: Colors.white)),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {},
+        leading: AppBarLeadingBackArrow(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
-        actions: [
-          TextButton(
-            onPressed: () {},
-            child: Text("Publish", style: TextStyle(color: Colors.pink)),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: Text("Delete", style: TextStyle(color: Colors.pink)),
-          ),
-        ],
+        leadingWidth: 75.w,
+        title: Text(
+          'Create Recipe',
+          style: AppStyles.s20w600redPink,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(34.w, 26.h, 34.w, 125.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: ColorScheme.of(context).secondary,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    fixedSize: Size(175.w, 27.h),
+                    minimumSize: Size.zero,
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: Text(
+                    'Publish',
+                    style: AppStyles.s15w500pinkEC888D,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: ColorScheme.of(context).secondary,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    fixedSize: Size(175.w, 27.h),
+                    minimumSize: Size.zero,
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: Text(
+                    'Delete',
+                    style: AppStyles.s15w500pinkEC888D,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 25.h),
             AddRecipeImage(),
             SizedBox(height: 30.h),
             Text(
@@ -94,7 +124,11 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
               'Description',
               style: AppStyles.s15w500whiteBeigeFFFDF9,
             ),
-            AddRecipeCustomTextField(hint: "Recipe Description", controller: descriptionController),
+            AddRecipeCustomTextField(
+              hint: "Recipe Description",
+              controller: descriptionController,
+              maxHeightField: 64,
+            ),
             SizedBox(height: 10.h),
             Text(
               'Time Recipe',
@@ -108,14 +142,18 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
             Column(
               children: List.generate(
                 ingredientNameControllers.length,
-                    (index) => Row(
+                (index) => Row(
                   children: [
-                    SvgPicture.asset(AppIcons.threeDots),
+                    SvgPicture.asset(
+                      AppIcons.threeDots,
+                      colorFilter: ColorFilter.mode(AppColors.redPinkFD5D69, BlendMode.srcIn),
+                    ),
                     SizedBox(width: 8.w),
                     SizedBox(
                       width: 70.w,
                       child: AddRecipeCustomTextField(
-                        controller: ingredientAmountControllers[index], hint: 'Amt',
+                        controller: ingredientAmountControllers[index],
+                        hint: 'Amt',
                       ),
                     ),
                     SizedBox(width: 8.w),
@@ -173,7 +211,6 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
                 },
               ),
             ),
-
 
             SizedBox(height: 16.h),
             Text("Instructions", style: AppStyles.s15w500whiteBeigeFFFDF9),

@@ -1,10 +1,13 @@
 import 'package:hive/hive.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'category_model.g.dart';
 
+@JsonSerializable()
 @HiveType(typeId: 0)
 class CategoryModel {
   @HiveField(0)
+  @JsonKey(includeToJson: false)
   final int id;
   @HiveField(1)
   final String image;

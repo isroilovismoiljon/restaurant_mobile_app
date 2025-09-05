@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-import '../../models/recipes/category_model.dart';
+import '../../models/category/category_model.dart';
 
 class CategoryCache {
   static const String _boxName = 'categories';

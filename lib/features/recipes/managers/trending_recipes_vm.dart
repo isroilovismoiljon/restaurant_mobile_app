@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
+import 'package:restourant_mobile_app/data/models/recipes/recipe_details_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 
@@ -7,7 +7,7 @@ import '../../../core/utils/result.dart';
 
 class TrendingRecipesViewModel extends ChangeNotifier {
   TrendingRecipeModel? trendingRecipe;
-  List<CategoryDetailsModel> recipes = [];
+  List<RecipeDetailsModel> recipes = [];
 
   bool trendingRecipeIsLoading = true;
   String? trendingRecipeError;

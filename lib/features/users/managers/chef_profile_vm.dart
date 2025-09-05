@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restourant_mobile_app/core/client.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
-import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
+import 'package:restourant_mobile_app/data/models/recipes/recipe_details_model.dart';
 import 'package:restourant_mobile_app/data/models/users/chef.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
@@ -12,7 +12,7 @@ class ChefProfileViewModel extends ChangeNotifier {
   bool isLoadingFollow = true;
   String? errorChef;
   String? errorFollow;
-  List<CategoryDetailsModel> categoryDetails = [];
+  List<RecipeDetailsModel> categoryDetails = [];
   bool isLoadingCategoryDetails = true;
   String? errorCategoryDetails;
 

@@ -4,7 +4,7 @@ import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/core/utils/theme_mode_view_model.dart';
 import 'package:restourant_mobile_app/features/common/widgets/app_bar/my_app_bar.dart';
-import 'package:restourant_mobile_app/features/settings/pages/settings_page_item.dart';
+import 'package:restourant_mobile_app/features/settings/widgets/settings_page_item.dart';
 
 import '../../common/widgets/app_bar/app_bar_leading_back_arrow.dart';
 

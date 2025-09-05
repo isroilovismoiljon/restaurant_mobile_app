@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
-import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
+import 'package:restourant_mobile_app/data/models/recipes/recipe_details_model.dart';
 import '../managers/home_vm.dart';
 import 'recently_added_item.dart';
 
@@ -12,7 +12,7 @@ class RecentlyAddedWidget extends StatelessWidget {
   });
 
   final HomeViewModel vm;
-  final List<CategoryDetailsModel> recentlyAddedRecipe;
+  final List<RecipeDetailsModel> recentlyAddedRecipe;
 
   @override
   Widget build(BuildContext context) {

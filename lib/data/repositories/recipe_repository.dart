@@ -9,14 +9,14 @@ import 'package:restourant_mobile_app/data/models/recipes/trending_recipe.dart';
 import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
 import 'package:restourant_mobile_app/data/repositories/cache/category_cache.dart';
 import '../../core/client.dart';
-import '../models/recipes/category_details_model.dart';
-import '../models/recipes/category_model.dart';
+import '../models/recipes/recipe_details_model.dart';
+import '../models/category/category_model.dart';
 import '../models/recipes/recipe_review_model.dart';
 
 class RecipeRepository {
   RecipeModel? recipe;
   List<CategoryModel> categories = [];
-  List<CategoryDetailsModel> categoryDetails = [];
+  List<RecipeDetailsModel> categoryDetails = [];
   List<YourRecipeModel> yourRecipes = [];
   TrendingRecipeModel? trendingRecipe;
   RecipeReviewModel? recipeReviewModel;
@@ -37,13 +37,13 @@ class RecipeRepository {
     );
   }
 
-  Future<Result<List<CategoryDetailsModel>>> getCategoryDetails(Map<String, dynamic> queryParams) async {
+  Future<Result<List<RecipeDetailsModel>>> getCategoryDetails(Map<String, dynamic> queryParams) async {
     if (categoryDetails.isNotEmpty) return Result.ok(categoryDetails);
     var result = await client.get<List>('/recipes/list', queryParams: queryParams);
     return result.fold(
       (error) => Result.error(error),
       (value) => Result.ok(
-        value.map((x) => CategoryDetailsModel.fromJson(x)).toList(),
+        value.map((x) => RecipeDetailsModel.fromJson(x)).toList(),
       ),
     );
   }

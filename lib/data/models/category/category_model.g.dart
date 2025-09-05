@@ -9,6 +9,7 @@ part of 'category_model.dart';
 class CategoryModelAdapter extends TypeAdapter<CategoryModel> {
   @override
   final int typeId = 0;
+
   @override
   CategoryModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
@@ -44,3 +45,20 @@ class CategoryModelAdapter extends TypeAdapter<CategoryModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+CategoryModel _$CategoryModelFromJson(Map<String, dynamic> json) =>
+    CategoryModel(
+      id: (json['id'] as num).toInt(),
+      image: json['image'] as String,
+      title: json['title'] as String,
+    );
+
+Map<String, dynamic> _$CategoryModelToJson(CategoryModel instance) =>
+    <String, dynamic>{
+      'image': instance.image,
+      'title': instance.title,
+    };

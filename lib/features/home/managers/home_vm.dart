@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:restourant_mobile_app/data/models/recipes/category_details_model.dart';
+import 'package:restourant_mobile_app/data/models/recipes/recipe_details_model.dart';
 import 'package:restourant_mobile_app/data/models/recipes/your_recipe_model.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
 import 'package:restourant_mobile_app/data/repositories/users_repository.dart';
-import '../../../data/models/recipes/category_model.dart';
+import '../../../data/models/category/category_model.dart';
 import '../../../data/models/recipes/trending_recipe.dart';
 import '../../../data/models/users/chef.dart';
 
@@ -12,7 +12,7 @@ class HomeViewModel extends ChangeNotifier {
   bool isLoadingTrendingRecipe = true;
   List<YourRecipeModel> yourRecipes = [];
   bool isLoadingYourRecipes = true;
-  List<CategoryDetailsModel> recentlyRecipes = [];
+  List<RecipeDetailsModel> recentlyRecipes = [];
   bool isLoadingRecentlyRecipes = true;
   List<CategoryModel> categories = [];
   bool isLoadingCategories = true;

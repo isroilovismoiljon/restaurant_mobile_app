@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:restourant_mobile_app/core/utils/result.dart';
 import 'package:restourant_mobile_app/data/repositories/recipe_repository.dart';
-import '../../../data/models/recipes/category_details_model.dart';
-import '../../../data/models/recipes/category_model.dart';
+import '../../../data/models/recipes/recipe_details_model.dart';
+import '../../../data/models/category/category_model.dart';
 
 class CategoryDetailsViewModel extends ChangeNotifier {
-  List<CategoryDetailsModel> categoryDetails = [];
+  List<RecipeDetailsModel> categoryDetails = [];
   List<CategoryModel> categories = [];
   int selectedCategoryId;
   String selectedCategoryTitle = '';
