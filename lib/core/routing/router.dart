@@ -14,8 +14,10 @@ import 'package:restourant_mobile_app/features/onboarding/pages/welcome_page.dar
 import 'package:restourant_mobile_app/features/recipes/pages/trending_recipes_page.dart';
 import 'package:restourant_mobile_app/features/recipes/pages/your_recipes_page.dart';
 import 'package:restourant_mobile_app/features/reviews/page/create_review_page.dart';
+import 'package:restourant_mobile_app/features/settings/pages/notification_settings_page.dart';
 import 'package:restourant_mobile_app/features/settings/pages/settings_page.dart';
 import 'package:restourant_mobile_app/features/users/pages/chef_profile_page.dart';
+import 'package:restourant_mobile_app/features/users/pages/following_page.dart';
 import 'package:restourant_mobile_app/features/users/pages/your_profile_page.dart';
 import '../../features/common/widgets/transition/custom_transition_page.dart';
 import '../../features/error/error404.dart';
@@ -28,7 +30,7 @@ import '../../features/reviews/page/reviews_page.dart';
 import '../../features/users/pages/top_chefs_page.dart';
 
 GoRouter router = GoRouter(
-  initialLocation: Routers.addRecipe,
+  initialLocation: Routers.settings,
   routes: <RouteBase>[
     GoRoute(
       path: Routers.launchPage,
@@ -39,7 +41,7 @@ GoRouter router = GoRouter(
       pageBuilder: (context, state) => buildPageWithRightToLeftTransition(
         context,
         state,
-        const HomePage(),
+        HomePage(),
       ),
     ),
     GoRoute(
@@ -143,6 +145,14 @@ GoRouter router = GoRouter(
     GoRoute(
       path: Routers.settings,
       builder: (context, state) => SettingsPage(),
+    ),
+    GoRoute(
+      path: Routers.notificationSettings,
+      builder: (context, state) => NotificationSettingsPage(),
+    ),
+    GoRoute(
+      path: Routers.following,
+      builder: (context, state) => FollowingPage(),
     ),
   ],
 );

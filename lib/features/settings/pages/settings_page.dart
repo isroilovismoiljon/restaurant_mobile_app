@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:restourant_mobile_app/core/routing/routes.dart';
 import 'package:restourant_mobile_app/core/utils/icons.dart';
 import 'package:restourant_mobile_app/core/utils/styles.dart';
 import 'package:restourant_mobile_app/core/utils/theme_mode_view_model.dart';
-import 'package:restourant_mobile_app/features/common/widgets/app_bar/my_app_bar.dart';
+import 'package:restourant_mobile_app/features/common/widgets/app_bar/app_bar_without_actions.dart';
 import 'package:restourant_mobile_app/features/settings/widgets/settings_page_item.dart';
-
-import '../../common/widgets/app_bar/app_bar_leading_back_arrow.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -14,21 +14,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: AppBarLeadingBackArrow(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        leadingWidth: 75.w,
-        title: Text(
-          'Settings',
-          style: AppStyles.s20w600redPink,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBarWithoutActions(title: 'Settings',),
       body: Padding(
         padding: EdgeInsets.fromLTRB(36.w, 20.h, 36.w, 126.h),
         child: Column(
@@ -38,7 +24,9 @@ class SettingsPage extends StatelessWidget {
             SettingsPageItem(
               title: 'Notification',
               mainIcon: AppIcons.notification,
-              onTap: () {},
+              onTap: () {
+                context.push(Routers.notificationSettings);
+              },
             ),
             SettingsPageItem(
               title: 'Help Center',

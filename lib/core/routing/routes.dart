@@ -25,5 +25,7 @@ class Routers{
   static const myProfile = '/myProfile';
   static const addRecipe = '/addRecipe';
   static const settings = '/settings';
+  static const notificationSettings = '/notificationSettings';
+  static const following = '/following';
 
 }
